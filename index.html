@@ -1675,6 +1675,261 @@
     .vtr-arrow   { color: var(--muted); flex-shrink: 0; }
     .vtr-physics { color: var(--text); }
 
+    /* ── C13B0 Signal Processor ────────────────────────────────── */
+    #signal-processor {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Dual-robot split */
+    .robot-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 640px) { .robot-split { grid-template-columns: 1fr; } }
+
+    .robot-panel {
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 1.4rem 1.3rem 1.2rem;
+      background: var(--card);
+    }
+
+    .robot-panel.rp-meaning {
+      border-top: 3px solid #00e5ff;
+      background: linear-gradient(160deg, rgba(0,229,255,0.05) 0%, var(--card) 60%);
+    }
+
+    .robot-panel.rp-signal {
+      border-top: 3px solid #fbbf24;
+      background: linear-gradient(160deg, rgba(251,191,36,0.05) 0%, var(--card) 60%);
+    }
+
+    .robot-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.64rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.6rem;
+    }
+
+    .robot-panel.rp-meaning .robot-badge { background: rgba(0,229,255,0.12); color: #00e5ff; }
+    .robot-panel.rp-signal  .robot-badge { background: rgba(251,191,36,0.12); color: #fbbf24; }
+
+    .robot-panel h3 { font-size: 1rem; color: var(--text); margin-bottom: 0.75rem; }
+
+    .robot-cap-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+    }
+
+    .robot-cap-list li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.32rem 0.6rem;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .robot-cap-list li:hover { border-color: var(--border); }
+    .robot-cap-list .cap-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .rp-meaning .cap-dot { background: #00e5ff; box-shadow: 0 0 4px #00e5ff; }
+    .rp-signal  .cap-dot { background: #fbbf24; box-shadow: 0 0 4px #fbbf24; }
+
+    /* 4-layer architecture stack */
+    .arch-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .arch-layer {
+      padding: 1.05rem 1.3rem;
+      border: 1px solid var(--border);
+      position: relative;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .arch-layer:first-child { border-radius: 14px 14px 0 0; }
+    .arch-layer:last-child  { border-radius: 0 0 14px 14px; }
+    .arch-layer + .arch-layer { border-top: none; }
+    .arch-layer:hover { background: rgba(255,255,255,0.025); border-color: var(--accent1); }
+
+    .arch-layer-label {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .arch-layer.al-input    .arch-layer-label { color: #fbbf24; }
+    .arch-layer.al-signal   .arch-layer-label { color: var(--accent1); }
+    .arch-layer.al-know     .arch-layer-label { color: var(--accent2); }
+    .arch-layer.al-action   .arch-layer-label { color: #39ff14; }
+
+    .arch-layer h4  { font-size: 0.92rem; color: var(--text); margin-bottom: 0.35rem; }
+    .arch-layer-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .arch-pill {
+      font-size: 0.74rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .arch-layer.al-input  .arch-pill { border-color: rgba(251,191,36,0.3); }
+    .arch-layer.al-signal .arch-pill { border-color: rgba(0,229,255,0.3);  }
+    .arch-layer.al-know   .arch-pill { border-color: rgba(123,47,255,0.3); }
+    .arch-layer.al-action .arch-pill { border-color: rgba(57,255,20,0.3);  }
+
+    /* Flow arrow between layers */
+    .arch-arrow {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1;
+      padding: 0.25rem 0;
+      position: relative;
+      z-index: 1;
+      background: var(--bg);
+      width: 30px;
+      margin: 0 auto;
+    }
+
+    /* Signal canvas */
+    #signal-canvas {
+      display: block;
+      width: 100%;
+      height: 200px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #050a14;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Signals-across-forms grid */
+    .signal-forms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .signal-form-card {
+      padding: 1rem 0.95rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      text-align: center;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .signal-form-card:hover { border-color: var(--accent1); transform: translateY(-2px); }
+    .signal-form-card .sfc-icon { font-size: 1.5rem; margin-bottom: 0.35rem; }
+    .signal-form-card h4 { font-size: 0.84rem; color: var(--text); margin-bottom: 0.22rem; }
+    .signal-form-card p  { font-size: 0.76rem; color: var(--muted); line-height: 1.45; }
+
+    /* Boundary callout */
+    .boundary-callout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 600px) { .boundary-callout { grid-template-columns: 1fr; } }
+
+    .bc-panel {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.1rem;
+    }
+
+    .bc-panel.bc-yes { border-left: 4px solid #39ff14; background: rgba(57,255,20,0.04); }
+    .bc-panel.bc-no  { border-left: 4px solid #ef4444; background: rgba(239,68,68,0.04); }
+
+    .bc-panel-label {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .bc-yes .bc-panel-label { color: #39ff14; }
+    .bc-no  .bc-panel-label { color: #ef4444; }
+
+    .bc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .bc-list li {
+      font-size: 0.81rem;
+      color: var(--muted);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .bc-list li::before { flex-shrink: 0; }
+    .bc-yes .bc-list li::before { content: '✓'; color: #39ff14; }
+    .bc-no  .bc-list li::before { content: '✗'; color: #ef4444; }
+
+    /* Spec summary card */
+    .spec-summary {
+      border: 1px solid var(--accent1);
+      border-radius: 14px;
+      padding: 1.5rem 1.6rem;
+      background: linear-gradient(135deg, rgba(0,229,255,0.05), rgba(123,47,255,0.07));
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .spec-summary .ss-label {
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent1);
+      margin-bottom: 0.45rem;
+    }
+
+    .spec-summary h3 { font-size: 1.25rem; color: var(--text); margin-bottom: 0.55rem; }
+    .spec-summary p  { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-width: 520px; margin: 0 auto; }
+
     /* ── Footer ────────────────────────────────────────────────── */
     footer {
       background: var(--surface);
@@ -1982,6 +2237,7 @@
       <li><a href="#quantum-states"><span class="emoji">⚛️</span> Quantum States</a></li>
       <li><a href="#plasma-cosmos"><span class="emoji">🌩️</span> Plasma Cosmos</a></li>
       <li><a href="#vine-node-timeline"><span class="emoji">🌿</span> Vine/Node Timeline</a></li>
+      <li><a href="#signal-processor"><span class="emoji">🤖</span> Signal Processor</a></li>
     </ul>
   </aside>
 
@@ -4371,6 +4627,230 @@
     </div>
   </section>
 
+  <!-- ── C13B0 Signal Processor + C3PO Knowledge Robot ────────────── -->
+  <section id="signal-processor" aria-label="C13B0 signal processor and C3PO knowledge robot dual-architecture spec">
+    <div class="container">
+
+      <div class="section-label">Robot Architecture Spec</div>
+      <h2 class="section-title">C13B0 Signal Processor &amp; C3PO Knowledge Robot</h2>
+      <p class="section-desc">
+        The vision: one mind for <strong style="color:var(--accent1);">meaning</strong>, one mind for
+        <strong style="color:#fbbf24;">signal</strong>. Together they form an interpreter of signals
+        across forms — speech, symbols, images, devices, environments, and human intent.
+      </p>
+
+      <!-- Dual-robot split -->
+      <div class="robot-split" aria-label="Dual robot architecture: C13B0/C3PO meaning side and R2D2 signal side">
+
+        <div class="robot-panel rp-meaning">
+          <div class="robot-badge">🗣️ C13B0 / C3PO — Meaning Side</div>
+          <h3>Language, Context &amp; Interface</h3>
+          <ul class="robot-cap-list" aria-label="C13B0 C3PO capabilities">
+            <li><span class="cap-dot"></span>Natural language understanding &amp; generation</li>
+            <li><span class="cap-dot"></span>Context tracking across a conversation</li>
+            <li><span class="cap-dot"></span>Translation between domains and vocabularies</li>
+            <li><span class="cap-dot"></span>Explanation, narration, and clarification</li>
+            <li><span class="cap-dot"></span>Social &amp; diplomatic interface with humans</li>
+            <li><span class="cap-dot"></span>Metaphor recognition — pattern-to-concept mapping</li>
+            <li><span class="cap-dot"></span>Historical &amp; world knowledge retrieval</li>
+          </ul>
+        </div>
+
+        <div class="robot-panel rp-signal">
+          <div class="robot-badge">📡 R2D2 — Signal Side</div>
+          <h3>Signal Retrieval &amp; Sensor Fusion</h3>
+          <ul class="robot-cap-list" aria-label="R2D2 signal capabilities">
+            <li><span class="cap-dot"></span>Audio / RF / optical / EM signal scanning</li>
+            <li><span class="cap-dot"></span>Device linking and protocol decoding</li>
+            <li><span class="cap-dot"></span>Sensor fusion — merging multi-source inputs</li>
+            <li><span class="cap-dot"></span>Pattern detection in raw signal streams</li>
+            <li><span class="cap-dot"></span>Environmental readouts (temperature, field, spectrum)</li>
+            <li><span class="cap-dot"></span>Cross-reference against known signal libraries</li>
+            <li><span class="cap-dot"></span>Pre-processing and normalization for knowledge layer</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Signal flow animated canvas -->
+      <canvas id="signal-canvas"
+        aria-label="Animated signal flow diagram showing data moving from input layer through signal processor, knowledge layer, to action layer"></canvas>
+
+      <!-- 4-layer architecture stack -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.9rem; color:var(--text); text-align:center;">4-Layer Architecture</h3>
+
+      <div class="arch-stack" aria-label="Four layer signal processing architecture: input, signal processor, knowledge, action">
+
+        <div class="arch-layer al-input">
+          <div class="arch-layer-label">Layer 1 — Input</div>
+          <h4>📥 Input Layer</h4>
+          <div class="arch-layer-items">
+            <span class="arch-pill">audio</span>
+            <span class="arch-pill">image</span>
+            <span class="arch-pill">text</span>
+            <span class="arch-pill">sensor data</span>
+            <span class="arch-pill">radio / RF</span>
+            <span class="arch-pill">files</span>
+            <span class="arch-pill">device streams</span>
+          </div>
+        </div>
+
+        <div class="arch-arrow">↓</div>
+
+        <div class="arch-layer al-signal">
+          <div class="arch-layer-label">Layer 2 — Signal Processor (R2D2 side)</div>
+          <h4>📡 Signal Processor</h4>
+          <div class="arch-layer-items">
+            <span class="arch-pill">pattern detection</span>
+            <span class="arch-pill">translation / transcription</span>
+            <span class="arch-pill">retrieval</span>
+            <span class="arch-pill">cross-reference</span>
+            <span class="arch-pill">normalization</span>
+            <span class="arch-pill">anomaly detection</span>
+          </div>
+        </div>
+
+        <div class="arch-arrow">↓</div>
+
+        <div class="arch-layer al-know">
+          <div class="arch-layer-label">Layer 3 — Knowledge Layer (C13B0/C3PO side)</div>
+          <h4>🧠 Knowledge Layer</h4>
+          <div class="arch-layer-items">
+            <span class="arch-pill">language model</span>
+            <span class="arch-pill">long-term memory</span>
+            <span class="arch-pill">historical database</span>
+            <span class="arch-pill">world model</span>
+            <span class="arch-pill">context tracker</span>
+            <span class="arch-pill">reasoning engine</span>
+          </div>
+        </div>
+
+        <div class="arch-arrow">↓</div>
+
+        <div class="arch-layer al-action">
+          <div class="arch-layer-label">Layer 4 — Action</div>
+          <h4>⚡ Action Layer</h4>
+          <div class="arch-layer-items">
+            <span class="arch-pill">speak / respond</span>
+            <span class="arch-pill">display / visualize</span>
+            <span class="arch-pill">route to tools</span>
+            <span class="arch-pill">build / generate</span>
+            <span class="arch-pill">trigger devices</span>
+            <span class="arch-pill">log / archive</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Signals across forms -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.9rem; color:var(--text);">An Interpreter of Signals Across Forms</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        The core role of this system is translation: taking any signal — natural or synthetic,
+        analog or digital — and extracting meaning from it. Here are the signal forms it covers.
+      </p>
+
+      <div class="signal-forms-grid" aria-label="Signal forms the robot can interpret">
+
+        <div class="signal-form-card">
+          <div class="sfc-icon">🎙️</div>
+          <h4>Speech</h4>
+          <p>Voice input, tone, intent, and language across dialects.</p>
+        </div>
+
+        <div class="signal-form-card">
+          <div class="sfc-icon">🔣</div>
+          <h4>Symbols</h4>
+          <p>Code, notation, icons, glyphs, and domain-specific languages.</p>
+        </div>
+
+        <div class="signal-form-card">
+          <div class="sfc-icon">🖼️</div>
+          <h4>Images</h4>
+          <p>Scene understanding, pattern recognition, visual metaphor.</p>
+        </div>
+
+        <div class="signal-form-card">
+          <div class="sfc-icon">📡</div>
+          <h4>Devices</h4>
+          <p>Sensor readouts, RF signals, IoT streams, protocol decoding.</p>
+        </div>
+
+        <div class="signal-form-card">
+          <div class="sfc-icon">🌿</div>
+          <h4>Environments</h4>
+          <p>Physical context: spatial, electromagnetic, biological, weather.</p>
+        </div>
+
+        <div class="signal-form-card">
+          <div class="sfc-icon">🧑</div>
+          <h4>Human Intent</h4>
+          <p>Goals, metaphors, implied meaning — what people mean vs what they say.</p>
+        </div>
+
+      </div>
+
+      <!-- Charts row -->
+      <div class="flame-chart-grid">
+        <div class="chart-card">
+          <h3>📡 Signal Processing Capacity by Layer</h3>
+          <div class="chart-wrap">
+            <canvas id="signalLayerChart" aria-label="Bar chart showing relative processing capacity of each architecture layer"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>🤖 C13B0 vs R2D2 — Capability Distribution</h3>
+          <div class="chart-wrap">
+            <canvas id="robotCapChart" aria-label="Radar chart comparing C13B0 meaning side versus R2D2 signal side across capability dimensions"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- What's solid vs what needs proof -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.85rem; color:var(--text);">What's Solid vs What Still Needs Work</h3>
+      <div class="boundary-callout" aria-label="What is buildable now versus what needs more proof">
+
+        <div class="bc-panel bc-yes">
+          <div class="bc-panel-label">✅ Buildable Right Now</div>
+          <ul class="bc-list">
+            <li>Multi-modal input pipeline (audio, image, text, sensor)</li>
+            <li>Signal pattern detection and cross-referencing</li>
+            <li>Language model as the knowledge layer core</li>
+            <li>Context-tracking conversation memory</li>
+            <li>Domain translation (science ↔ metaphor ↔ plain language)</li>
+            <li>Action routing to tools, APIs, and display</li>
+            <li>Dual-agent split: meaning model + signal model</li>
+          </ul>
+        </div>
+
+        <div class="bc-panel bc-no">
+          <div class="bc-panel-label">🔬 Still Needs Separation / Proof</div>
+          <ul class="bc-list">
+            <li>Whether plants consciously respond to thoughts</li>
+            <li>Telepathic signal retrieval as a physics mechanism</li>
+            <li>Time-travel robot as a literal engineering claim</li>
+            <li>Confirmed backward causation from future to present</li>
+            <li>Consciousness as a signal that current sensors can detect</li>
+            <li>Physics proof of non-local plant communication</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Spec summary -->
+      <div class="spec-summary" aria-label="One-line spec for the C13B0 C3PO knowledge robot system">
+        <div class="ss-label">One-Page Spec — Core Definition</div>
+        <h3>An interpreter of signals across forms</h3>
+        <p>
+          Speech, symbols, images, devices, environments, and human intent —
+          one system that converts raw signal into meaning, and meaning into action.
+          The C13B0 signal processor handles what; the C3PO knowledge layer handles why;
+          together they answer what to do next.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── Footer ───────────────────────────────────────────────────── -->
   <footer role="contentinfo">
     <div class="footer-links" aria-label="Footer navigation">
@@ -6521,6 +7001,246 @@
               ticks: { color: '#6b7fa3' }
             },
             x: { grid: { display: false }, ticks: { color: '#6b7fa3', font: { size: 9 } } }
+          }
+        }
+      });
+    }());
+
+    /* ── Signal Processor Animated Canvas ──────────────────────── */
+    (function () {
+      var canvas = document.getElementById('signal-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H;
+
+      function resize() {
+        W = canvas.width  = canvas.clientWidth;
+        H = canvas.height = canvas.clientHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      var t = 0;
+
+      /* Layer bands */
+      var LAYERS = [
+        { label: 'INPUT',            color: '#fbbf24', yf: 0.12 },
+        { label: 'SIGNAL PROCESSOR', color: '#00e5ff', yf: 0.38 },
+        { label: 'KNOWLEDGE',        color: '#7b2fff', yf: 0.63 },
+        { label: 'ACTION',           color: '#39ff14', yf: 0.88 }
+      ];
+
+      /* Signal particles — each travels downward through the 4 layers */
+      var NUM_PARTICLES = 18;
+      var particles = [];
+      for (var i = 0; i < NUM_PARTICLES; i++) {
+        particles.push({
+          x:      Math.random(),          /* x fraction */
+          y:      Math.random(),          /* y fraction (0-1) */
+          speed:  0.0015 + Math.random() * 0.003,
+          size:   2 + Math.random() * 2.5,
+          layer:  Math.floor(Math.random() * 4)
+        });
+      }
+
+      /* Horizontal scan lines per layer */
+      var scanLines = LAYERS.map(function (l, i) {
+        return { yf: l.yf, offset: Math.random(), speed: 0.008 + i * 0.003 };
+      });
+
+      (function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, W, H);
+        t += 1;
+
+        /* Layer band backgrounds */
+        LAYERS.forEach(function (l) {
+          var cy = l.yf * H;
+          var grad = ctx.createLinearGradient(0, cy - 28, 0, cy + 28);
+          grad.addColorStop(0, l.color + '00');
+          grad.addColorStop(0.5, l.color + '12');
+          grad.addColorStop(1, l.color + '00');
+          ctx.fillStyle = grad;
+          ctx.fillRect(0, cy - 28, W, 56);
+        });
+
+        /* Scan line per layer */
+        scanLines.forEach(function (sl, i) {
+          var scanX = ((sl.offset + t * sl.speed / 60) % 1) * W;
+          var cy = sl.yf * H;
+          ctx.save();
+          ctx.globalAlpha = 0.18;
+          ctx.strokeStyle = LAYERS[i].color;
+          ctx.lineWidth   = 1;
+          ctx.beginPath();
+          ctx.moveTo(scanX, cy - 20);
+          ctx.lineTo(scanX, cy + 20);
+          ctx.stroke();
+          ctx.restore();
+        });
+
+        /* Layer labels */
+        LAYERS.forEach(function (l) {
+          ctx.font      = '9px Consolas, monospace';
+          ctx.fillStyle = l.color;
+          ctx.globalAlpha = 0.55;
+          ctx.fillText(l.label, 10, l.yf * H + 3);
+          ctx.globalAlpha = 1;
+        });
+
+        /* Horizontal lane separator lines */
+        [0.25, 0.5, 0.75].forEach(function (yf) {
+          ctx.save();
+          ctx.globalAlpha = 0.08;
+          ctx.strokeStyle = '#6b7fa3';
+          ctx.lineWidth   = 1;
+          ctx.setLineDash([4, 6]);
+          ctx.beginPath(); ctx.moveTo(0, yf * H); ctx.lineTo(W, yf * H);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.restore();
+        });
+
+        /* Animate particles flowing downward */
+        particles.forEach(function (p) {
+          p.y += p.speed;
+          if (p.y > 1) {
+            p.y = 0;
+            p.x = Math.random();
+          }
+
+          /* Determine color by current y band */
+          var layerIdx = Math.min(3, Math.floor(p.y * 4));
+          var col = LAYERS[layerIdx].color;
+
+          ctx.save();
+          ctx.globalAlpha = 0.7;
+          ctx.fillStyle   = col;
+          ctx.shadowColor = col;
+          ctx.shadowBlur  = 5;
+          ctx.beginPath();
+          ctx.arc(p.x * W, p.y * H, p.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+
+          /* Trailing tail */
+          ctx.save();
+          ctx.globalAlpha = 0.15;
+          ctx.strokeStyle = col;
+          ctx.lineWidth   = p.size * 0.7;
+          ctx.beginPath();
+          ctx.moveTo(p.x * W, p.y * H);
+          ctx.lineTo(p.x * W, (p.y - p.speed * 18) * H);
+          ctx.stroke();
+          ctx.restore();
+        });
+
+        /* Horizontal "data bus" flashes between layers */
+        if (t % 40 < 2) {
+          var busY = (Math.floor(t / 40) % 3 + 1) * 0.25 * H;
+          var busGrad = ctx.createLinearGradient(0, 0, W, 0);
+          busGrad.addColorStop(0, 'rgba(0,229,255,0)');
+          busGrad.addColorStop(0.5, 'rgba(0,229,255,0.35)');
+          busGrad.addColorStop(1, 'rgba(0,229,255,0)');
+          ctx.fillStyle = busGrad;
+          ctx.fillRect(0, busY - 1, W, 2);
+        }
+      }());
+    }());
+
+    /* ── Signal Processor Charts ────────────────────────────────── */
+    (function () {
+      /* Layer capacity bar chart */
+      new Chart(document.getElementById('signalLayerChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Input Layer', 'Signal Processor', 'Knowledge Layer', 'Action Layer'],
+          datasets: [
+            {
+              label: 'Bandwidth (relative)',
+              data: [95, 75, 60, 45],
+              backgroundColor: [
+                'rgba(251,191,36,0.75)',
+                'rgba(0,229,255,0.75)',
+                'rgba(123,47,255,0.75)',
+                'rgba(57,255,20,0.75)'
+              ],
+              borderColor: ['#fbbf24','#00e5ff','#7b2fff','#39ff14'],
+              borderWidth: 1,
+              borderRadius: 5
+            },
+            {
+              label: 'Latency sensitivity',
+              data: [30, 55, 80, 65],
+              backgroundColor: [
+                'rgba(251,191,36,0.25)',
+                'rgba(0,229,255,0.25)',
+                'rgba(123,47,255,0.25)',
+                'rgba(57,255,20,0.25)'
+              ],
+              borderColor: ['#fbbf24','#00e5ff','#7b2fff','#39ff14'],
+              borderWidth: 1,
+              borderRadius: 5
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: '#6b7fa3', font: { size: 10 } } },
+            tooltip: { callbacks: { label: function(c) { return c.dataset.label + ': ' + c.parsed.y + '%'; } } }
+          },
+          scales: {
+            y: {
+              min: 0, max: 100,
+              title: { display: true, text: 'Relative score (%)', color: '#6b7fa3' },
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3' }
+            },
+            x: { grid: { display: false }, ticks: { color: '#6b7fa3' } }
+          }
+        }
+      });
+
+      /* Robot capability radar chart */
+      new Chart(document.getElementById('robotCapChart'), {
+        type: 'radar',
+        data: {
+          labels: ['Language', 'Signal Scan', 'Context', 'Device Link', 'Translation', 'Pattern Detection', 'Social Interface'],
+          datasets: [
+            {
+              label: 'C13B0 / C3PO (Meaning)',
+              data: [95, 20, 90, 15, 85, 55, 90],
+              borderColor: '#00e5ff',
+              backgroundColor: 'rgba(0,229,255,0.12)',
+              pointBackgroundColor: '#00e5ff',
+              borderWidth: 2
+            },
+            {
+              label: 'R2D2 (Signal)',
+              data: [20, 95, 30, 92, 40, 90, 25],
+              borderColor: '#fbbf24',
+              backgroundColor: 'rgba(251,191,36,0.12)',
+              pointBackgroundColor: '#fbbf24',
+              borderWidth: 2
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: '#6b7fa3', font: { size: 10 } } }
+          },
+          scales: {
+            r: {
+              min: 0, max: 100,
+              grid: { color: '#1a2a4a' },
+              angleLines: { color: '#1a2a4a' },
+              ticks: { backdropColor: 'transparent', color: '#6b7fa3', font: { size: 9 }, stepSize: 25 },
+              pointLabels: { color: '#6b7fa3', font: { size: 9 } }
+            }
           }
         }
       });
