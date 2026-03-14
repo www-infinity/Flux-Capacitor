@@ -818,6 +818,260 @@
     .intuition-item .body strong { color: var(--text); }
     .intuition-item .body p { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.79rem; }
 
+    /* ── Cosmic Physics ─────────────────────────────────────────── */
+    #cosmic-physics {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    #planet-canvas {
+      display: block;
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #050a14;
+    }
+
+    /* Formation steps */
+    .formation-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .formation-step {
+      padding: 1.1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    .formation-step:hover { border-color: var(--accent3); transform: translateY(-2px); }
+
+    .formation-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--accent3);
+      color: var(--bg);
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+
+    .formation-step h4 { font-size: 0.88rem; color: var(--text); margin-bottom: 0.3rem; }
+    .formation-step p  { font-size: 0.79rem; color: var(--muted); line-height: 1.55; }
+
+    /* Gravity vs combustion comparison */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2.5rem;
+      font-size: 0.84rem;
+    }
+
+    .compare-table th {
+      padding: 0.65rem 1rem;
+      background: var(--card);
+      color: var(--accent2);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+    }
+
+    .compare-table th:first-child { color: var(--muted); font-weight: 400; }
+
+    .compare-table td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      vertical-align: top;
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:nth-child(2) { color: var(--accent1); }
+    .compare-table td:nth-child(3) { color: var(--accent3); }
+
+    /* Star color temperature strip */
+    .star-strip {
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .star-band {
+      flex: 1;
+      padding: 0.85rem 0.5rem;
+      text-align: center;
+    }
+
+    .star-band .band-color { font-size: 1.4rem; display: block; margin-bottom: 0.3rem; }
+    .star-band .band-label { font-size: 0.72rem; color: #fff; font-weight: 600; }
+    .star-band .band-temp  { font-size: 0.68rem; opacity: 0.75; color: #fff; }
+
+    /* Ion cards */
+    .ion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .ion-card {
+      padding: 1.1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      text-align: center;
+    }
+
+    .ion-card-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+    .ion-card h4   { font-size: 0.87rem; color: var(--accent2); margin-bottom: 0.3rem; }
+    .ion-card p    { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── Hydrogen Host / Emoji ID ───────────────────────────────── */
+    #hydrogen-host {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Emoji ID builder */
+    .emoji-id-builder {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.8rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    #emoji-id-display {
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+      margin: 1rem 0;
+      min-height: 2.5rem;
+      word-break: break-all;
+    }
+
+    #emoji-id-hex {
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+      word-break: break-all;
+    }
+
+    .emoji-id-actions {
+      display: flex;
+      gap: 0.7rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-generate {
+      padding: 0.55rem 1.3rem;
+      border-radius: 8px;
+      border: 1px solid var(--accent3);
+      background: transparent;
+      color: var(--accent3);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-generate:hover { background: var(--accent3); color: var(--bg); }
+
+    .btn-copy {
+      padding: 0.55rem 1.3rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-copy:hover { border-color: var(--accent2); color: var(--accent2); }
+
+    /* P2P arch cards */
+    .p2p-arch {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .p2p-step {
+      padding: 1.2rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      position: relative;
+    }
+
+    .p2p-step-num {
+      position: absolute;
+      top: -10px; left: 14px;
+      background: var(--accent4);
+      color: var(--bg);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .p2p-step h4 { font-size: 0.9rem; color: var(--text); margin-bottom: 0.4rem; }
+    .p2p-step p  { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    /* Color-energy mapping grid */
+    .color-energy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .color-energy-cell {
+      padding: 1rem 0.75rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      text-align: center;
+    }
+
+    .color-energy-cell .ce-icon { font-size: 1.8rem; display: block; margin-bottom: 0.35rem; }
+    .color-energy-cell h5 { font-size: 0.82rem; color: var(--text); margin-bottom: 0.2rem; }
+    .color-energy-cell p  { font-size: 0.73rem; color: var(--muted); }
+
+    .color-note {
+      padding: 1rem 1.4rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent4);
+      border-radius: 10px;
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+    }
+
+    .color-note strong { color: var(--accent4); }
+
     /* ── Footer ────────────────────────────────────────────────── */
     footer {
       background: var(--surface);
@@ -1120,6 +1374,8 @@
       <li><a href="#applications"><span class="emoji">💡</span> Applications</a></li>
       <li><a href="#flame-physics"><span class="emoji">🔥</span> Flame Physics</a></li>
       <li><a href="#matter-binding"><span class="emoji">🧲</span> Matter &amp; Binding</a></li>
+      <li><a href="#cosmic-physics"><span class="emoji">🌍</span> Cosmic Physics</a></li>
+      <li><a href="#hydrogen-host"><span class="emoji">📡</span> Hydrogen Host</a></li>
     </ul>
   </aside>
 
@@ -2187,6 +2443,356 @@
     </div>
   </section>
 
+  <!-- ── Cosmic Physics ───────────────────────────────────────────── -->
+  <section id="cosmic-physics" aria-label="Planet formation, cosmic energy, radiation colors, and ions">
+    <div class="container">
+
+      <div class="section-label">Astrophysics &amp; Plasma Science</div>
+      <h2 class="section-title">Cosmic Physics — Planets, Stars &amp; Ions</h2>
+      <p class="section-desc">
+        Planet formation, stellar energy, and ionization work on completely different mechanisms
+        from combustion. Gravity and nuclear fusion dominate the cosmos — not chemical reactions.
+        Here's how the physics actually works across each topic.
+      </p>
+
+      <!-- Protoplanetary disk canvas -->
+      <canvas id="planet-canvas"
+        aria-label="Animated protoplanetary disk with dust particles orbiting a central star"></canvas>
+
+      <!-- 1. Planet formation steps -->
+      <h3 style="font-size:1.05rem; margin: 2rem 0 1rem; color:var(--text);">How Planets Actually Form</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.25rem;">
+        Planets don't form through combustion. The process is driven by <strong style="color:var(--accent3);">gravitational accumulation</strong>
+        in a protoplanetary disk around a young star. Energy isn't wasted — it converts from
+        gravitational potential energy into heat as material compresses.
+      </p>
+
+      <div class="formation-steps" aria-label="Five stages of planet formation">
+
+        <div class="formation-step">
+          <div class="formation-step-num">1</div>
+          <h4>Gas &amp; Dust Cloud Collapses</h4>
+          <p>A molecular cloud collapses under its own gravity. Conservation of angular momentum causes it to spin and flatten into a disk.</p>
+        </div>
+
+        <div class="formation-step">
+          <div class="formation-step-num">2</div>
+          <h4>Star Ignites at the Centre</h4>
+          <p>As the core's density and temperature rise, hydrogen nuclei fuse into helium — releasing vast energy. A star is born.</p>
+        </div>
+
+        <div class="formation-step">
+          <div class="formation-step-num">3</div>
+          <h4>Rotating Disk Remains</h4>
+          <p>Leftover gas and dust orbit the new star in a protoplanetary disk. Dust grains collide and stick together electrostatically.</p>
+        </div>
+
+        <div class="formation-step">
+          <div class="formation-step-num">4</div>
+          <h4>Planetesimals Build Up</h4>
+          <p>Pebbles grow into rocks, rocks into planetesimals hundreds of kilometres across. Gravity now dominates over surface forces.</p>
+        </div>
+
+        <div class="formation-step">
+          <div class="formation-step-num">5</div>
+          <h4>Planets Clear Their Orbits</h4>
+          <p>Planetary embryos sweep up or scatter nearby material. After tens of millions of years, a stable planetary system emerges.</p>
+        </div>
+
+      </div>
+
+      <!-- 2. Combustion vs cosmic energy comparison -->
+      <h3 style="font-size:1.05rem; margin-bottom:1rem; color:var(--text);">Combustion vs. Cosmic Energy</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        A lighter's flame and a star's output look similar from a distance — both are hot and emit
+        light — but the underlying mechanisms are fundamentally different.
+      </p>
+
+      <table class="compare-table" aria-label="Comparison of combustion and cosmic energy mechanisms">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>🔥 Combustion (lighter)</th>
+            <th>🌟 Cosmic Processes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Energy source</td>
+            <td>Chemical bonds (C–H, C–C breaking &amp; O=C forming)</td>
+            <td>Gravity (accretion); nuclear fusion (stars)</td>
+          </tr>
+          <tr>
+            <td>Requires oxygen?</td>
+            <td>Yes — chemical reaction with O₂</td>
+            <td>No — operates in vacuum</td>
+          </tr>
+          <tr>
+            <td>Temperature range</td>
+            <td>~800 – 1 900 °C</td>
+            <td>Millions of °C (stellar cores); ~3 000 K (stellar surfaces)</td>
+          </tr>
+          <tr>
+            <td>Primary driver</td>
+            <td>Electromagnetic forces (bond chemistry)</td>
+            <td>Gravity → nuclear strong force (fusion)</td>
+          </tr>
+          <tr>
+            <td>Energy product</td>
+            <td>CO₂, H₂O + heat + light</td>
+            <td>Helium (from H fusion) + neutrinos + photons</td>
+          </tr>
+          <tr>
+            <td>Scale</td>
+            <td>Millimetres to metres</td>
+            <td>Millions to billions of kilometres</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 3. Radiation colors / star temperatures -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.7rem; color:var(--text);">Radiation Colors &amp; Star Temperatures</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        A star's color tells you its surface temperature. Hotter surfaces emit higher-frequency light.
+        These aren't arbitrary "atomic states" — they're the peak wavelength of the blackbody spectrum.
+      </p>
+
+      <div class="star-strip" aria-label="Star temperature and color from cool red to hot blue-white">
+        <div class="star-band" style="background:#8b0000;">
+          <span class="band-color">🔴</span>
+          <div class="band-label">Red</div>
+          <div class="band-temp">&lt; 3 500 K</div>
+        </div>
+        <div class="star-band" style="background:#c0392b;">
+          <span class="band-color">🟥</span>
+          <div class="band-label">Orange-Red</div>
+          <div class="band-temp">3 500 – 5 000 K</div>
+        </div>
+        <div class="star-band" style="background:#d4a017;">
+          <span class="band-color">🟨</span>
+          <div class="band-label">Yellow (Sun)</div>
+          <div class="band-temp">5 000 – 6 000 K</div>
+        </div>
+        <div class="star-band" style="background:#a0a0a0;">
+          <span class="band-color">⬜</span>
+          <div class="band-label">White</div>
+          <div class="band-temp">6 000 – 10 000 K</div>
+        </div>
+        <div class="star-band" style="background:#3a5fcd;">
+          <span class="band-color">🟦</span>
+          <div class="band-label">Blue-White</div>
+          <div class="band-temp">&gt; 10 000 K</div>
+        </div>
+      </div>
+
+      <!-- 4. Ions -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.7rem; color:var(--text);">Ions — Charged Particles</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        Ions are atoms (or molecules) that have gained or lost one or more electrons,
+        giving them a net electric charge. When energy is high enough to strip electrons,
+        ionization occurs. Ions appear across a wide range of natural and artificial phenomena.
+      </p>
+
+      <div class="ion-grid" aria-label="Where ions appear in nature and technology">
+
+        <div class="ion-card">
+          <div class="ion-card-icon">🔥</div>
+          <h4>Flames</h4>
+          <p>Combustion creates chemi-ions. Even a candle flame contains ~10⁹ ions per cm³, making it weakly conductive.</p>
+        </div>
+
+        <div class="ion-card">
+          <div class="ion-card-icon">☀️</div>
+          <h4>Stellar Plasma</h4>
+          <p>A star's interior is fully ionized plasma — electrons stripped entirely from nuclei by extreme temperature and pressure.</p>
+        </div>
+
+        <div class="ion-card">
+          <div class="ion-card-icon">⚡</div>
+          <h4>Lightning</h4>
+          <p>A lightning bolt ionizes air along its path, forming a plasma channel with temperatures exceeding 30 000 K.</p>
+        </div>
+
+        <div class="ion-card">
+          <div class="ion-card-icon">🌌</div>
+          <h4>Space Environment</h4>
+          <p>The solar wind is a stream of ions (mostly protons) flowing outward from the Sun at 400–800 km/s.</p>
+        </div>
+
+        <div class="ion-card">
+          <div class="ion-card-icon">🧪</div>
+          <h4>Chemistry</h4>
+          <p>Salt dissolves in water by separating into Na⁺ and Cl⁻ ions. Most biological processes run on ion gradients.</p>
+        </div>
+
+        <div class="ion-card">
+          <div class="ion-card-icon">📡</div>
+          <h4>Ionosphere</h4>
+          <p>UV radiation from the Sun ionizes Earth's upper atmosphere, enabling long-distance radio wave propagation.</p>
+        </div>
+
+      </div>
+
+      <!-- Planet formation chart (canvas-based chart via Chart.js) -->
+      <div class="flame-chart-grid">
+        <div class="chart-card">
+          <h3>🌡️ Cosmic Temperature Scale (K)</h3>
+          <div class="chart-wrap">
+            <canvas id="cosmicTempChart" aria-label="Logarithmic bar chart of cosmic temperatures"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>⚡ Energy Source Comparison</h3>
+          <div class="chart-wrap">
+            <canvas id="energySourceChart" aria-label="Doughnut chart comparing energy mechanisms in the universe"></canvas>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Hydrogen Host / Emoji ID ──────────────────────────────────── -->
+  <section id="hydrogen-host" aria-label="Hydrogen Host emoji-identifier P2P communication system">
+    <div class="container">
+
+      <div class="section-label">Hydrogen Host Project</div>
+      <h2 class="section-title">Emoji-ID Addressing &amp; P2P Communication</h2>
+      <p class="section-desc">
+        What Kris described for the Hydrogen Host project is a <strong>device-ID system</strong>
+        where each device gets a unique identifier encoded as a sequence of emoji — a human-readable
+        alternative to phone numbers that routes peer-to-peer communication without traditional telecom infrastructure.
+      </p>
+
+      <!-- Interactive emoji ID generator -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.8rem; color:var(--text);">Interactive Emoji-ID Generator</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        Each ID is a human-readable encoding of a 64-bit numeric address — conceptually similar
+        to a wallet address, public key fingerprint, or P2P node ID. Press <strong>Generate</strong>
+        to create a new random identifier.
+      </p>
+
+      <div class="emoji-id-builder" aria-label="Emoji ID generator widget">
+        <div id="emoji-id-display" aria-live="polite" aria-label="Generated emoji identifier">😎🟦👌🟥🎷🟨♣️⬜</div>
+        <div id="emoji-id-hex" aria-label="Underlying hexadecimal address">hex: 0x8f42c1a3 e7b20d95</div>
+        <div class="emoji-id-actions">
+          <button class="btn-generate" id="btn-generate-id" type="button">🎲 Generate New ID</button>
+          <button class="btn-copy"     id="btn-copy-id"     type="button">📋 Copy Emoji ID</button>
+        </div>
+      </div>
+
+      <!-- P2P architecture -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.8rem; color:var(--text);">P2P Architecture — How Routing Works</h3>
+
+      <div class="p2p-arch" aria-label="Three-step P2P emoji-ID routing architecture">
+
+        <div class="p2p-step">
+          <div class="p2p-step-num">ENCODE</div>
+          <h4>🔢 Emoji → Binary ID</h4>
+          <p>
+            Each emoji maps to a numeric code point (Unicode). A sequence of 8 emoji encodes
+            a 64-bit address space — enough for 18 quintillion unique device IDs.
+            The encoding is deterministic and reversible.
+          </p>
+        </div>
+
+        <div class="p2p-step">
+          <div class="p2p-step-num">ROUTE</div>
+          <h4>🌐 Directory Lookup</h4>
+          <p>
+            A distributed directory (DHT — Distributed Hash Table, like BitTorrent's) maps
+            each emoji-ID to the device's current IP address or radio identifier.
+            No central authority required.
+          </p>
+        </div>
+
+        <div class="p2p-step">
+          <div class="p2p-step-num">DECODE</div>
+          <h4>📲 Delivery</h4>
+          <p>
+            The receiving device verifies the emoji-ID maps to its own cryptographic key.
+            Signal transport runs over internet, mesh radio, or any available link —
+            bypassing traditional telecom routing.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Similar systems -->
+      <div class="em-force-block" role="note" aria-label="Similar systems context">
+        <strong>Analogous real systems:</strong> Bitcoin wallet addresses (Base58 encoded hashes),
+        IPv6 addresses (128-bit), Tor hidden service .onion addresses (Base32 of a public key hash),
+        and libp2p peer IDs all use the same pattern: <em>a human-displayable encoding of an
+        underlying cryptographic or numeric identifier</em>. The emoji layer is simply a more
+        visually memorable encoding format.
+      </div>
+
+      <!-- Color-energy symbolic mapping -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.8rem; color:var(--text);">Color-Energy Symbolic Mapping</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        Kris's colored-square system (⬛⬜🟨🟩🟦🟪🟥) is a symbolic model for organizing
+        concepts — energy types, states, or routing priorities in the Hydrogen Host system.
+        From a physics standpoint, the colors don't correspond to fundamental energy categories,
+        but as a <strong style="color:var(--accent4);">software encoding scheme</strong> they can carry any meaning you assign them.
+      </p>
+
+      <div class="color-energy-grid" aria-label="Color-energy symbolic mapping grid">
+
+        <div class="color-energy-cell">
+          <span class="ce-icon">⬛</span>
+          <h5>Black</h5>
+          <p>Null / void state; no signal; ground reference</p>
+        </div>
+
+        <div class="color-energy-cell">
+          <span class="ce-icon">⬜</span>
+          <h5>White</h5>
+          <p>Full spectrum / broadband; all channels active</p>
+        </div>
+
+        <div class="color-energy-cell">
+          <span class="ce-icon">🟨</span>
+          <h5>Yellow</h5>
+          <p>Thermal / infrared energy; heat signature</p>
+        </div>
+
+        <div class="color-energy-cell">
+          <span class="ce-icon">🟩</span>
+          <h5>Green</h5>
+          <p>Stable / safe state; balanced energy flow</p>
+        </div>
+
+        <div class="color-energy-cell">
+          <span class="ce-icon">🟦</span>
+          <h5>Blue</h5>
+          <p>High-energy / UV range; ionization threshold</p>
+        </div>
+
+        <div class="color-energy-cell">
+          <span class="ce-icon">🟪</span>
+          <h5>Purple</h5>
+          <p>X-ray / gamma; ultra-high-energy photon state</p>
+        </div>
+
+        <div class="color-energy-cell">
+          <span class="ce-icon">🟥</span>
+          <h5>Red</h5>
+          <p>Low-energy / cool state; infrared or alert flag</p>
+        </div>
+
+      </div>
+
+      <div class="color-note" role="note" aria-label="Physics note on color symbolism">
+        <strong>Physics note:</strong> In physics, color corresponds to wavelength of electromagnetic
+        radiation — not to categories of energy type. The colors above are a
+        <em>symbolic encoding convention</em> for the Hydrogen Host system, not physical law.
+        Symbolic systems can still be rigorous and useful in software as long as the mapping is
+        consistent and documented.
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── Footer ───────────────────────────────────────────────────── -->
   <footer role="contentinfo">
     <div class="footer-links" aria-label="Footer navigation">
@@ -3081,6 +3687,269 @@
             },
             x: { grid: { display: false }, ticks: { color: '#6b7fa3', font: { size: 10 } } }
           }
+        }
+      });
+    }());
+
+    /* ── Protoplanetary Disk Canvas ─────────────────────────── */
+    (function () {
+      var canvas = document.getElementById('planet-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H, CX, CY;
+
+      function resize() {
+        W = canvas.width  = canvas.clientWidth;
+        H = canvas.height = canvas.clientHeight;
+        CX = W / 2; CY = H / 2;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      /* Generate dust particles distributed in a disk */
+      var NPARTICLES = 220;
+      var particles = [];
+      for (var i = 0; i < NPARTICLES; i++) {
+        var angle  = Math.random() * Math.PI * 2;
+        var radius = 55 + Math.pow(Math.random(), 0.45) * (Math.min(W, H) * 0.42 - 55);
+        var speed  = 0.008 + 0.018 / (radius / 55);   /* Keplerian: inner particles faster */
+        var size   = 0.8 + Math.random() * 2.2;
+        var opacity = 0.35 + Math.random() * 0.55;
+        /* color: mix of orange dust (inner) to blue-grey (outer) */
+        var hot = radius < 120 ? 1 : Math.max(0, 1 - (radius - 120) / 200);
+        particles.push({ angle: angle, radius: radius, speed: speed, size: size, opacity: opacity, hot: hot });
+      }
+
+      /* A few "planetesimal" blobs */
+      var NPLANETS = 5;
+      var planetesimals = [];
+      for (var j = 0; j < NPLANETS; j++) {
+        var pr = 100 + j * 45 + Math.random() * 25;
+        planetesimals.push({
+          angle: Math.random() * Math.PI * 2,
+          radius: pr,
+          speed: 0.003 + 0.006 / (pr / 80),
+          size: 4 + j * 1.5
+        });
+      }
+
+      var t = 0;
+      (function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, W, H);
+        t += 0.016;
+
+        /* Disk glow */
+        var diskGlow = ctx.createRadialGradient(CX, CY, 0, CX, CY, Math.min(W, H) * 0.46);
+        diskGlow.addColorStop(0,    'rgba(251,191,36,0.18)');
+        diskGlow.addColorStop(0.18, 'rgba(251,146,60,0.08)');
+        diskGlow.addColorStop(1,    'rgba(0,0,0,0)');
+        ctx.fillStyle = diskGlow;
+        ctx.beginPath();
+        ctx.ellipse(CX, CY, Math.min(W, H) * 0.46, Math.min(W, H) * 0.14, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        /* Dust particles */
+        particles.forEach(function (p) {
+          p.angle += p.speed * 0.016;
+          var px = CX + Math.cos(p.angle) * p.radius;
+          var py = CY + Math.sin(p.angle) * p.radius * 0.28; /* flatten into disk */
+
+          var r = Math.round(180 + p.hot * 70);
+          var g = Math.round(120 + p.hot * 40);
+          var b = Math.round(80 - p.hot * 40);
+          ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + p.opacity + ')';
+          ctx.beginPath();
+          ctx.arc(px, py, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        /* Planetesimals */
+        planetesimals.forEach(function (pl) {
+          pl.angle += pl.speed * 0.016;
+          var plx = CX + Math.cos(pl.angle) * pl.radius;
+          var ply = CY + Math.sin(pl.angle) * pl.radius * 0.28;
+          var pg = ctx.createRadialGradient(plx, ply, 0, plx, ply, pl.size * 2);
+          pg.addColorStop(0,   'rgba(200,210,255,0.9)');
+          pg.addColorStop(0.5, 'rgba(120,140,220,0.5)');
+          pg.addColorStop(1,   'rgba(0,0,0,0)');
+          ctx.fillStyle = pg;
+          ctx.beginPath();
+          ctx.arc(plx, ply, pl.size * 2, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = 'rgba(200,215,255,0.95)';
+          ctx.beginPath();
+          ctx.arc(plx, ply, pl.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        /* Central star */
+        var starR = 22 + Math.sin(t * 1.8) * 2;
+        var starG = ctx.createRadialGradient(CX, CY, 0, CX, CY, starR * 3);
+        starG.addColorStop(0,    'rgba(255,255,200,1)');
+        starG.addColorStop(0.25, 'rgba(255,200,80,0.9)');
+        starG.addColorStop(0.6,  'rgba(255,140,30,0.3)');
+        starG.addColorStop(1,    'rgba(0,0,0,0)');
+        ctx.fillStyle = starG;
+        ctx.beginPath();
+        ctx.arc(CX, CY, starR * 3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,230,0.98)';
+        ctx.beginPath();
+        ctx.arc(CX, CY, starR, 0, Math.PI * 2);
+        ctx.fill();
+
+        /* Label */
+        ctx.font = '10px Consolas, monospace';
+        ctx.fillStyle = 'rgba(107,127,163,0.65)';
+        ctx.fillText('🌟 protoplanetary disk  •  🪨 planetesimals orbiting  •  🌀 Keplerian rotation', 10, H - 10);
+      }());
+    }());
+
+    /* ── Cosmic Charts ──────────────────────────────────────── */
+    (function () {
+      /* Logarithmic temperature scale */
+      new Chart(document.getElementById('cosmicTempChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Room temp', 'Lighter flame', 'Lightning bolt', 'Sun surface', 'Sun corona', 'Sun core', 'Supernova'],
+          datasets: [{
+            label: 'Temperature (K)',
+            data: [293, 2200, 30000, 5778, 1000000, 15000000, 10000000000],
+            backgroundColor: [
+              'rgba(107,114,128,0.7)',
+              'rgba(251,146,60,0.8)',
+              'rgba(147,197,253,0.8)',
+              'rgba(251,191,36,0.85)',
+              'rgba(167,243,208,0.8)',
+              'rgba(96,165,250,0.8)',
+              'rgba(167,139,250,0.8)'
+            ],
+            borderColor: ['#6b7280','#fb923c','#93c5fd','#fbbf24','#a7f3d0','#60a5fa','#a78bfa'],
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: function(c) {
+              var v = c.parsed.y;
+              return v >= 1e9 ? (v/1e9).toFixed(0) + ' billion K' :
+                     v >= 1e6 ? (v/1e6).toFixed(0) + ' million K' :
+                     v >= 1e3 ? (v/1e3).toFixed(0) + ' thousand K' : v + ' K';
+            }}}
+          },
+          scales: {
+            y: {
+              type: 'logarithmic',
+              title: { display: true, text: 'Temperature K (log)', color: '#6b7fa3' },
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3' }
+            },
+            x: { grid: { display: false }, ticks: { color: '#6b7fa3', font: { size: 10 } } }
+          }
+        }
+      });
+
+      /* Energy source doughnut */
+      new Chart(document.getElementById('energySourceChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Nuclear Fusion (stars)', 'Gravitational Accretion', 'Chemical Combustion', 'Tidal / Rotational', 'Other'],
+          datasets: [{
+            data: [55, 30, 8, 5, 2],
+            backgroundColor: [
+              'rgba(251,191,36,0.85)',
+              'rgba(96,165,250,0.8)',
+              'rgba(251,146,60,0.8)',
+              'rgba(167,243,208,0.75)',
+              'rgba(107,114,128,0.6)'
+            ],
+            borderColor: ['#fbbf24','#60a5fa','#fb923c','#a7f3d0','#6b7280'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: '#6b7fa3', font: { size: 11 }, padding: 10 }
+            },
+            tooltip: { callbacks: { label: function(c) { return c.label + ': ' + c.parsed + '%'; }}}
+          }
+        }
+      });
+    }());
+
+    /* ── Emoji-ID Generator ─────────────────────────────────── */
+    (function () {
+      /* 40 emoji in pool → 40^8 ≈ 6.5 trillion unique 8-emoji IDs */
+      var EMOJI_POOL = [
+        '😎','👌','🎷','♣️','🎸','🚀','🌊','🔥','💎','🎯',
+        '🦋','🌙','⭐','🍀','🎪','🔮','🦊','🌈','🎭','💫',
+        '🟥','🟦','🟨','🟩','🟪','⬜','⬛','🔶','🔷','🔸',
+        '🎵','🌺','🦁','🐉','🌍','⚡','🎲','🔑','🎁','🌸'
+      ];
+      var ID_LENGTH = 8;            /* emoji characters per identifier   */
+      var HEX_CHARS = 16;           /* hex digits representing 64 bits   */
+
+      function randomHex64() {
+        var hex = '';
+        for (var i = 0; i < HEX_CHARS; i++) {
+          hex += Math.floor(Math.random() * 16).toString(16);
+          if (i === 7) hex += ' ';
+        }
+        return '0x' + hex;
+      }
+
+      /* Fisher-Yates shuffle on a copy, then take first ID_LENGTH elements */
+      function generateID() {
+        var pool = EMOJI_POOL.slice();
+        for (var i = pool.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+        }
+        return pool.slice(0, ID_LENGTH).join('');
+      }
+
+      var display = document.getElementById('emoji-id-display');
+      var hexEl   = document.getElementById('emoji-id-hex');
+      var btnGen  = document.getElementById('btn-generate-id');
+      var btnCopy = document.getElementById('btn-copy-id');
+
+      if (!display || !btnGen) return;
+
+      function refresh() {
+        display.textContent = generateID();
+        hexEl.textContent   = 'hex: ' + randomHex64();
+      }
+
+      btnGen.addEventListener('click', refresh);
+
+      btnCopy.addEventListener('click', function () {
+        var text = display.textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            btnCopy.textContent = '✅ Copied!';
+            setTimeout(function () { btnCopy.textContent = '📋 Copy Emoji ID'; }, 1800);
+          });
+        } else {
+          /* Fallback */
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.opacity  = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          btnCopy.textContent = '✅ Copied!';
+          setTimeout(function () { btnCopy.textContent = '📋 Copy Emoji ID'; }, 1800);
         }
       });
     }());
