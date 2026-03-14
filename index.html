@@ -1261,6 +1261,200 @@
     .qf-teaser h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 0.65rem; }
     .qf-teaser p  { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
 
+    /* ── Plasma Cosmos ──────────────────────────────────────────── */
+    #plasma-cosmos {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Canvas shared styles */
+    .plasma-canvas {
+      display: block;
+      width: 100%;
+      height: 260px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #050a14;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Reaction cards (topics 1-2) */
+    .reaction-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .reaction-card {
+      padding: 1.15rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    .reaction-card:hover { border-color: var(--accent1); transform: translateY(-2px); }
+    .reaction-card-icon  { font-size: 1.5rem; margin-bottom: 0.45rem; }
+    .reaction-card h4    { font-size: 0.9rem; color: var(--text); margin-bottom: 0.35rem; }
+    .reaction-card p     { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    /* Equation block */
+    .equation-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent1);
+      border-radius: 10px;
+      padding: 0.85rem 1.2rem;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 0.88rem;
+      color: var(--accent1);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    /* Earth layers canvas */
+    #earth-layers-canvas {
+      display: block;
+      width: 100%;
+      height: 320px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #050a14;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Plasma layer / Van Allen grid */
+    .plasma-layer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .plasma-layer-card {
+      padding: 1.1rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-top: 3px solid transparent;
+    }
+
+    .plasma-layer-card.layer-cyan   { border-top-color: var(--accent1); }
+    .plasma-layer-card.layer-violet { border-top-color: var(--accent2); }
+    .plasma-layer-card.layer-orange { border-top-color: var(--accent3); }
+    .plasma-layer-card.layer-green  { border-top-color: var(--accent4); }
+
+    .plasma-layer-card-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+    .plasma-layer-card h4   { font-size: 0.9rem; color: var(--text); margin-bottom: 0.3rem; }
+    .plasma-layer-card p    { font-size: 0.79rem; color: var(--muted); line-height: 1.55; }
+
+    /* Bow-shock arc visual */
+    .bowshock-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    #bowshock-canvas {
+      width: 320px;
+      height: 220px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #050a14;
+      flex-shrink: 0;
+    }
+
+    .bowshock-facts {
+      flex: 1;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .bowshock-fact {
+      padding: 0.75rem 1rem;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .bowshock-fact strong { color: var(--text); display: block; margin-bottom: 0.15rem; }
+
+    /* Model analysis: overlap vs breaks */
+    .model-analysis {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 600px) { .model-analysis { grid-template-columns: 1fr; } }
+
+    .model-col {
+      padding: 1.2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .model-col-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+      font-weight: 700;
+    }
+
+    .model-col.col-overlap { border-top: 3px solid var(--accent4); }
+    .model-col.col-overlap .model-col-title { color: var(--accent4); }
+    .model-col.col-breaks  { border-top: 3px solid #ef4444; }
+    .model-col.col-breaks  .model-col-title { color: #ef4444; }
+
+    .model-list { list-style: none; padding: 0; margin: 0; }
+
+    .model-list li {
+      display: flex;
+      gap: 0.55rem;
+      align-items: flex-start;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .model-list li:last-child { border-bottom: none; }
+    .model-list li .ml-icon   { flex-shrink: 0; font-size: 0.9rem; margin-top: 1px; }
+
+    /* Plasma teaser */
+    .plasma-teaser {
+      background: linear-gradient(135deg, rgba(0,229,255,0.07), rgba(123,47,255,0.07));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .plasma-teaser-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent1);
+      margin-bottom: 0.5rem;
+    }
+
+    .plasma-teaser h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 0.65rem; }
+    .plasma-teaser p  { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
+
     /* ── Footer ────────────────────────────────────────────────── */
     footer {
       background: var(--surface);
@@ -1566,6 +1760,7 @@
       <li><a href="#cosmic-physics"><span class="emoji">🌍</span> Cosmic Physics</a></li>
       <li><a href="#hydrogen-host"><span class="emoji">📡</span> Hydrogen Host</a></li>
       <li><a href="#quantum-states"><span class="emoji">⚛️</span> Quantum States</a></li>
+      <li><a href="#plasma-cosmos"><span class="emoji">🌩️</span> Plasma Cosmos</a></li>
     </ul>
   </aside>
 
@@ -3306,6 +3501,370 @@
     </div>
   </section>
 
+  <!-- ── Plasma Cosmos ────────────────────────────────────────────── -->
+  <section id="plasma-cosmos" aria-label="Static discharge, combustion, Earth layers, bow shock, and plasma structures">
+    <div class="container">
+
+      <div class="section-label">Plasma &amp; Planetary Science</div>
+      <h2 class="section-title">Plasma Cosmos — Discharge, Shells &amp; Bow Shock</h2>
+      <p class="section-desc">
+        Kris's layered color model — charge, compression, ionization, and shells — overlaps
+        with several real astrophysical structures more than it might first seem. Here's where
+        the intuitions align with physics and where they diverge.
+      </p>
+
+      <!-- Static-discharge arc canvas -->
+      <canvas id="discharge-canvas" class="plasma-canvas"
+        aria-label="Animated static-discharge arc between two electrodes with spark and ionized glow"></canvas>
+
+      <!-- Topic 1: Static discharge and combustion -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">1 — Static Discharge &amp; Combustion</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.1rem;">
+        Static discharge <em>can</em> ignite combustion, but the spark doesn't create matter —
+        it supplies <strong style="color:var(--accent1);">activation energy</strong> to start
+        a chemical reaction that was already possible. The atoms were already there.
+      </p>
+
+      <div class="equation-block" aria-label="Combustion reaction equation">
+        fuel + O₂  →  CO₂ + H₂O + energy &nbsp; (spark provides activation energy, not atoms)
+      </div>
+
+      <div class="reaction-cards" aria-label="How static discharge relates to combustion">
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">⚡</div>
+          <h4>The Spark's Role</h4>
+          <p>
+            A static discharge creates a momentary plasma channel that reaches ~30 000 K.
+            That heat provides enough energy to break fuel-molecule bonds so the exothermic
+            combustion chain reaction can proceed.
+          </p>
+        </div>
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">🔥</div>
+          <h4>The Combustion Reaction</h4>
+          <p>
+            Once started, the fuel + oxygen reaction sustains itself by releasing more energy
+            than it consumes. The spark is a one-time trigger — after that, the reaction
+            produces its own heat to continue.
+          </p>
+        </div>
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">🚫</div>
+          <h4>What the Spark Doesn't Do</h4>
+          <p>
+            The discharge doesn't create new atoms or convert energy directly into matter.
+            Every atom in the products (CO₂, H₂O) was already present in the fuel and air
+            before the spark.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Topic 2: Combustion rearranges atoms -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">2 — Combustion Rearranges Atoms, Not Creates Them</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.1rem;">
+        When butane burns, the <strong style="color:var(--accent3);">same atoms are recombined</strong>
+        into new molecules. No new matter is produced. Creating new atomic nuclei requires
+        <strong style="color:var(--accent3);">nuclear reactions</strong> — the kind that happen
+        inside stars at temperatures of millions of degrees.
+      </p>
+
+      <div class="equation-block" aria-label="Butane combustion equation">
+        C₄H₁₀ + 6½ O₂  →  4 CO₂ + 5 H₂O + heat &nbsp;&nbsp; (10 C atoms in, 10 C atoms out)
+      </div>
+
+      <div class="reaction-cards" aria-label="Why combustion cannot create new matter">
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">🔬</div>
+          <h4>Conservation of Mass</h4>
+          <p>
+            Lavoisier's law: mass is conserved in a chemical reaction. Count every atom going
+            in — the same count comes out in the products, just in different molecular arrangements.
+          </p>
+        </div>
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">⭐</div>
+          <h4>Nuclear Reactions (Stars)</h4>
+          <p>
+            New atomic nuclei are forged in stellar fusion: 4 hydrogen nuclei fuse to form
+            one helium nucleus, releasing a photon. This requires ~10 million K — far beyond
+            any combustion process.
+          </p>
+        </div>
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">💥</div>
+          <h4>Supernovae (Heavy Elements)</h4>
+          <p>
+            Elements heavier than iron are forged in supernova explosions and neutron-star
+            mergers. Every gold atom on Earth was created in a stellar event billions of years ago.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Topic 3: Gas cloud collapse -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">3 — Gas Cloud Collapse: Gravity's Role</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.1rem;">
+        The process Kris described — dust and gas collapsing — is real, but the driver is
+        <strong style="color:var(--accent4);">gravity</strong>, not combustion. It's how stars
+        and planets form. Combustion only begins after a star achieves sufficient pressure to
+        ignite nuclear fusion.
+      </p>
+
+      <div class="reaction-cards" aria-label="Four stages of gravitational cloud collapse">
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">☁️</div>
+          <h4>1 · Cloud Collapse</h4>
+          <p>A molecular cloud of gas and dust collapses under gravity. Conservation of angular momentum makes it spin and flatten.</p>
+        </div>
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">🔥</div>
+          <h4>2 · Core Heats Up</h4>
+          <p>As the centre becomes denser, gravitational potential energy converts to heat. The protostellar core glows in the infrared.</p>
+        </div>
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">⭐</div>
+          <h4>3 · Star Ignites</h4>
+          <p>When the core reaches ~10 million K, hydrogen fusion begins. Radiation pressure halts further collapse — the star is born.</p>
+        </div>
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">🌍</div>
+          <h4>4 · Planets Form</h4>
+          <p>Leftover disk material clumps into planetesimals and eventually into planets. Gravity is the dominant force throughout.</p>
+        </div>
+
+      </div>
+
+      <!-- Topic 4: Ionized plasma layers -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">4 — Ionized Layers, Color &amp; Plasma Physics</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.1rem;">
+        Kris's "red, blue, purple" layers closely resemble something real in plasma physics.
+        Hot ionized gas does form layered structures — but the colors come from
+        <strong style="color:var(--accent2);">temperature and emission spectra</strong>,
+        not fundamental energy-state colors.
+      </p>
+
+      <div class="plasma-layer-grid" aria-label="Real plasma layer phenomena corresponding to color intuitions">
+
+        <div class="plasma-layer-card layer-orange">
+          <div class="plasma-layer-card-icon">🌡️</div>
+          <h4>Temperature Drives Color</h4>
+          <p>Each element emits specific wavelengths when excited. Hydrogen glows red (656 nm); oxygen blue-green; nitrogen violet. Color = spectrum.</p>
+        </div>
+
+        <div class="plasma-layer-card layer-cyan">
+          <div class="plasma-layer-card-icon">⚡</div>
+          <h4>Charge Separation</h4>
+          <p>In plasmas, electrons and ions can separate spatially. This creates electric fields and double-layer structures — charged shells.</p>
+        </div>
+
+        <div class="plasma-layer-card layer-violet">
+          <div class="plasma-layer-card-icon">🌀</div>
+          <h4>Magnetic Confinement</h4>
+          <p>Magnetic fields confine plasma into tubes and sheets. Solar flare loops are plasma arcs following field lines — exactly like Kris's colored arcs.</p>
+        </div>
+
+        <div class="plasma-layer-card layer-green">
+          <div class="plasma-layer-card-icon">🌌</div>
+          <h4>Nebula Filaments</h4>
+          <p>Emission nebulae glow in distinct color bands: red (H-alpha), blue-green (OIII), blue (SII). The layered color structure is real.</p>
+        </div>
+
+      </div>
+
+      <!-- Topic 5: Earth's oxygen -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">5 — Earth's Atmosphere &amp; Where Oxygen Comes From</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        Earth's oxygen didn't come from compressing the surrounding space. Space near Earth
+        is mostly hydrogen, helium, and very-low-density plasma — compressing it wouldn't
+        yield usable oxygen. Earth's oxygen comes from biology.
+      </p>
+
+      <div class="reaction-cards" aria-label="Origin of Earth's atmospheric oxygen">
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">🌿</div>
+          <h4>Photosynthesis</h4>
+          <p>
+            Cyanobacteria ~2.4 billion years ago began converting CO₂ + H₂O + sunlight into
+            glucose and free O₂. That event — the Great Oxidation Event — filled Earth's
+            atmosphere with oxygen over hundreds of millions of years.
+          </p>
+        </div>
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">🌌</div>
+          <h4>What Space Around Earth Contains</h4>
+          <p>
+            Low Earth orbit: ~10⁻¹³ Pa pressure, mostly atomic oxygen (UV-stripped), some
+            hydrogen, helium, and ionized plasma from the solar wind. Essentially vacuum.
+          </p>
+        </div>
+
+        <div class="reaction-card">
+          <div class="reaction-card-icon">🌀</div>
+          <h4>Why Compression Doesn't Help</h4>
+          <p>
+            Even compressed, the vacuum of space contains far too few oxygen atoms per cubic
+            metre to produce breathable concentrations. Number density is ~10⁶ particles/cm³
+            vs ~10¹⁹ in sea-level air.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Topic 6: Earth's real shell layers — animated canvas -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">6 — Earth's Real Layered Shells</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.1rem;">
+        Kris's "shell" concept is close to the actual structure of Earth. The planet is
+        composed of concentric layers, and surrounding it are charged plasma regions
+        that genuinely function as dynamic shells.
+      </p>
+
+      <canvas id="earth-layers-canvas"
+        aria-label="Animated concentric diagram of Earth's layers from inner core to Van Allen belts"></canvas>
+
+      <div class="plasma-layer-grid" aria-label="Earth's layer descriptions from inner core to Van Allen belts">
+
+        <div class="plasma-layer-card layer-orange">
+          <div class="plasma-layer-card-icon">🔴</div>
+          <h4>Inner &amp; Outer Core</h4>
+          <p>Solid iron-nickel inner core (~1 220 km radius); liquid outer core generates Earth's magnetic field by dynamo action.</p>
+        </div>
+
+        <div class="plasma-layer-card layer-cyan">
+          <div class="plasma-layer-card-icon">🟤</div>
+          <h4>Mantle &amp; Crust</h4>
+          <p>The mantle (~2 890 km thick) convects slowly, driving plate tectonics. The crust is a thin 5–70 km shell on top.</p>
+        </div>
+
+        <div class="plasma-layer-card layer-violet">
+          <div class="plasma-layer-card-icon">🌬️</div>
+          <h4>Atmosphere Layers</h4>
+          <p>Troposphere → Stratosphere → Mesosphere → Thermosphere → Exosphere. Each has distinct temperature profiles and chemistry.</p>
+        </div>
+
+        <div class="plasma-layer-card layer-green">
+          <div class="plasma-layer-card-icon">📡</div>
+          <h4>Ionosphere &amp; Van Allen Belts</h4>
+          <p>UV radiation ionizes the upper atmosphere. Van Allen belts trap energetic charged particles in two doughnut-shaped plasma shells.</p>
+        </div>
+
+      </div>
+
+      <!-- Topic 7: Bow shock -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">7 — Bow Shock &amp; Magnetosphere Curvature</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        The "bow" shape Kris imagined actually exists. Earth's magnetosphere forms a
+        <strong style="color:var(--accent1);">bow shock</strong> facing the Sun — a curved
+        boundary where the supersonic solar wind abruptly slows and deflects around the planet.
+      </p>
+
+      <div class="bowshock-wrap">
+        <canvas id="bowshock-canvas"
+          aria-label="Animated bow-shock diagram showing solar wind compressing Earth's magnetosphere on the sunward side"></canvas>
+
+        <div class="bowshock-facts" aria-label="Key facts about Earth's bow shock">
+          <div class="bowshock-fact">
+            <strong>Location</strong>
+            ~90 000 km sunward of Earth; the bow shock stands off ~13 Earth radii (R_E) from centre.
+          </div>
+          <div class="bowshock-fact">
+            <strong>Solar Wind Speed</strong>
+            400–800 km/s — supersonic relative to the magnetosphere. Slows abruptly at the bow shock.
+          </div>
+          <div class="bowshock-fact">
+            <strong>Magnetotail</strong>
+            Solar wind stretches the magnetosphere into a long tail on the night side, extending hundreds of R_E downstream.
+          </div>
+          <div class="bowshock-fact">
+            <strong>Auroras</strong>
+            Where the solar wind leaks through near the poles, energetic particles excite the atmosphere and produce coloured light — the aurora borealis and australis.
+          </div>
+        </div>
+      </div>
+
+      <!-- Plasma & Earth charts -->
+      <div class="flame-chart-grid">
+        <div class="chart-card">
+          <h3>🌍 Earth Layer Thickness (km)</h3>
+          <div class="chart-wrap">
+            <canvas id="earthLayersChart" aria-label="Horizontal bar chart showing thickness of Earth's layers"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>⚡ Plasma Temperature by Environment (K)</h3>
+          <div class="chart-wrap">
+            <canvas id="plasmaTempChart" aria-label="Bar chart comparing plasma temperatures across environments"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Topics 8-9: Model analysis -->
+      <h3 style="font-size:1.05rem; margin: 2rem 0 0.75rem; color:var(--text);">8 &amp; 9 — Where the Model Breaks vs. Where It Overlaps</h3>
+
+      <div class="model-analysis" aria-label="Comparison of Kris's model with physics: overlaps and breaks">
+
+        <div class="model-col col-overlap">
+          <div class="model-col-title">✅ Interesting Overlaps With Physics</div>
+          <ul class="model-list">
+            <li><span class="ml-icon">⚡</span>Charge separation &amp; plasma layers — real double-layer structures in plasma</li>
+            <li><span class="ml-icon">🔵</span>Colored emission layers — nebulae &amp; stellar atmospheres genuinely show colored spectral bands</li>
+            <li><span class="ml-icon">🌀</span>Compression generating heat — gravitational accretion heating is a real process</li>
+            <li><span class="ml-icon">🧅</span>Concentric shells — Earth and stars really are composed of distinct concentric layers</li>
+            <li><span class="ml-icon">🌩️</span>Discharge-like structures — solar flares, plasma filaments, and auroras look exactly like discharge arcs</li>
+            <li><span class="ml-icon">🏹</span>Bow / curvature shapes — the magnetospheric bow shock and current sheets match the arc imagery</li>
+          </ul>
+        </div>
+
+        <div class="model-col col-breaks">
+          <div class="model-col-title">❌ Where It Diverges From Physics</div>
+          <ul class="model-list">
+            <li><span class="ml-icon">🚫</span>Combustion creating new matter — chemistry rearranges atoms; only nuclear reactions create new nuclei</li>
+            <li><span class="ml-icon">🚫</span>Red/blue/yellow layers as fundamental energy states — colors come from temperature &amp; emission spectra</li>
+            <li><span class="ml-icon">🚫</span>Oxygen from compressing vacuum space — space near Earth lacks the oxygen density needed</li>
+            <li><span class="ml-icon">🚫</span>Static discharge assembling atoms into planets — planet formation requires gravity over millions of years</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Plasma filament teaser -->
+      <div class="plasma-teaser" aria-label="Plasma filament and auroras teaser">
+        <div class="plasma-teaser-label">Going deeper</div>
+        <h3>🌌 Plasma Filaments, Solar Flares &amp; Auroras</h3>
+        <p>
+          The structures that feel closest to Kris's layered color model are real phenomena
+          in plasma physics: <strong style="color:var(--accent1);">solar flare loops</strong>
+          (plasma arcs following magnetic field lines, glowing in different colors at different
+          temperatures), <strong style="color:var(--accent2);">emission nebula filaments</strong>
+          (hydrogen glowing red, oxygen blue-green, layered in ionized sheets), and
+          <strong style="color:var(--accent4);">auroras</strong> (charged particles exciting
+          atmospheric layers into distinct color bands — green from oxygen at 100 km, red from
+          oxygen at 200+ km, blue/violet from nitrogen).
+        </p>
+        <p style="margin-top:0.85rem;">
+          In all of these, the structure Kris described — compressed, charged, layered,
+          arc-shaped, color-coded — is genuinely present. The physics just attributes the
+          colors to spectral emission rather than fundamental energy-state identifiers, and the
+          driving forces are electromagnetic fields and charged-particle dynamics rather than
+          direct combustion.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── Footer ───────────────────────────────────────────────────── -->
   <footer role="contentinfo">
     <div class="footer-links" aria-label="Footer navigation">
@@ -4654,6 +5213,426 @@
               pointLabels: { color: '#6b7fa3', font: { size: 10 } },
               ticks: { display: false }
             }
+          }
+        }
+      });
+    }());
+
+    /* ── Static-Discharge Arc Canvas ────────────────────────── */
+    (function () {
+      var canvas = document.getElementById('discharge-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H;
+
+      function resize() {
+        W = canvas.width  = canvas.clientWidth;
+        H = canvas.height = canvas.clientHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      /* Generate a jagged lightning bolt path between two points */
+      function boltPath(x1, y1, x2, y2, roughness) {
+        var points = [{x: x1, y: y1}];
+        var segments = 10;
+        for (var i = 1; i < segments; i++) {
+          var t   = i / segments;
+          var mx  = x1 + (x2 - x1) * t + (Math.random() - 0.5) * roughness;
+          var my  = y1 + (y2 - y1) * t + (Math.random() - 0.5) * roughness * 0.5;
+          points.push({x: mx, y: my});
+        }
+        points.push({x: x2, y: y2});
+        return points;
+      }
+
+      /* Electrode positions */
+      var BOLTS     = [];
+      var boltTimer = 0;
+      var BOLT_INTERVAL = 30; /* frames between new arcs */
+      var MAX_BOLTS = 4;
+
+      var t = 0;
+      (function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, W, H);
+        t++;
+
+        /* Background glow around electrodes */
+        var lx = W * 0.18, rx = W * 0.82, ey = H * 0.5;
+        var ELECTRODE_COLORS = [
+          {x: lx, y: ey, r: 0,   g: 229, b: 255},
+          {x: rx, y: ey, r: 123, g: 47,  b: 255}
+        ];
+        ELECTRODE_COLORS.forEach(function (e) {
+          ctx.save();
+          ctx.globalAlpha = 0.25 + 0.1 * Math.sin(t * 0.08);
+          ctx.fillStyle = 'rgb(' + e.r + ',' + e.g + ',' + e.b + ')';
+          ctx.beginPath(); ctx.arc(e.x, e.y, 35, 0, Math.PI * 2); ctx.fill();
+          ctx.restore();
+        });
+
+        /* Electrode rods (rounded rect drawn manually for broad browser support) */
+        function fillRoundRect(context, x, y, w, h, radius) {
+          context.beginPath();
+          context.moveTo(x + radius, y);
+          context.lineTo(x + w - radius, y);
+          context.arc(x + w - radius, y + radius, radius, -Math.PI / 2, 0);
+          context.lineTo(x + w, y + h - radius);
+          context.arc(x + w - radius, y + h - radius, radius, 0, Math.PI / 2);
+          context.lineTo(x + radius, y + h);
+          context.arc(x + radius, y + h - radius, radius, Math.PI / 2, Math.PI);
+          context.lineTo(x, y + radius);
+          context.arc(x + radius, y + radius, radius, Math.PI, -Math.PI / 2);
+          context.closePath();
+          context.fill();
+        }
+
+        ELECTRODE_COLORS.forEach(function (e, idx) {
+          ctx.fillStyle = idx === 0 ? 'rgba(0,229,255,0.8)' : 'rgba(123,47,255,0.8)';
+          fillRoundRect(ctx, e.x - 6, e.y - 28, 12, 56, 4);
+        });
+
+        /* Spawn new bolt */
+        boltTimer++;
+        if (boltTimer >= BOLT_INTERVAL) {
+          boltTimer = 0;
+          var path = boltPath(lx + 6, ey, rx - 6, ey, 60);
+          BOLTS.push({path: path, life: 0, maxLife: 12 + Math.floor(Math.random() * 8)});
+          if (BOLTS.length > MAX_BOLTS) BOLTS.shift();
+        }
+
+        /* Draw bolts */
+        BOLTS.forEach(function (bolt) {
+          bolt.life++;
+          var fade = Math.max(0, 1 - bolt.life / bolt.maxLife);
+          var pts  = bolt.path;
+
+          /* Outer glow */
+          ctx.save();
+          ctx.globalAlpha = fade * 0.35;
+          ctx.strokeStyle = '#00e5ff';
+          ctx.lineWidth   = 6;
+          ctx.shadowColor = '#00e5ff';
+          ctx.shadowBlur  = 18;
+          ctx.beginPath();
+          ctx.moveTo(pts[0].x, pts[0].y);
+          pts.slice(1).forEach(function (p) { ctx.lineTo(p.x, p.y); });
+          ctx.stroke();
+          ctx.restore();
+
+          /* Core bolt */
+          ctx.save();
+          ctx.globalAlpha = fade * 0.95;
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth   = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(pts[0].x, pts[0].y);
+          pts.slice(1).forEach(function (p) { ctx.lineTo(p.x, p.y); });
+          ctx.stroke();
+          ctx.restore();
+        });
+
+        /* Remove dead bolts */
+        BOLTS = BOLTS.filter(function (b) { return b.life < b.maxLife; });
+
+        /* Particle spray at electrode tips */
+        if (t % 4 === 0) {
+          var TIPS = [
+            {x: lx + 6, y: ey, color: 'rgba(0,229,255,'},
+            {x: rx - 6, y: ey, color: 'rgba(123,47,255,'}
+          ];
+          TIPS.forEach(function (e) {
+            for (var i = 0; i < 3; i++) {
+              var px = e.x + (Math.random() - 0.5) * 20;
+              var py = e.y + (Math.random() - 0.5) * 20;
+              var a  = (0.5 + Math.random() * 0.4).toFixed(2);
+              ctx.save();
+              ctx.fillStyle = e.color + a + ')';
+              ctx.beginPath(); ctx.arc(px, py, 1.2, 0, Math.PI * 2); ctx.fill();
+              ctx.restore();
+            }
+          });
+        }
+
+        /* Label */
+        ctx.font      = '10px Consolas, monospace';
+        ctx.fillStyle = 'rgba(107,127,163,0.65)';
+        ctx.fillText('⚡ static discharge arc  •  🔵 cathode (cyan)  •  🟣 anode (violet)  •  activation energy only', 10, H - 10);
+      }());
+    }());
+
+    /* ── Earth Layers Canvas ────────────────────────────────── */
+    (function () {
+      var canvas = document.getElementById('earth-layers-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H, CX, CY;
+
+      function resize() {
+        W = canvas.width  = canvas.clientWidth;
+        H = canvas.height = canvas.clientHeight;
+        CX = W / 2; CY = H / 2;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      /* Concentric layers: [label, color, outer-radius-fraction] */
+      var LAYERS = [
+        { name: 'Inner Core',       color: '#fbbf24', r: 0.09 },
+        { name: 'Outer Core',       color: '#f97316', r: 0.18 },
+        { name: 'Mantle',           color: '#a16207', r: 0.30 },
+        { name: 'Crust',            color: '#78716c', r: 0.32 },
+        { name: 'Atmosphere',       color: '#38bdf8', r: 0.42 },
+        { name: 'Ionosphere',       color: '#818cf8', r: 0.52 },
+        { name: 'Van Allen Belts',  color: '#a78bfa', r: 0.66 }
+      ];
+
+      var t = 0;
+      (function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, W, H);
+        t += 0.016;
+
+        var maxR = Math.min(W, H) * 0.48;
+
+        /* Draw layers from outside in */
+        for (var i = LAYERS.length - 1; i >= 0; i--) {
+          var layer = LAYERS[i];
+          var r     = layer.r * maxR;
+          var pulse = 1 + (i >= 5 ? 0.015 * Math.sin(t * 1.2 + i) : 0);
+          var pr    = r * pulse;
+
+          /* Fill */
+          var g = ctx.createRadialGradient(CX, CY, 0, CX, CY, pr);
+          g.addColorStop(0,   layer.color + '30');
+          g.addColorStop(0.7, layer.color + '18');
+          g.addColorStop(1,   layer.color + '08');
+          ctx.fillStyle = g;
+          ctx.beginPath(); ctx.arc(CX, CY, pr, 0, Math.PI * 2); ctx.fill();
+
+          /* Ring outline */
+          ctx.save();
+          ctx.globalAlpha = 0.35 + (i >= 5 ? 0.15 * Math.sin(t * 0.9 + i * 0.4) : 0);
+          ctx.strokeStyle = layer.color;
+          ctx.lineWidth   = i >= 4 ? 1 : 1.5;
+          if (i >= 5) { ctx.setLineDash([4, 8]); }
+          ctx.beginPath(); ctx.arc(CX, CY, pr, 0, Math.PI * 2); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.restore();
+
+          /* Label on right side */
+          var lx = CX + pr * 0.72 + 4;
+          var ly = CY - pr * 0.72 + 4;
+          if (i === 0) { lx = CX + 6; ly = CY - 6; }
+          ctx.font      = '9px Consolas, monospace';
+          ctx.fillStyle = layer.color;
+          ctx.globalAlpha = 0.8;
+          ctx.fillText(layer.name, lx, ly);
+          ctx.globalAlpha = 1;
+        }
+
+        /* Particle stream (solar wind) from left */
+        if (t % 0.1 < 0.016) {
+          /* intentionally left empty — done via per-frame dot */
+        }
+        var swX = (t * 60) % (W * 0.45);
+        for (var j = 0; j < 4; j++) {
+          var sy = CY + (j - 1.5) * 28;
+          var sx = swX - j * 12;
+          if (sx < 0) continue;
+          ctx.globalAlpha = 0.5;
+          ctx.fillStyle   = '#fbbf24';
+          ctx.beginPath(); ctx.arc(sx, sy, 2, 0, Math.PI * 2); ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+
+        /* Label */
+        ctx.font      = '10px Consolas, monospace';
+        ctx.fillStyle = 'rgba(107,127,163,0.65)';
+        ctx.globalAlpha = 1;
+        ctx.fillText('🌍 cross-section: inner core → crust → atmosphere → ionosphere → Van Allen belts  •  ☀️ solar wind', 10, H - 10);
+      }());
+    }());
+
+    /* ── Bow-Shock Canvas ───────────────────────────────────── */
+    (function () {
+      var canvas = document.getElementById('bowshock-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W = 320, H = 220;
+      canvas.width = W; canvas.height = H;
+
+      var t = 0;
+      (function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, W, H);
+        t += 0.016;
+
+        var CX = W * 0.62, CY = H * 0.5;
+        var earthR = 14;
+
+        /* Magnetosphere tail (night side) */
+        var tailGrad = ctx.createLinearGradient(CX + earthR, CY, W, CY);
+        tailGrad.addColorStop(0,   'rgba(123,47,255,0.35)');
+        tailGrad.addColorStop(0.4, 'rgba(123,47,255,0.12)');
+        tailGrad.addColorStop(1,   'rgba(0,0,0,0)');
+        ctx.fillStyle = tailGrad;
+        ctx.beginPath();
+        ctx.moveTo(CX + earthR, CY - 30);
+        ctx.quadraticCurveTo(W - 10, CY - 55, W, CY - 65);
+        ctx.lineTo(W, CY + 65);
+        ctx.quadraticCurveTo(W - 10, CY + 55, CX + earthR, CY + 30);
+        ctx.closePath();
+        ctx.fill();
+
+        /* Magnetosphere sunward bubble */
+        var magR = 55 + 2 * Math.sin(t * 0.7);
+        var mg = ctx.createRadialGradient(CX, CY, 0, CX, CY, magR);
+        mg.addColorStop(0,    'rgba(123,47,255,0)');
+        mg.addColorStop(0.65, 'rgba(123,47,255,0.08)');
+        mg.addColorStop(1,    'rgba(123,47,255,0.0)');
+        ctx.fillStyle = mg;
+        ctx.beginPath(); ctx.arc(CX, CY, magR, 0, Math.PI * 2); ctx.fill();
+
+        /* Bow shock arc */
+        ctx.save();
+        ctx.strokeStyle = '#00e5ff';
+        ctx.lineWidth   = 1.8;
+        ctx.globalAlpha = 0.55 + 0.15 * Math.sin(t * 1.1);
+        ctx.shadowColor = '#00e5ff';
+        ctx.shadowBlur  = 8;
+        ctx.beginPath();
+        ctx.arc(CX - 30, CY, 90, -Math.PI * 0.6, Math.PI * 0.6);
+        ctx.stroke();
+        ctx.restore();
+
+        /* Solar wind arrows */
+        for (var i = 0; i < 5; i++) {
+          var sy   = 20 + i * 38;
+          var swX  = (t * 45 + i * 22) % (CX - 95);
+          ctx.save();
+          ctx.globalAlpha = 0.55;
+          ctx.strokeStyle = '#fbbf24';
+          ctx.lineWidth   = 1.2;
+          ctx.beginPath();
+          ctx.moveTo(swX, sy);
+          ctx.lineTo(swX + 14, sy);
+          ctx.moveTo(swX + 14, sy);
+          ctx.lineTo(swX + 10, sy - 4);
+          ctx.moveTo(swX + 14, sy);
+          ctx.lineTo(swX + 10, sy + 4);
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        /* Earth */
+        var eg = ctx.createRadialGradient(CX, CY, 0, CX, CY, earthR);
+        eg.addColorStop(0,   '#60a5fa');
+        eg.addColorStop(0.6, '#1d4ed8');
+        eg.addColorStop(1,   '#1e3a8a');
+        ctx.fillStyle = eg;
+        ctx.beginPath(); ctx.arc(CX, CY, earthR, 0, Math.PI * 2); ctx.fill();
+
+        /* Labels */
+        ctx.font      = '9px Consolas, monospace';
+        ctx.fillStyle = '#00e5ff';
+        ctx.fillText('bow shock', CX - 112, CY - 60);
+        ctx.fillStyle = '#fbbf24';
+        ctx.fillText('solar wind →', 6, 14);
+        ctx.fillStyle = '#a78bfa';
+        ctx.fillText('magnetotail', CX + 30, CY + 55);
+      }());
+    }());
+
+    /* ── Plasma Cosmos Charts ───────────────────────────────── */
+    (function () {
+      /* Earth layer thickness */
+      new Chart(document.getElementById('earthLayersChart'), {
+        type: 'bar',
+        indexAxis: 'y',
+        data: {
+          labels: ['Inner Core', 'Outer Core', 'Mantle', 'Crust', 'Atmosphere', 'Ionosphere', 'Van Allen Belt (outer)'],
+          datasets: [{
+            label: 'Thickness (km)',
+            data: [1220, 2270, 2890, 35, 100, 300, 40000],
+            backgroundColor: [
+              'rgba(251,191,36,0.8)',
+              'rgba(249,115,22,0.8)',
+              'rgba(161,98,7,0.75)',
+              'rgba(120,113,108,0.7)',
+              'rgba(56,189,248,0.75)',
+              'rgba(129,140,248,0.75)',
+              'rgba(167,139,250,0.7)'
+            ],
+            borderColor: ['#fbbf24','#f97316','#a16207','#78716c','#38bdf8','#818cf8','#a78bfa'],
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: function(c) {
+              var v = c.parsed.x;
+              return v >= 1000 ? (v/1000).toFixed(1) + ' 000 km' : v + ' km';
+            }}}
+          },
+          scales: {
+            x: {
+              type: 'logarithmic',
+              title: { display: true, text: 'Thickness km (log)', color: '#6b7fa3' },
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3' }
+            },
+            y: { grid: { display: false }, ticks: { color: '#6b7fa3', font: { size: 10 } } }
+          }
+        }
+      });
+
+      /* Plasma temperatures */
+      new Chart(document.getElementById('plasmaTempChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Aurora', 'Lightning bolt', 'Solar flare', 'Sun corona', 'Tokamak fusion', 'Supernova core'],
+          datasets: [{
+            label: 'Temperature (K)',
+            data: [10000, 30000, 10000000, 1000000, 150000000, 5000000000],
+            backgroundColor: [
+              'rgba(57,255,20,0.75)',
+              'rgba(147,197,253,0.8)',
+              'rgba(251,146,60,0.8)',
+              'rgba(251,191,36,0.85)',
+              'rgba(123,47,255,0.75)',
+              'rgba(167,139,250,0.7)'
+            ],
+            borderColor: ['#39ff14','#93c5fd','#fb923c','#fbbf24','#7b2fff','#a78bfa'],
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: function(c) {
+              var v = c.parsed.y;
+              return v >= 1e9 ? (v/1e9).toFixed(0) + ' B K' :
+                     v >= 1e6 ? (v/1e6).toFixed(0) + ' M K' :
+                     v >= 1e3 ? (v/1e3).toFixed(0) + ' K K' : v + ' K';
+            }}}
+          },
+          scales: {
+            y: {
+              type: 'logarithmic',
+              title: { display: true, text: 'Temperature K (log)', color: '#6b7fa3' },
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3' }
+            },
+            x: { grid: { display: false }, ticks: { color: '#6b7fa3', font: { size: 10 } } }
           }
         }
       });
