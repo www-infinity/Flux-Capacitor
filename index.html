@@ -78,7 +78,6 @@
       gap: 5px;
       padding: 6px;
       z-index: 1100;
-      aria-label: "Open menu";
     }
 
     .hamburger span {
@@ -499,6 +498,142 @@
     .safety-banner p { font-size: 0.88rem; color: var(--muted); }
     .safety-banner strong { color: var(--accent3); }
 
+    /* ── Flame Physics ─────────────────────────────────────────── */
+    #flame-physics {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .flame-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .flame-intro { grid-template-columns: 1fr; }
+    }
+
+    #flame-canvas {
+      display: block;
+      width: 100%;
+      height: 360px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .reaction-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent3);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      color: var(--accent4);
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    .reaction-block .label {
+      font-family: var(--font);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .flame-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .flame-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    .flame-card:hover {
+      border-color: var(--accent3);
+      transform: translateY(-3px);
+    }
+
+    .flame-card-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+    .flame-card h4 { font-size: 0.95rem; color: var(--accent3); margin-bottom: 0.5rem; }
+    .flame-card p  { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
+
+    /* Heat-dissipation path diagram */
+    .heat-paths {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .heat-path {
+      padding: 1.1rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      text-align: center;
+    }
+
+    .heat-path-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+    .heat-path h4   { font-size: 0.85rem; color: var(--accent1); margin-bottom: 0.3rem; }
+    .heat-path p    { font-size: 0.78rem; color: var(--muted); }
+
+    /* Teardrop flame anatomy */
+    .teardrop-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .teardrop-layout { grid-template-columns: 1fr; }
+    }
+
+    .teardrop-svg-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .teardrop-facts { display: flex; flex-direction: column; gap: 1rem; }
+
+    .teardrop-fact {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      padding: 0.9rem 1rem;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .teardrop-fact-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .teardrop-fact h5   { font-size: 0.88rem; color: var(--text); margin-bottom: 0.2rem; }
+    .teardrop-fact p    { font-size: 0.8rem; color: var(--muted); }
+
+    /* Flame chart */
+    .flame-chart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
     /* ── Footer ────────────────────────────────────────────────── */
     footer {
       background: var(--surface);
@@ -799,6 +934,7 @@
       <li><a href="#charts"><span class="emoji">📊</span> Charts</a></li>
       <li><a href="#scales"><span class="emoji">🔭</span> Multi-Scale</a></li>
       <li><a href="#applications"><span class="emoji">💡</span> Applications</a></li>
+      <li><a href="#flame-physics"><span class="emoji">🔥</span> Flame Physics</a></li>
     </ul>
   </aside>
 
@@ -1384,6 +1520,218 @@
     </div>
   </section>
 
+  <!-- ── Flame Physics & Combustion Science ───────────────────────── -->
+  <section id="flame-physics" aria-label="Flame physics and combustion science">
+    <div class="container">
+
+      <div class="section-label">Physics Deep Dive</div>
+      <h2 class="section-title">Flame Physics &amp; Combustion Science</h2>
+      <p class="section-desc">
+        What you see in a flame tip is several real physical and chemical processes
+        happening simultaneously — gas flow, combustion chemistry, excited photon emission,
+        and fluid dynamics all layered on top of one another.
+      </p>
+
+      <!-- Animated flame + combustion reaction -->
+      <div class="flame-intro">
+        <canvas id="flame-canvas" aria-label="Animated particle flame visualization"></canvas>
+
+        <div>
+          <h3 style="font-size:1.05rem; margin-bottom:0.75rem;">The Combustion Reaction</h3>
+          <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1rem;">
+            When butane rises from a lighter and mixes with atmospheric oxygen at the right ratio,
+            the combustion reaction releases energy as heat and light. The reaction is
+            continuous as long as fuel and oxygen meet at the flame front.
+          </p>
+
+          <div class="reaction-block" aria-label="Butane combustion equation">
+            <div class="label">Butane Combustion</div>
+            2 C₄H₁₀ &nbsp;+&nbsp; 13 O₂ &nbsp;→&nbsp; 8 CO₂ &nbsp;+&nbsp; 10 H₂O &nbsp;+&nbsp; heat &nbsp;+&nbsp; light
+          </div>
+
+          <div class="reaction-block" aria-label="General combustion summary">
+            <div class="label">General Form</div>
+            hydrocarbon &nbsp;+&nbsp; O₂ &nbsp;→&nbsp; CO₂ &nbsp;+&nbsp; H₂O &nbsp;+&nbsp; energy
+          </div>
+
+          <p style="font-size:0.84rem; color:var(--muted); margin-top:1rem;">
+            <strong style="color:var(--accent4);">Oxygen is everywhere.</strong> It is bound into rocks,
+            minerals, water, and the atmosphere. Oxides and silicates make up most of Earth's crust —
+            so oxygen truly does appear in nearly every material around us.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4 process cards -->
+      <h3 style="font-size:1.05rem; margin-bottom:1.25rem; color:var(--text);">Four Simultaneous Processes in a Flame</h3>
+      <div class="flame-cards">
+
+        <div class="flame-card">
+          <div class="flame-card-icon">💨</div>
+          <h4>1 · Gas Flow</h4>
+          <p>
+            Butane vapor rises from the lighter and mixes with atmospheric oxygen.
+            The flame exists precisely where the fuel-to-oxygen ratio falls in the
+            flammable range — too rich or too lean and the flame extinguishes.
+          </p>
+        </div>
+
+        <div class="flame-card">
+          <div class="flame-card-icon">⚗️</div>
+          <h4>2 · Combustion Chemistry</h4>
+          <p>
+            Hydrocarbon molecules break apart and recombine with oxygen. Carbon atoms
+            bond with two oxygen atoms to make CO₂. Hydrogen atoms pair with oxygen
+            to make H₂O. The energy released drives the next cycle of reactions.
+          </p>
+        </div>
+
+        <div class="flame-card">
+          <div class="flame-card-icon">🌈</div>
+          <h4>3 · Flame Colors</h4>
+          <p>
+            <strong style="color:#60a5fa;">Blue</strong> flames indicate complete combustion —
+            CO and CH radicals emit blue light. <strong style="color:#fb923c;">Orange/yellow</strong>
+            flames contain glowing incandescent carbon particles (soot). The hottest zone
+            glows blue-white; cooler zones glow yellow-orange.
+          </p>
+        </div>
+
+        <div class="flame-card">
+          <div class="flame-card-icon">🌀</div>
+          <h4>4 · The "Compression" at the Tip</h4>
+          <p>
+            At the flame tip, hot gases expand rapidly and mix with surrounding air.
+            Turbulence and steep temperature gradients create the visual appearance
+            of the flame narrowing or compressing before it disappears — the flame is
+            simply running out of unburned fuel.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Heat dissipation pathways -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.6rem; color:var(--text);">Where Does the Heat Go?</h3>
+      <p style="font-size:0.88rem; color:var(--muted); margin-bottom:1.5rem;">
+        The heat from a flame doesn't disappear — it spreads into the environment through
+        three simultaneous physical pathways.
+      </p>
+
+      <div class="heat-paths">
+        <div class="heat-path">
+          <div class="heat-path-icon">🌊</div>
+          <h4>Infrared Radiation</h4>
+          <p>The flame emits electromagnetic radiation in the infrared spectrum — heat you can feel at a distance without touching the flame.</p>
+        </div>
+        <div class="heat-path">
+          <div class="heat-path-icon">🌬️</div>
+          <h4>Hot Gas Convection</h4>
+          <p>Hot combustion gases (CO₂ and H₂O vapor) are less dense than cool air and rise rapidly, carrying thermal energy upward and outward.</p>
+        </div>
+        <div class="heat-path">
+          <div class="heat-path-icon">⚛️</div>
+          <h4>Molecular Collisions</h4>
+          <p>Energetic hot molecules collide with cooler surrounding air molecules, transferring kinetic energy outward as conduction and diffusion.</p>
+        </div>
+      </div>
+
+      <!-- Flame charts -->
+      <h3 style="font-size:1.05rem; margin-bottom:1.25rem; color:var(--text);">Flame Temperature &amp; Heat Distribution</h3>
+      <div class="flame-chart-grid">
+
+        <div class="chart-card">
+          <h3>🌡️ Butane Flame Temperature Zones (°C)</h3>
+          <div class="chart-wrap">
+            <canvas id="flameTempChart" aria-label="Bar chart of flame temperature zones"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>🔆 Heat Dissipation Pathways (%)</h3>
+          <div class="chart-wrap">
+            <canvas id="heatPathChart" aria-label="Doughnut chart of heat dissipation pathways"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Teardrop anatomy -->
+      <h3 style="font-size:1.05rem; margin-bottom:1.25rem; color:var(--text);">Why the Teardrop Shape?</h3>
+      <div class="teardrop-layout">
+
+        <div class="teardrop-svg-wrap" aria-label="Flame teardrop anatomy diagram">
+          <svg width="200" height="300" viewBox="0 0 200 300" aria-hidden="true">
+            <!-- Outer cool glow -->
+            <ellipse cx="100" cy="180" rx="52" ry="110" fill="rgba(251,146,60,0.10)" />
+            <!-- Yellow/orange zone -->
+            <ellipse cx="100" cy="190" rx="38" ry="88" fill="rgba(251,146,60,0.35)" />
+            <!-- Inner blue zone -->
+            <ellipse cx="100" cy="210" rx="22" ry="58" fill="rgba(96,165,250,0.45)" />
+            <!-- Hottest core -->
+            <ellipse cx="100" cy="228" rx="10" ry="26" fill="rgba(224,242,254,0.85)" />
+            <!-- Tip spark -->
+            <ellipse cx="100" cy="75" rx="4" ry="8" fill="rgba(251,146,60,0.55)" />
+            <!-- Flame outline path -->
+            <path d="M100 70 C120 90 145 130 145 185 C145 230 128 260 100 265 C72 260 55 230 55 185 C55 130 80 90 100 70Z"
+              fill="none" stroke="rgba(251,146,60,0.5)" stroke-width="1.5" stroke-dasharray="4 3" />
+            <!-- Labels -->
+            <text x="152" y="80"  font-size="10" fill="#fb923c">Tip (turbulence)</text>
+            <text x="152" y="125" font-size="10" fill="#fb923c">Outer zone</text>
+            <text x="152" y="125" font-size="10" fill="#fb923c" dy="13">yellow/orange</text>
+            <text x="152" y="165" font-size="10" fill="#93c5fd">Inner blue zone</text>
+            <text x="152" y="165" font-size="10" fill="#93c5fd" dy="13">complete combustion</text>
+            <text x="152" y="222" font-size="10" fill="#e0f2fe">Hottest core</text>
+            <text x="152" y="222" font-size="10" fill="#e0f2fe" dy="13">~1,900 °C</text>
+            <!-- Connector lines -->
+            <line x1="104" y1="79"  x2="150" y2="79"  stroke="#fb923c" stroke-width="0.8" opacity="0.5"/>
+            <line x1="136" y1="140" x2="150" y2="127" stroke="#fb923c" stroke-width="0.8" opacity="0.5"/>
+            <line x1="121" y1="168" x2="150" y2="168" stroke="#93c5fd" stroke-width="0.8" opacity="0.5"/>
+            <line x1="109" y1="222" x2="150" y2="222" stroke="#e0f2fe" stroke-width="0.8" opacity="0.5"/>
+          </svg>
+        </div>
+
+        <div class="teardrop-facts">
+          <div class="teardrop-fact">
+            <span class="teardrop-fact-icon">🔼</span>
+            <div>
+              <h5>Buoyancy-Driven Flow</h5>
+              <p>Hot gases are lighter than cool air. Buoyancy pulls the hot combustion products upward, stretching the flame into a vertical teardrop against gravity.</p>
+            </div>
+          </div>
+          <div class="teardrop-fact">
+            <span class="teardrop-fact-icon">🌀</span>
+            <div>
+              <h5>Stoichiometric Flame Front</h5>
+              <p>The glowing visible shell is where fuel and oxygen meet at exactly the right ratio. This thin reaction shell wraps around the fuel-rich center and naturally forms a closed surface — the teardrop outline.</p>
+            </div>
+          </div>
+          <div class="teardrop-fact">
+            <span class="teardrop-fact-icon">🎨</span>
+            <div>
+              <h5>Color Layering</h5>
+              <p>The hottest, most complete combustion happens at the base and inner core (blue). Partially burned carbon particles at the outer edge glow orange-yellow from incandescence — hotter particles glow whiter.</p>
+            </div>
+          </div>
+          <div class="teardrop-fact">
+            <span class="teardrop-fact-icon">✂️</span>
+            <div>
+              <h5>Why It Narrows at the Tip</h5>
+              <p>The fuel supply narrows as it rises and burns away. By the tip there is very little remaining unburned fuel, so the reaction zone pinches closed. Turbulence at the tip mixes in cold air rapidly, quenching the final reactions.</p>
+            </div>
+          </div>
+          <div class="teardrop-fact">
+            <span class="teardrop-fact-icon">🧶</span>
+            <div>
+              <h5>About Atoms &amp; String Theory</h5>
+              <p>The "yarn ball" picture of atoms resembles ideas from <strong>string theory</strong>, where fundamental particles may behave like tiny vibrating strings. In ordinary chemistry, atoms are nuclei with electron clouds — molecules form when atoms share or exchange electrons during combustion.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── Footer ───────────────────────────────────────────────────── -->
   <footer role="contentinfo">
     <div class="footer-links" aria-label="Footer navigation">
@@ -1907,6 +2255,172 @@
           responsive: true,
           maintainAspectRatio: false,
           cutout: '60%',
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: { color: '#6b7fa3', boxWidth: 12, font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }());
+
+    /* ── Animated Flame Canvas ──────────────────────────────── */
+    (function () {
+      var canvas = document.getElementById('flame-canvas');
+      if (!canvas) return;
+
+      var ctx = canvas.getContext('2d');
+      var W, H;
+
+      function resize() {
+        W = canvas.width  = canvas.clientWidth;
+        H = canvas.height = canvas.clientHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      /* Particle pool */
+      var MAX = 180;
+      var particles = [];
+
+      function Particle() {
+        this.reset();
+      }
+
+      Particle.prototype.reset = function () {
+        this.x    = W / 2 + (Math.random() - 0.5) * 28;
+        this.y    = H * 0.82 + (Math.random() - 0.5) * 10;
+        this.vx   = (Math.random() - 0.5) * 0.7;
+        this.vy   = -(1.8 + Math.random() * 2.2);
+        this.life = 0;
+        this.maxLife = 55 + Math.random() * 65;
+        this.r    = 6 + Math.random() * 9;
+      };
+
+      for (var i = 0; i < MAX; i++) {
+        var p = new Particle();
+        p.life = Math.random() * p.maxLife;
+        particles.push(p);
+      }
+
+      function getColor(t) {
+        /* t: 0 (base, hot) → 1 (tip, fading) */
+        if (t < 0.20) return 'rgba(224,242,254,' + (0.85 - t * 2)   + ')'; /* white-blue core */
+        if (t < 0.40) return 'rgba(96,165,250,'  + (0.80 - t * 0.5) + ')'; /* blue zone */
+        if (t < 0.65) return 'rgba(251,146,60,'  + (0.70 - t * 0.3) + ')'; /* orange */
+        return               'rgba(220,38,38,'   + (0.45 - t * 0.4) + ')'; /* red tip, fading */
+      }
+
+      (function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, W, H);
+
+        /* Background glow at base */
+        var grd = ctx.createRadialGradient(W / 2, H * 0.82, 5, W / 2, H * 0.82, 55);
+        grd.addColorStop(0,   'rgba(251,191,36,0.30)');
+        grd.addColorStop(0.5, 'rgba(251,146,60,0.12)');
+        grd.addColorStop(1,   'rgba(0,0,0,0)');
+        ctx.fillStyle = grd;
+        ctx.beginPath();
+        ctx.ellipse(W / 2, H * 0.82, 55, 30, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (var i = 0; i < particles.length; i++) {
+          var p  = particles[i];
+          var t  = p.life / p.maxLife;
+
+          /* Turbulence */
+          p.vx += (Math.random() - 0.5) * 0.12;
+          p.vx *= 0.97;
+          /* Narrowing towards tip */
+          p.vx -= (p.x - W / 2) * 0.004;
+
+          p.x  += p.vx;
+          p.y  += p.vy;
+          p.r  *= 0.992;
+          p.life++;
+
+          if (p.life >= p.maxLife || p.r < 0.8) { p.reset(); continue; }
+
+          var alpha = Math.sin(t * Math.PI) * 0.85;
+          var rad   = p.r * (1 - t * 0.6);
+
+          var gp = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rad * 2);
+          gp.addColorStop(0,   getColor(t));
+          gp.addColorStop(0.6, getColor(Math.min(t + 0.15, 1)));
+          gp.addColorStop(1,   'rgba(0,0,0,0)');
+
+          ctx.globalAlpha = alpha;
+          ctx.fillStyle   = gp;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, rad * 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+
+        /* Label */
+        ctx.font = '11px Consolas, monospace';
+        ctx.fillStyle = 'rgba(107,127,163,0.7)';
+        ctx.fillText('butane + O₂ → CO₂ + H₂O + light + heat', 12, H - 12);
+      }());
+    }());
+
+    /* ── Flame Physics Charts ───────────────────────────────── */
+    (function () {
+      /* Temperature zones */
+      new Chart(document.getElementById('flameTempChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Dark zone\n(unburned)', 'Blue inner\ncone', 'Luminous\nzone', 'Outer\nmantle', 'Tip\n(turbulent)'],
+          datasets: [{
+            label: 'Temperature (°C)',
+            data: [300, 1900, 1400, 1100, 700],
+            backgroundColor: [
+              'rgba(107,114,128,0.7)',
+              'rgba(96,165,250,0.8)',
+              'rgba(251,191,36,0.8)',
+              'rgba(251,146,60,0.8)',
+              'rgba(220,38,38,0.7)'
+            ],
+            borderColor: ['#6b7280','#60a5fa','#fbbf24','#fb923c','#dc2626'],
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: '°C', color: '#6b7fa3' },
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3' }
+            },
+            x: { grid: { display: false }, ticks: { color: '#6b7fa3' } }
+          }
+        }
+      });
+
+      /* Heat dissipation doughnut */
+      new Chart(document.getElementById('heatPathChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Infrared Radiation', 'Hot Gas Convection', 'Molecular Collisions (Conduction)'],
+          datasets: [{
+            data: [45, 40, 15],
+            backgroundColor: ['rgba(251,146,60,0.8)', 'rgba(59,130,246,0.8)', 'rgba(163,163,163,0.7)'],
+            borderColor:      ['#fb923c',              '#3b82f6',              '#a3a3a3'],
+            borderWidth: 2,
+            hoverOffset: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '58%',
           plugins: {
             legend: {
               position: 'right',
