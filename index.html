@@ -534,6 +534,222 @@
 
     .pulse { animation: pulse-ring 2.4s infinite; }
 
+    /* ── Nested Coil Architecture ──────────────────────────────── */
+    #nested-coil {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .coil-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .coil-layout { grid-template-columns: 1fr; }
+    }
+
+    #coil-canvas {
+      display: block;
+      width: 100%;
+      height: 420px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      cursor: grab;
+    }
+
+    #coil-canvas:active { cursor: grabbing; }
+
+    .coil-nest { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .nest-layer {
+      padding: 1.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .nest-layer.inner { border-left: 4px solid var(--accent3); }
+    .nest-layer.outer { border-left: 4px solid var(--accent1); }
+
+    .nest-badge {
+      display: inline-block;
+      padding: 0.2rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .nest-badge.hot  { background: rgba(255,107,53,0.15); color: var(--accent3); }
+    .nest-badge.field { background: rgba(0,229,255,0.1); color: var(--accent1); }
+
+    .nest-layer h4 { font-size: 0.95rem; margin-bottom: 0.4rem; }
+    .nest-layer p  { font-size: 0.83rem; color: var(--muted); }
+
+    .coil-formula {
+      margin-top: 1.25rem;
+      padding: 0.9rem 1.1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--accent4);
+      text-align: center;
+    }
+
+    /* ── Distributed Thermal Transfer ──────────────────────────── */
+    #distributed {
+      background: var(--bg);
+    }
+
+    .dist-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .dist-layout { grid-template-columns: 1fr; }
+    }
+
+    .formula-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.88rem;
+      color: var(--accent4);
+      margin-bottom: 2.5rem;
+    }
+
+    .formula-arrow { color: var(--muted); font-size: 1.1rem; }
+
+    .pipeline { display: flex; flex-direction: column; gap: 0; }
+
+    .pipeline-stage {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1rem 0.5rem;
+      position: relative;
+    }
+
+    .pipeline-stage::after {
+      content: '';
+      position: absolute;
+      left: 1.6rem;
+      top: 3.6rem;
+      height: calc(100% - 1rem);
+      width: 2px;
+      background: linear-gradient(to bottom, var(--border), transparent);
+    }
+
+    .pipeline-stage:last-child::after { display: none; }
+
+    .stage-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+      background: var(--card);
+    }
+
+    .pipeline-stage.s1 .stage-icon-wrap { background: rgba(245,158,11,0.15); border-color: #f59e0b; }
+    .pipeline-stage.s2 .stage-icon-wrap { background: rgba(234,179,8,0.12);  border-color: #eab308; }
+    .pipeline-stage.s3 .stage-icon-wrap { background: rgba(168,85,247,0.12); border-color: #a855f7; }
+    .pipeline-stage.s4 .stage-icon-wrap { background: rgba(59,130,246,0.12); border-color: #3b82f6; }
+    .pipeline-stage.s5 .stage-icon-wrap { background: rgba(0,229,255,0.10);  border-color: #00e5ff; }
+
+    .stage-content { flex: 1; }
+    .stage-content h4 { font-size: 0.95rem; color: var(--text); margin-bottom: 0.25rem; }
+    .stage-content p  { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.4rem; }
+
+    .stage-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+    .stage-chip {
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      background: var(--border);
+      color: var(--muted);
+    }
+
+    /* Module map */
+    .module-map {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .module-node {
+      padding: 1rem 0.75rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      text-align: center;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    .module-node:hover { border-color: var(--accent1); transform: translateY(-2px); }
+
+    .module-node-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+
+    .module-node h4 {
+      font-size: 0.8rem;
+      color: var(--accent1);
+      margin-bottom: 0.25rem;
+    }
+
+    .module-node p { font-size: 0.72rem; color: var(--muted); }
+
+    .concept-label {
+      margin-top: 2.5rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 229, 255, 0.25);
+      background: rgba(0, 229, 255, 0.04);
+    }
+
+    .concept-label p {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .concept-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .concept-tag {
+      padding: 0.25rem 0.7rem;
+      border-radius: 6px;
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      font-size: 0.78rem;
+      color: var(--accent1);
+      font-family: var(--mono);
+    }
+
     /* ── Responsive ────────────────────────────────────────────── */
     @media (max-width: 640px) {
       .flow-grid { grid-template-columns: repeat(2, 1fr); }
@@ -576,6 +792,8 @@
 
     <h3>On This Page</h3>
     <ul>
+      <li><a href="#nested-coil"><span class="emoji">🧶</span> Nested Coil</a></li>
+      <li><a href="#distributed"><span class="emoji">🔀</span> Thermal Transfer</a></li>
       <li><a href="#layers"><span class="emoji">🔬</span> Energy Layers</a></li>
       <li><a href="#diagram"><span class="emoji">🌐</span> 3D Module</a></li>
       <li><a href="#charts"><span class="emoji">📊</span> Charts</a></li>
@@ -612,6 +830,257 @@
     </div>
 
     <div class="scroll-indicator" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ── Nested Coil Architecture ────────────────────────────────── -->
+  <section id="nested-coil" aria-label="Nested coil architecture">
+    <div class="container">
+      <div class="section-label">Core Architecture</div>
+      <h2 class="section-title">Nested String Architecture</h2>
+      <p class="section-desc">
+        An inner tight-wound coil acts as the concentrated heat source — appearing small
+        and local. The outer larger coil-shell carries the <em>knowledge</em> that the
+        inner source is far more powerful than it appears in any one location. This mirrors
+        real transformer and induction-coil physics: the dense primary generates intense
+        local flux while the secondary reveals the true magnitude of the field.
+      </p>
+
+      <div class="coil-layout">
+        <canvas id="coil-canvas" aria-label="3D interactive nested coil visualization. Drag to rotate."></canvas>
+
+        <div class="coil-nest">
+          <div class="nest-layer inner">
+            <div class="nest-badge hot">🔥 Inner Nest — Heat Source</div>
+            <h4>Tight-Wound Coil (Dense String)</h4>
+            <p>
+              The inner winding is densely coiled — like a tight nest of string. Its compact
+              geometry focuses electromagnetic flux into an intense, concentrated zone. This is
+              the <strong>primary</strong>: it appears small, but the energy density per unit
+              volume is extremely high.
+            </p>
+            <p>
+              In safe materials: a resistive carbon or nichrome wire coiled tightly inside
+              an aluminum oxide ceramic sleeve. The heat appears local — but the coil's
+              field extends far beyond its visible boundary.
+            </p>
+          </div>
+
+          <div class="nest-layer outer">
+            <div class="nest-badge field">🌐 Outer Shell — Knowledge Field</div>
+            <h4>Loose-Wound Coil (Larger String Nest)</h4>
+            <p>
+              The outer winding is larger, sparser, and slower — but it <em>perceives the
+              full magnitude</em> of what the inner coil is generating. This is the
+              <strong>secondary</strong>: it receives the induced field and knows the true
+              scale of the source's energy output.
+            </p>
+            <p>
+              In safe materials: a gallium–indium channel or copper foil wrapped around the
+              outer ceramic shell, picking up the inductive field and routing it to the
+              distributed transfer stages.
+            </p>
+          </div>
+
+          <div class="coil-formula" aria-label="Transformer coupling formula">
+            V₂ / V₁ = N₂ / N₁ &nbsp;—&nbsp; Inner turns (N₁) tight &amp; hot
+            &nbsp;→&nbsp; Outer turns (N₂) large &amp; aware
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Distributed Thermal Transfer ─────────────────────────────── -->
+  <section id="distributed" aria-label="Distributed thermal transfer pipeline">
+    <div class="container">
+      <div class="section-label">Multipath Energy Coupling</div>
+      <h2 class="section-title">Distributed Thermal Transfer</h2>
+      <p class="section-desc">
+        Instead of concentrating heat in one place, the system continuously splits
+        energy into smaller transport events across multiple pathways — so no single
+        point ever carries the full thermal load. Heat "drops pieces of itself" at
+        each stage.
+      </p>
+
+      <div class="formula-block" aria-label="Energy transfer formula">
+        <span>🔥 Source</span>
+        <span class="formula-arrow">→</span>
+        <span>📥 Capture</span>
+        <span class="formula-arrow">→</span>
+        <span>📡 Spread</span>
+        <span class="formula-arrow">→</span>
+        <span>✂️ Fragment</span>
+        <span class="formula-arrow">→</span>
+        <span>⚙️ Convert</span>
+        <span class="formula-arrow">→</span>
+        <span>🌐 Remote Use</span>
+      </div>
+
+      <div class="dist-layout">
+
+        <!-- Pipeline stages -->
+        <div>
+          <div class="pipeline" role="list">
+
+            <div class="pipeline-stage s1" role="listitem">
+              <div class="stage-icon-wrap" aria-hidden="true">📥</div>
+              <div class="stage-content">
+                <h4>Stage 1 — Capture</h4>
+                <p>
+                  A hot zone (resistive element, waste heat, or solar) feeds into a
+                  collector plate or ceramic heat exchanger. The source is never allowed
+                  to spike — the capture layer is always absorbing.
+                </p>
+                <div class="stage-chips">
+                  <span class="stage-chip">Al₂O₃ collector plate</span>
+                  <span class="stage-chip">graphite spreader</span>
+                  <span class="stage-chip">heat exchanger</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pipeline-stage s2" role="listitem">
+              <div class="stage-icon-wrap" aria-hidden="true">📡</div>
+              <div class="stage-content">
+                <h4>Stage 2 — Spread</h4>
+                <p>
+                  Gallium–indium alloy channels, graphite composite sheets, or copper
+                  traces distribute the energy laterally so no single point spikes.
+                  The outer coil-shell acts as the primary spread conductor.
+                </p>
+                <div class="stage-chips">
+                  <span class="stage-chip">Ga–In alloy channels</span>
+                  <span class="stage-chip">graphite composite</span>
+                  <span class="stage-chip">ceramic isolation walls</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pipeline-stage s3" role="listitem">
+              <div class="stage-icon-wrap" aria-hidden="true">✂️</div>
+              <div class="stage-content">
+                <h4>Stage 3 — Fragment</h4>
+                <p>
+                  The spread energy is broken into smaller, parallel transport events:
+                  electrical pulses, thermal gradients, pressure changes, acoustic
+                  vibrations. Each fragment carries only a fraction of the total load.
+                </p>
+                <div class="stage-chips">
+                  <span class="stage-chip">electrical pulses</span>
+                  <span class="stage-chip">thermal gradients</span>
+                  <span class="stage-chip">pressure changes</span>
+                  <span class="stage-chip">acoustic motion</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pipeline-stage s4" role="listitem">
+              <div class="stage-icon-wrap" aria-hidden="true">⚙️</div>
+              <div class="stage-content">
+                <h4>Stage 4 — Convert</h4>
+                <p>
+                  Each fragment is converted into a usable output form. Thermoelectric
+                  stages convert heat differentials to current. A Stirling stage can
+                  extract mechanical work. Carbon supercapacitors absorb electrical pulses.
+                  Electrolysis converts surplus current to stored hydrogen.
+                </p>
+                <div class="stage-chips">
+                  <span class="stage-chip">thermoelectric modules</span>
+                  <span class="stage-chip">Stirling stage</span>
+                  <span class="stage-chip">carbon supercapacitor</span>
+                  <span class="stage-chip">electrolysis → H₂</span>
+                  <span class="stage-chip">K⁺ battery cell</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pipeline-stage s5" role="listitem">
+              <div class="stage-icon-wrap" aria-hidden="true">🌐</div>
+              <div class="stage-content">
+                <h4>Stage 5 — Remote Use</h4>
+                <p>
+                  Output is routed to other modules — sensors, heaters, motors, or
+                  secondary storage — so the energy never stays concentrated at the
+                  source. The outer coil-shell broadcasts it outward, just as the
+                  larger string-nest carries knowledge of the inner heat's true scale.
+                </p>
+                <div class="stage-chips">
+                  <span class="stage-chip">secondary loads</span>
+                  <span class="stage-chip">hydrogen output</span>
+                  <span class="stage-chip">battery bank</span>
+                  <span class="stage-chip">acoustic chamber feed</span>
+                  <span class="stage-chip">gallium transfer bus</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Module map + concept label -->
+        <div>
+          <h3 style="color:var(--muted); margin-bottom:1rem; letter-spacing:0.08em; text-transform:uppercase; font-size:0.75rem;">Module Map</h3>
+          <div class="module-map">
+            <div class="module-node">
+              <div class="module-node-icon">🔥</div>
+              <h4>Hot Source</h4>
+              <p>Resistive / waste / solar</p>
+            </div>
+            <div class="module-node">
+              <div class="module-node-icon">📐</div>
+              <h4>Graphite / Ga Spreader</h4>
+              <p>Lateral heat distribution</p>
+            </div>
+            <div class="module-node">
+              <div class="module-node-icon">🌊</div>
+              <h4>Microchannel Exchanger</h4>
+              <p>Fluid-cooled ceramic paths</p>
+            </div>
+            <div class="module-node">
+              <div class="module-node-icon">🔊</div>
+              <h4>Acoustic Chamber</h4>
+              <p>Vibration fragmentation</p>
+            </div>
+            <div class="module-node">
+              <div class="module-node-icon">🌡️</div>
+              <h4>Thermoelectric Stage</h4>
+              <p>ΔT → current</p>
+            </div>
+            <div class="module-node">
+              <div class="module-node-icon">🔋</div>
+              <h4>Capacitor / Battery</h4>
+              <p>Electrical storage bank</p>
+            </div>
+            <div class="module-node">
+              <div class="module-node-icon">💧</div>
+              <h4>Electrolysis → H₂</h4>
+              <p>Chemical storage path</p>
+            </div>
+            <div class="module-node">
+              <div class="module-node-icon">🌐</div>
+              <h4>Secondary Outputs</h4>
+              <p>Remote load modules</p>
+            </div>
+          </div>
+
+          <div class="concept-label">
+            <p>
+              "A distributed thermal transfer system that removes concentrated heat from
+              a source by continuously splitting it into smaller transport events across
+              multiple conductive, acoustic, and electrical pathways."
+            </p>
+            <div class="concept-tags" aria-label="Engineering concept labels">
+              <span class="concept-tag">distributed transfer</span>
+              <span class="concept-tag">nonlocal load balancing</span>
+              <span class="concept-tag">staged dissipation</span>
+              <span class="concept-tag">multipath coupling</span>
+              <span class="concept-tag">gradient fragmentation</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
   <!-- ── Energy Flow ──────────────────────────────────────────────── -->
@@ -1145,6 +1614,158 @@
         // Pulse core
         var pulse = 0.25 + 0.06 * Math.sin(t * 3);
         coreMesh.scale.setScalar(pulse / 0.25);
+
+        renderer.render(scene, camera);
+      }());
+    }());
+
+    /* ── Nested Coil Three.js ───────────────────────────────── */
+    (function () {
+      var canvas = document.getElementById('coil-canvas');
+      if (!canvas) return;
+
+      var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x03060f, 1);
+
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(50, 2, 0.1, 100);
+      camera.position.set(0, 0, 5.5);
+
+      scene.add(new THREE.AmbientLight(0x1a1a2e, 3));
+      var ptInner = new THREE.PointLight(0xff6b35, 3, 10);
+      ptInner.position.set(0, 0, 0);
+      scene.add(ptInner);
+      var ptOuter = new THREE.PointLight(0x00e5ff, 1.5, 15);
+      ptOuter.position.set(4, 3, 3);
+      scene.add(ptOuter);
+
+      var group = new THREE.Group();
+      scene.add(group);
+
+      /* Build a helical coil using TubeGeometry */
+      function makeHelix(radius, tubeR, turns, height, segments, color, opacity) {
+        var pts = [];
+        for (var i = 0; i <= segments; i++) {
+          var t = i / segments;
+          var angle = t * Math.PI * 2 * turns;
+          var y = (t - 0.5) * height;
+          pts.push(new THREE.Vector3(
+            radius * Math.cos(angle),
+            y,
+            radius * Math.sin(angle)
+          ));
+        }
+        var curve = new THREE.CatmullRomCurve3(pts);
+        var geo   = new THREE.TubeGeometry(curve, segments * 2, tubeR, 7, false);
+        var mat   = new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: opacity });
+        return new THREE.Mesh(geo, mat);
+      }
+
+      /* Inner tight nest — dense, hot (orange) */
+      var innerCoil = makeHelix(0.55, 0.045, 22, 2.2, 1200, 0xff6b35, 0.90);
+      group.add(innerCoil);
+
+      /* A second inner coil rotated 90° for a true "nest" look */
+      var innerCoil2 = makeHelix(0.42, 0.03, 18, 1.8, 900, 0xfb923c, 0.65);
+      innerCoil2.rotation.z = Math.PI / 2;
+      group.add(innerCoil2);
+
+      /* Glowing core at center */
+      var core = new THREE.Mesh(
+        new THREE.SphereGeometry(0.18, 24, 24),
+        new THREE.MeshBasicMaterial({ color: 0xfff0e0, transparent: true, opacity: 0.95 })
+      );
+      group.add(core);
+
+      /* Outer loose nest — spacious, cool (cyan) — "knowledge field" */
+      var outerCoil = makeHelix(1.85, 0.032, 9, 3.6, 800, 0x00e5ff, 0.55);
+      group.add(outerCoil);
+
+      /* Second outer coil rotated for the shell effect */
+      var outerCoil2 = makeHelix(2.05, 0.022, 7, 4.0, 600, 0x67e8f9, 0.35);
+      outerCoil2.rotation.x = Math.PI / 3;
+      group.add(outerCoil2);
+
+      /* Particle field — energy radiating outward from inner to outer */
+      var pCount = 500;
+      var pPos   = new Float32Array(pCount * 3);
+      var pPhase = new Float32Array(pCount);
+      for (var p = 0; p < pCount; p++) {
+        pPhase[p] = Math.random();
+        var theta = Math.random() * Math.PI * 2;
+        var phi   = Math.acos(2 * Math.random() - 1);
+        var r = 0.3 + Math.random() * 1.9;
+        pPos[p * 3]     = r * Math.sin(phi) * Math.cos(theta);
+        pPos[p * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+        pPos[p * 3 + 2] = r * Math.cos(phi);
+      }
+      var pGeo = new THREE.BufferGeometry();
+      pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+      var pMesh = new THREE.Points(pGeo, new THREE.PointsMaterial({
+        color: 0xf59e0b, size: 0.03, transparent: true, opacity: 0.6
+      }));
+      group.add(pMesh);
+
+      /* Mouse drag */
+      var isDragging = false;
+      var prevX = 0, prevY = 0;
+      var velX = 0, velY = 0;
+
+      canvas.addEventListener('mousedown',  function (e) { isDragging = true; prevX = e.clientX; prevY = e.clientY; });
+      canvas.addEventListener('mousemove',  function (e) { if (!isDragging) return; velY += (e.clientX - prevX) * 0.012; velX += (e.clientY - prevY) * 0.012; prevX = e.clientX; prevY = e.clientY; });
+      canvas.addEventListener('mouseup',    function () { isDragging = false; });
+      canvas.addEventListener('mouseleave', function () { isDragging = false; });
+      canvas.addEventListener('touchstart', function (e) { if (e.touches[0]) { isDragging = true; prevX = e.touches[0].clientX; prevY = e.touches[0].clientY; } });
+      canvas.addEventListener('touchmove',  function (e) { if (!isDragging || !e.touches[0]) return; e.preventDefault(); velY += (e.touches[0].clientX - prevX) * 0.012; velX += (e.touches[0].clientY - prevY) * 0.012; prevX = e.touches[0].clientX; prevY = e.touches[0].clientY; }, { passive: false });
+      canvas.addEventListener('touchend',   function () { isDragging = false; });
+
+      function resizeCoil() {
+        var w = canvas.clientWidth;
+        var h = canvas.clientHeight || 420;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+      resizeCoil();
+      window.addEventListener('resize', resizeCoil);
+
+      var clock = new THREE.Clock();
+      (function animate() {
+        requestAnimationFrame(animate);
+        var t = clock.getElapsedTime();
+
+        if (!isDragging) {
+          velY += (0.004 - velY) * 0.04;
+          velX += (0.001 - velX) * 0.04;
+        }
+        velX *= 0.90;
+        velY *= 0.90;
+        group.rotation.y += velY;
+        group.rotation.x += velX;
+
+        /* Pulse the core glow */
+        var pulse = 0.85 + 0.15 * Math.sin(t * 4.0);
+        core.scale.setScalar(pulse);
+        ptInner.intensity = 2.5 + 1.5 * Math.sin(t * 3.5);
+
+        /* Animate particles radially outward, looping */
+        var pos = pGeo.attributes.position;
+        for (var i = 0; i < pCount; i++) {
+          pPhase[i] += 0.003;
+          if (pPhase[i] > 1) pPhase[i] = 0;
+          var frac  = pPhase[i];
+          var theta = (i / pCount) * Math.PI * 2 * 7;
+          var phi   = (i / pCount) * Math.PI;
+          var r = 0.3 + frac * 1.9;
+          pos.setXYZ(
+            i,
+            r * Math.sin(phi) * Math.cos(theta),
+            r * Math.sin(phi) * Math.sin(theta),
+            r * Math.cos(phi)
+          );
+        }
+        pos.needsUpdate = true;
 
         renderer.render(scene, camera);
       }());
