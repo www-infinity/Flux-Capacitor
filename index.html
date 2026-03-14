@@ -634,6 +634,190 @@
       margin-bottom: 2.5rem;
     }
 
+    /* ── Matter Binding & Energy Release ───────────────────────── */
+    #matter-binding {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .binding-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .binding-intro { grid-template-columns: 1fr; }
+    }
+
+    #binding-canvas {
+      display: block;
+      width: 100%;
+      height: 320px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    /* Material hierarchy stack */
+    .material-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+
+    .material-row {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.75rem 1rem;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: border-color 0.2s;
+    }
+
+    .material-row:hover { border-color: var(--accent2); }
+    .material-row-icon  { font-size: 1.3rem; flex-shrink: 0; }
+    .material-row h5    { font-size: 0.88rem; color: var(--text); margin-bottom: 0.15rem; }
+    .material-row p     { font-size: 0.78rem; color: var(--muted); }
+
+    /* EM force highlight block */
+    .em-force-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent2);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      margin: 2.5rem 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .em-force-block strong { color: var(--accent2); }
+
+    /* What heat does — step list */
+    .heat-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    .heat-step {
+      padding: 1.1rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    .heat-step:hover { border-color: var(--accent1); transform: translateY(-2px); }
+    .heat-step-num  {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--accent1);
+      color: var(--bg);
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+    }
+
+    .heat-step h4 { font-size: 0.9rem; color: var(--text); margin-bottom: 0.35rem; }
+    .heat-step p  { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    /* Energy forms leaving the object */
+    .energy-forms {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .energy-form {
+      padding: 1.1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      text-align: center;
+    }
+
+    .energy-form-icon { font-size: 1.7rem; margin-bottom: 0.5rem; }
+    .energy-form h4   { font-size: 0.88rem; color: var(--accent3); margin-bottom: 0.35rem; }
+    .energy-form p    { font-size: 0.78rem; color: var(--muted); }
+
+    /* Crystal-ball analogy */
+    .crystal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 640px) {
+      .crystal-grid { grid-template-columns: 1fr; }
+    }
+
+    .crystal-card {
+      padding: 1.2rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .crystal-card-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .crystal-card.analogy .crystal-card-label { color: var(--accent4); }
+    .crystal-card.reality .crystal-card-label { color: var(--accent2); }
+
+    .crystal-card h4 { font-size: 0.9rem; color: var(--text); margin-bottom: 0.4rem; }
+    .crystal-card p  { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    /* Intuition check list */
+    .intuition-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .intuition-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.85rem 1rem;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-size: 0.85rem;
+    }
+
+    .intuition-item.correct  { border-left: 3px solid #22c55e; }
+    .intuition-item.incorrect{ border-left: 3px solid #ef4444; }
+    .intuition-item .badge   {
+      flex-shrink: 0;
+      font-size: 1rem;
+      margin-top: 1px;
+    }
+
+    .intuition-item .body strong { color: var(--text); }
+    .intuition-item .body p { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.79rem; }
+
     /* ── Footer ────────────────────────────────────────────────── */
     footer {
       background: var(--surface);
@@ -935,6 +1119,7 @@
       <li><a href="#scales"><span class="emoji">🔭</span> Multi-Scale</a></li>
       <li><a href="#applications"><span class="emoji">💡</span> Applications</a></li>
       <li><a href="#flame-physics"><span class="emoji">🔥</span> Flame Physics</a></li>
+      <li><a href="#matter-binding"><span class="emoji">🧲</span> Matter &amp; Binding</a></li>
     </ul>
   </aside>
 
@@ -1732,6 +1917,276 @@
     </div>
   </section>
 
+  <!-- ── Matter Binding & Energy Release ─────────────────────────── -->
+  <section id="matter-binding" aria-label="How matter holds together and releases energy">
+    <div class="container">
+
+      <div class="section-label">Atomic Physics</div>
+      <h2 class="section-title">How Matter Holds Together &amp; Releases Energy</h2>
+      <p class="section-desc">
+        The intuition that matter is made of smaller pieces bound together, and that energy escapes when
+        those bindings change, maps almost exactly onto how physics describes atoms, molecules, and
+        thermal radiation. Let's trace it from lighter plastic to released photon.
+      </p>
+
+      <!-- Binding canvas + material hierarchy -->
+      <div class="binding-intro">
+        <canvas id="binding-canvas"
+          aria-label="Animated force-field showing particles attracted and repelled by electromagnetic binding forces"></canvas>
+
+        <div>
+          <h3 style="font-size:1.05rem; margin-bottom:0.7rem;">How a Lighter Is Held Together</h3>
+          <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1rem;">
+            Every part of a lighter — the plastic casing, the metal wheel, the butane fuel — is built
+            from the same hierarchy. At each level, electromagnetic forces do the binding.
+          </p>
+
+          <div class="material-stack" aria-label="Material hierarchy from macroscopic to atomic">
+
+            <div class="material-row">
+              <span class="material-row-icon">🔩</span>
+              <div>
+                <h5>Macroscopic materials</h5>
+                <p>Plastic polymers · metal alloys · butane fuel</p>
+              </div>
+            </div>
+
+            <div class="material-row">
+              <span class="material-row-icon">🔗</span>
+              <div>
+                <h5>Molecular level</h5>
+                <p>Atoms joined into molecules by shared electrons (covalent bonds)</p>
+              </div>
+            </div>
+
+            <div class="material-row">
+              <span class="material-row-icon">⚛️</span>
+              <div>
+                <h5>Atomic level</h5>
+                <p>Nucleus (protons + neutrons) surrounded by an electron cloud</p>
+              </div>
+            </div>
+
+            <div class="material-row">
+              <span class="material-row-icon">⚡</span>
+              <div>
+                <h5>The binding force</h5>
+                <p>Electromagnetic attraction between opposite charges — not literal strings, but fields that act like them</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- EM force callout -->
+      <div class="em-force-block" role="note" aria-label="Electromagnetic force explanation">
+        <strong>The electromagnetic force</strong> is what makes electrons stay near nuclei and what
+        makes atoms stick together into molecules. It's not physical threads — it's an invisible field
+        where opposite charges attract and like charges repel. That field extends outward from every
+        charged particle at the speed of light, which is why radiation can leave a hot object even
+        through empty space.
+      </div>
+
+      <!-- What heat does — 4 steps -->
+      <h3 style="font-size:1.05rem; margin-bottom:1.25rem; color:var(--text);">What Heat Does to Matter</h3>
+      <div class="heat-steps">
+
+        <div class="heat-step">
+          <div class="heat-step-num">1</div>
+          <h4>Atoms Vibrate More</h4>
+          <p>
+            Adding thermal energy makes atoms oscillate faster around their equilibrium positions.
+            In a solid, this is literally the atoms jiggling — the hotter the object, the larger
+            the vibration amplitude.
+          </p>
+        </div>
+
+        <div class="heat-step">
+          <div class="heat-step-num">2</div>
+          <h4>Molecules Collide Faster</h4>
+          <p>
+            In a gas or liquid, molecules move and bump into each other. Temperature is a measure
+            of average kinetic energy. Higher temperature = faster average speed = harder collisions.
+          </p>
+        </div>
+
+        <div class="heat-step">
+          <div class="heat-step-num">3</div>
+          <h4>Some Bonds Break</h4>
+          <p>
+            When vibration energy exceeds a bond's strength, the bond breaks. In combustion this means
+            C–H and C–C bonds in butane snap, freeing carbon and hydrogen atoms to recombine with
+            oxygen — releasing even more energy in the process.
+          </p>
+        </div>
+
+        <div class="heat-step">
+          <div class="heat-step-num">4</div>
+          <h4>Energy Escapes Outward</h4>
+          <p>
+            Accelerating charged particles (like vibrating electrons) emit electromagnetic radiation.
+            Most of this is <strong style="color:var(--accent1);">infrared light</strong> — invisible
+            but felt as heat. Excited electrons jumping between energy levels emit visible light.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Why it looks like energy is "coming off" -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.6rem; color:var(--text);">Why It Looks Like Energy Is "Coming Off"</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.5rem;">
+        When a flame burns, three distinct forms of energy leave the reaction zone simultaneously.
+        Without surrounding particles to absorb it, that radiation would travel outward indefinitely.
+      </p>
+      <div class="energy-forms" aria-label="Three energy forms leaving a flame">
+
+        <div class="energy-form">
+          <div class="energy-form-icon">💡</div>
+          <h4>Visible Light</h4>
+          <p>
+            Electrons in excited atoms (OH radicals, C₂ molecules) drop to lower energy states
+            and emit photons your eyes can detect as the visible glow of the flame.
+          </p>
+        </div>
+
+        <div class="energy-form">
+          <div class="energy-form-icon">🌡️</div>
+          <h4>Infrared Radiation</h4>
+          <p>
+            Vibrating molecules emit infrared photons. You feel this as radiant heat from a distance —
+            it travels through air at the speed of light and needs no medium.
+          </p>
+        </div>
+
+        <div class="energy-form">
+          <div class="energy-form-icon">🌬️</div>
+          <h4>Hot Gas Convection</h4>
+          <p>
+            CO₂ and H₂O vapor from combustion are hot and less dense than surrounding air.
+            They rise, carrying thermal energy upward and outward as kinetic energy of moving molecules.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Crystal-ball analogy: analogy vs reality -->
+      <h3 style="font-size:1.05rem; margin-bottom:1.1rem; color:var(--text);">The "Crystal Ball" Picture — Analogy vs. Reality</h3>
+      <div class="crystal-grid" aria-label="Comparison of mental model analogy and physical reality">
+
+        <div class="crystal-card analogy">
+          <div class="crystal-card-label">Your mental model</div>
+          <h4>Everything wrapped together, energy coming off when the wrapping loosens</h4>
+          <p>
+            You picture atoms as bundles bound by connections, and heat as those connections loosening
+            and releasing what was held inside.
+          </p>
+        </div>
+
+        <div class="crystal-card reality">
+          <div class="crystal-card-label">What physics says</div>
+          <h4>Matter is energy arranged in stable electromagnetic configurations</h4>
+          <p>
+            Atoms and molecules are energy bound into stable configurations by electromagnetic fields.
+            Heat is energy moving through those configurations. Radiation is energy leaving them entirely.
+          </p>
+        </div>
+
+        <div class="crystal-card analogy">
+          <div class="crystal-card-label">Where the analogy breaks down</div>
+          <h4>Literal threads connecting everything in the universe</h4>
+          <p>
+            The bindings are <em>fields and forces</em>, not physical threads. An atom's electromagnetic
+            field doesn't maintain a permanent link to distant atoms — each interaction is local
+            and probabilistic.
+          </p>
+        </div>
+
+        <div class="crystal-card reality">
+          <div class="crystal-card-label">The core that's exactly right</div>
+          <h4>Heat is energy escaping from excited matter</h4>
+          <p>
+            That framing is precisely how thermodynamics and quantum mechanics describe thermal
+            emission: excited matter releasing energy as radiation, vibration transfer, or kinetic
+            motion of escaping molecules.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Bond energy chart -->
+      <div class="flame-chart-grid" style="margin-bottom:2.5rem;">
+        <div class="chart-card">
+          <h3>🔗 Typical Bond Energies (kJ mol⁻¹)</h3>
+          <div class="chart-wrap">
+            <canvas id="bondEnergyChart" aria-label="Horizontal bar chart of typical chemical bond energies"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>📡 Electromagnetic Spectrum — Energy Forms from a Flame</h3>
+          <div class="chart-wrap">
+            <canvas id="emSpectrumChart" aria-label="Bar chart showing relative energy per photon across the EM spectrum"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Intuition check list -->
+      <h3 style="font-size:1.05rem; margin-bottom:1.1rem; color:var(--text);">What the Intuition Gets Right — and Where Physics Diverges</h3>
+      <ul class="intuition-list" aria-label="Checklist of correct and incorrect physical intuitions">
+
+        <li class="intuition-item correct">
+          <span class="badge">✅</span>
+          <div class="body">
+            <strong>Matter is made from smaller pieces bound together</strong>
+            <p>Correct — atoms are nuclei + electrons, molecules are atoms joined by electromagnetic bonds, solids are molecules arranged by those same forces.</p>
+          </div>
+        </li>
+
+        <li class="intuition-item correct">
+          <span class="badge">✅</span>
+          <div class="body">
+            <strong>Energy is released when those bindings change</strong>
+            <p>Correct — bond breaking and re-forming in combustion releases chemical potential energy as heat and light.</p>
+          </div>
+        </li>
+
+        <li class="intuition-item correct">
+          <span class="badge">✅</span>
+          <div class="body">
+            <strong>Very hot things emit energy outward</strong>
+            <p>Correct — all matter above absolute zero emits thermal radiation. The hotter the object, the more intense and the higher-frequency the emission.</p>
+          </div>
+        </li>
+
+        <li class="intuition-item correct">
+          <span class="badge">✅</span>
+          <div class="body">
+            <strong>The "strings" connecting atoms resemble a real physics idea</strong>
+            <p>String theory proposes fundamental particles behave like tiny vibrating strings. It's theoretical, but the image of matter as structured vibrations has real scientific roots.</p>
+          </div>
+        </li>
+
+        <li class="intuition-item incorrect">
+          <span class="badge">❌</span>
+          <div class="body">
+            <strong>All atoms are physically connected to each other everywhere</strong>
+            <p>Electromagnetic fields are not permanent threads between distant atoms. Each interaction is local. Entanglement is a quantum correlation but doesn't transmit energy or information.</p>
+          </div>
+        </li>
+
+        <li class="intuition-item incorrect">
+          <span class="badge">❌</span>
+          <div class="body">
+            <strong>Heat escapes into another dimension or forms a cosmic connection</strong>
+            <p>Thermal energy simply disperses into the surrounding environment as radiation, convection, and molecular conduction. There is no evidence of energy routing to another dimension.</p>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </section>
+
   <!-- ── Footer ───────────────────────────────────────────────────── -->
   <footer role="contentinfo">
     <div class="footer-links" aria-label="Footer navigation">
@@ -2426,6 +2881,205 @@
               position: 'right',
               labels: { color: '#6b7fa3', boxWidth: 12, font: { size: 11 } }
             }
+          }
+        }
+      });
+    }());
+
+    /* ── Binding Force Canvas ───────────────────────────────── */
+    (function () {
+      var canvas = document.getElementById('binding-canvas');
+      if (!canvas) return;
+
+      var ctx = canvas.getContext('2d');
+      var W, H;
+
+      function resize() {
+        W = canvas.width  = canvas.clientWidth;
+        H = canvas.height = canvas.clientHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      /* Build a small lattice of nucleus + electron pairs */
+      var NUCLEI = [];
+      var ELECTRONS = [];
+      var ROWS = 3, COLS = 4;
+
+      for (var r = 0; r < ROWS; r++) {
+        for (var c = 0; c < COLS; c++) {
+          var nx = (c + 1) * W / (COLS + 1);
+          var ny = (r + 1) * H / (ROWS + 1);
+          NUCLEI.push({ x: nx, y: ny, ox: nx, oy: ny });
+        }
+      }
+
+      /* Two electrons orbiting each nucleus */
+      NUCLEI.forEach(function (n, i) {
+        var phase = (i / NUCLEI.length) * Math.PI * 2;
+        ELECTRONS.push({ nucleus: n, angle: phase,       speed: 0.022 + Math.random() * 0.018, orbitR: 18 + Math.random() * 6 });
+        ELECTRONS.push({ nucleus: n, angle: phase + Math.PI, speed: 0.018 + Math.random() * 0.015, orbitR: 24 + Math.random() * 6 });
+      });
+
+      var t = 0;
+
+      (function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, W, H);
+        t += 0.016;
+
+        /* Gently jiggle nuclei (thermal vibration) */
+        NUCLEI.forEach(function (n) {
+          n.x = n.ox + Math.sin(t * 1.3 + n.oy) * 2.5;
+          n.y = n.oy + Math.cos(t * 1.1 + n.ox) * 2;
+        });
+
+        /* Draw bond lines between adjacent nuclei */
+        ctx.lineWidth = 0.8;
+        for (var r2 = 0; r2 < ROWS; r2++) {
+          for (var c2 = 0; c2 < COLS; c2++) {
+            var idx = r2 * COLS + c2;
+            var n1 = NUCLEI[idx];
+            /* Right neighbour */
+            if (c2 < COLS - 1) {
+              var n2 = NUCLEI[idx + 1];
+              var bondAlpha = 0.25 + 0.1 * Math.sin(t * 1.5 + idx);
+              ctx.strokeStyle = 'rgba(99,179,237,' + bondAlpha + ')';
+              ctx.beginPath(); ctx.moveTo(n1.x, n1.y); ctx.lineTo(n2.x, n2.y); ctx.stroke();
+            }
+            /* Down neighbour */
+            if (r2 < ROWS - 1) {
+              var n3 = NUCLEI[idx + COLS];
+              var bondAlpha2 = 0.25 + 0.1 * Math.sin(t * 1.5 + idx + 0.5);
+              ctx.strokeStyle = 'rgba(99,179,237,' + bondAlpha2 + ')';
+              ctx.beginPath(); ctx.moveTo(n1.x, n1.y); ctx.lineTo(n3.x, n3.y); ctx.stroke();
+            }
+          }
+        }
+
+        /* Draw electrons */
+        ELECTRONS.forEach(function (e) {
+          e.angle += e.speed;
+          var ex = e.nucleus.x + Math.cos(e.angle) * e.orbitR;
+          var ey = e.nucleus.y + Math.sin(e.angle) * e.orbitR * 0.42; /* flattened orbit */
+
+          /* Electron glow */
+          var eg = ctx.createRadialGradient(ex, ey, 0, ex, ey, 6);
+          eg.addColorStop(0,   'rgba(147,197,253,0.9)');
+          eg.addColorStop(0.5, 'rgba(99,179,237,0.5)');
+          eg.addColorStop(1,   'rgba(0,0,0,0)');
+          ctx.fillStyle = eg;
+          ctx.beginPath(); ctx.arc(ex, ey, 6, 0, Math.PI * 2); ctx.fill();
+        });
+
+        /* Draw nuclei */
+        NUCLEI.forEach(function (n) {
+          var ng = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, 9);
+          ng.addColorStop(0,   'rgba(251,191,36,0.95)');
+          ng.addColorStop(0.5, 'rgba(245,158,11,0.6)');
+          ng.addColorStop(1,   'rgba(0,0,0,0)');
+          ctx.fillStyle = ng;
+          ctx.beginPath(); ctx.arc(n.x, n.y, 9, 0, Math.PI * 2); ctx.fill();
+        });
+
+        /* Occasional IR photon radiating outward from a random nucleus */
+        if (Math.random() < 0.04) {
+          var src = NUCLEI[Math.floor(Math.random() * NUCLEI.length)];
+          var ang = Math.random() * Math.PI * 2;
+          var dist = 30 + Math.random() * 40;
+          var px = src.x + Math.cos(ang) * dist;
+          var py = src.y + Math.sin(ang) * dist;
+          ctx.strokeStyle = 'rgba(251,146,60,0.45)';
+          ctx.lineWidth = 1;
+          ctx.setLineDash([3, 4]);
+          ctx.beginPath(); ctx.moveTo(src.x, src.y); ctx.lineTo(px, py); ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        /* Label */
+        ctx.font = '10px Consolas, monospace';
+        ctx.fillStyle = 'rgba(107,127,163,0.65)';
+        ctx.fillText('⚡ electromagnetic bonds  •  🌡️ thermal vibration  •  📡 IR photon emission', 10, H - 10);
+      }());
+    }());
+
+    /* ── Bond Energy & EM Spectrum Charts ───────────────────── */
+    (function () {
+      /* Bond energy horizontal bar chart */
+      new Chart(document.getElementById('bondEnergyChart'), {
+        type: 'bar',
+        data: {
+          labels: ['C–H', 'C–C', 'C=C', 'C–O', 'O–H', 'O=O', 'C=O (CO₂)'],
+          datasets: [{
+            label: 'kJ mol⁻¹',
+            data: [413, 347, 614, 360, 463, 498, 799],
+            backgroundColor: [
+              'rgba(251,191,36,0.75)',
+              'rgba(251,146,60,0.75)',
+              'rgba(245,101,101,0.75)',
+              'rgba(99,179,237,0.75)',
+              'rgba(96,165,250,0.75)',
+              'rgba(147,197,253,0.75)',
+              'rgba(167,243,208,0.75)'
+            ],
+            borderColor: ['#fbbf24','#fb923c','#f56565','#63b3ed','#60a5fa','#93c5fd','#a7f3d0'],
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: function(ctx) { return ctx.parsed.x + ' kJ/mol'; } } }
+          },
+          scales: {
+            x: {
+              title: { display: true, text: 'kJ mol⁻¹', color: '#6b7fa3' },
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3' }
+            },
+            y: { grid: { display: false }, ticks: { color: '#6b7fa3' } }
+          }
+        }
+      });
+
+      /* EM spectrum bar — relative photon energy */
+      new Chart(document.getElementById('emSpectrumChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Radio', 'Microwave', 'Far IR', 'Near IR\n(flame heat)', 'Visible\n(flame glow)', 'UV', 'X-ray'],
+          datasets: [{
+            label: 'Relative photon energy (log scale)',
+            data: [1, 10, 100, 800, 2000, 15000, 1000000],
+            backgroundColor: [
+              'rgba(107,114,128,0.7)',
+              'rgba(107,114,128,0.7)',
+              'rgba(251,146,60,0.4)',
+              'rgba(251,146,60,0.85)',
+              'rgba(251,191,36,0.85)',
+              'rgba(167,243,208,0.7)',
+              'rgba(167,139,250,0.7)'
+            ],
+            borderColor: ['#6b7280','#6b7280','#fb923c','#fb923c','#fbbf24','#a7f3d0','#a78bfa'],
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: {
+              type: 'logarithmic',
+              title: { display: true, text: 'Energy (log)', color: '#6b7fa3' },
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3' }
+            },
+            x: { grid: { display: false }, ticks: { color: '#6b7fa3', font: { size: 10 } } }
           }
         }
       });
