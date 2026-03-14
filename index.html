@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Flux Capacitor — Safe Multi-Layer Energy Module. Exploring gallium alloys, carbon electrodes, helium acoustic levitation, hydrogen storage, and ceramic thermal channels." />
+  <title>Flux Capacitor — Multi-Layer Quantum Energy Module</title>
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <style>
+    /* ── Reset & Base ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #03060f;
+      --surface: #0a0f1e;
+      --card: #0d1525;
+      --border: #1a2a4a;
+      --accent1: #00e5ff;   /* cyan */
+      --accent2: #7b2fff;   /* violet */
+      --accent3: #ff6b35;   /* orange */
+      --accent4: #39ff14;   /* neon green */
+      --text: #e2eaf8;
+      --muted: #6b7fa3;
+      --font: 'Segoe UI', system-ui, sans-serif;
+      --mono: 'Consolas', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
+
+    a { color: var(--accent1); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Navigation ────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(3, 6, 15, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent1);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      z-index: 1100;
+      aria-label: "Open menu";
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--accent1);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-drawer {
+      position: fixed;
+      top: 60px; right: 0;
+      width: min(320px, 90vw);
+      height: calc(100vh - 60px);
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      padding: 1.5rem 1.25rem;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      overflow-y: auto;
+      z-index: 999;
+    }
+
+    .nav-drawer.open { transform: translateX(0); }
+
+    .nav-drawer h3 {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-drawer ul { list-style: none; margin-bottom: 1.5rem; }
+
+    .nav-drawer ul li a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      color: var(--text);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-drawer ul li a:hover {
+      background: var(--border);
+      color: var(--accent1);
+      text-decoration: none;
+    }
+
+    .nav-drawer ul li a .emoji { font-size: 1.1rem; }
+
+    /* ── Hero ──────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 80px 1.25rem 2rem;
+    }
+
+    #canvas3d {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.85;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.3rem 0.9rem;
+      border-radius: 99px;
+      border: 1px solid var(--accent2);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 60%, var(--accent3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .tag {
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--accent1);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: opacity 0.2s;
+    }
+
+    .hero-cta:hover { opacity: 0.85; text-decoration: none; }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 1.8s infinite;
+      color: var(--muted);
+      font-size: 1.5rem;
+      z-index: 1;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── Section Containers ────────────────────────────────────── */
+    section { padding: 5rem 1.25rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 640px;
+      margin-bottom: 3rem;
+      font-size: 1rem;
+    }
+
+    /* ── Energy Flow ───────────────────────────────────────────── */
+    #flow {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .flow-step:last-child { border-right: none; }
+
+    .flow-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .flow-step h4 {
+      font-size: 0.85rem;
+      color: var(--accent1);
+      margin-bottom: 0.25rem;
+    }
+
+    .flow-step p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .flow-arrow {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent2);
+      font-size: 1.2rem;
+      z-index: 1;
+    }
+
+    /* ── Layers Grid ───────────────────────────────────────────── */
+    .layers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .layer-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.3s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .layer-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 12px 0 0 12px;
+    }
+
+    .layer-card:hover {
+      border-color: var(--accent1);
+      transform: translateY(-3px);
+    }
+
+    .layer-card.l1::before { background: #3b82f6; }
+    .layer-card.l2::before { background: #f59e0b; }
+    .layer-card.l3::before { background: #ec4899; }
+    .layer-card.l4::before { background: #06b6d4; }
+    .layer-card.l5::before { background: var(--accent3); }
+    .layer-card.l6::before { background: var(--accent4); }
+    .layer-card.l7::before { background: var(--accent2); }
+
+    .layer-num {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .layer-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent1);
+    }
+
+    .layer-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .layer-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .layer-tag {
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      background: var(--border);
+      font-size: 0.75rem;
+      color: var(--text);
+    }
+
+    /* ── Charts Section ────────────────────────────────────────── */
+    #charts { background: var(--bg); }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .chart-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .chart-card h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .chart-wrap { position: relative; height: 260px; }
+
+    /* ── 3D Module Diagram ─────────────────────────────────────── */
+    #diagram {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    #module-canvas {
+      display: block;
+      width: 100%;
+      height: 500px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      cursor: grab;
+    }
+
+    #module-canvas:active { cursor: grabbing; }
+
+    /* ── Scales Section ────────────────────────────────────────── */
+    .scales-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .scale-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .scale-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+
+    .scale-card h3 {
+      font-size: 1rem;
+      color: var(--accent1);
+      margin-bottom: 0.5rem;
+    }
+
+    .scale-card p { font-size: 0.85rem; color: var(--muted); }
+
+    /* ── Applications ──────────────────────────────────────────── */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .app-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card);
+    }
+
+    .app-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+
+    .app-item h4 { font-size: 0.95rem; color: var(--accent1); margin-bottom: 0.25rem; }
+
+    .app-item p { font-size: 0.82rem; color: var(--muted); }
+
+    /* ── Safety Banner ─────────────────────────────────────────── */
+    .safety-banner {
+      background: rgba(255, 107, 53, 0.08);
+      border: 1px solid rgba(255, 107, 53, 0.3);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-top: 2rem;
+    }
+
+    .safety-banner .icon { font-size: 1.5rem; flex-shrink: 0; }
+    .safety-banner p { font-size: 0.88rem; color: var(--muted); }
+    .safety-banner strong { color: var(--accent3); }
+
+    /* ── Footer ────────────────────────────────────────────────── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+
+    footer p { font-size: 0.82rem; color: var(--muted); }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent1); text-decoration: none; }
+
+    /* ── Pulse / glow animations ───────────────────────────────── */
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.4); }
+      70%  { box-shadow: 0 0 0 14px rgba(0, 229, 255, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+    }
+
+    .pulse { animation: pulse-ring 2.4s infinite; }
+
+    /* ── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .flow-grid { grid-template-columns: repeat(2, 1fr); }
+      .flow-step { border-right: none; border-bottom: 1px solid var(--border); }
+      .flow-step:nth-child(even) { border-right: none; }
+      .flow-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ────────────────────────────────────────────── -->
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="nav-logo">⚡ Flux Capacitor</div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-drawer">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <aside id="nav-drawer" class="nav-drawer" role="dialog" aria-label="Navigation drawer" aria-modal="true">
+    <h3>∞ Infinity Network</h3>
+    <ul>
+      <li><a href="https://www-infinity.github.io/Time-Machine/" target="_blank" rel="noopener noreferrer"><span class="emoji">⏰</span> Time Machine</a></li>
+      <li><a href="https://www-infinity.github.io/Ion/" target="_blank" rel="noopener noreferrer"><span class="emoji">⚛️</span> Ion World</a></li>
+      <li><a href="https://www-infinity.github.io/Hydrogen-Radio/" target="_blank" rel="noopener noreferrer"><span class="emoji">📡</span> Hydrogen Radio</a></li>
+      <li><a href="https://www-infinity.github.io/Hydrhost/" target="_blank" rel="noopener noreferrer"><span class="emoji">🌐</span> HydrHost</a></li>
+      <li><a href="https://www-infinity.github.io/3d-world/" target="_blank" rel="noopener noreferrer"><span class="emoji">🌍</span> 3D World</a></li>
+      <li><a href="https://www-infinity.github.io/Zero-Inertia/" target="_blank" rel="noopener noreferrer"><span class="emoji">🚀</span> Zero Inertia</a></li>
+      <li><a href="https://www-infinity.github.io/Theater/" target="_blank" rel="noopener noreferrer"><span class="emoji">🎭</span> Theater</a></li>
+      <li><a href="https://www-infinity.github.io/Mint-For-Infinity/" target="_blank" rel="noopener noreferrer"><span class="emoji">🪙</span> Mint For Infinity</a></li>
+      <li><a href="https://www-infinity.github.io/Beyond-Tokens/" target="_blank" rel="noopener noreferrer"><span class="emoji">🔮</span> Beyond Tokens</a></li>
+      <li><a href="https://www-infinity.github.io/Bitcoin-Crusher/" target="_blank" rel="noopener noreferrer"><span class="emoji">₿</span> Bitcoin Crusher</a></li>
+      <li><a href="https://www-infinity.github.io/Unifier/" target="_blank" rel="noopener noreferrer"><span class="emoji">🔗</span> Unifier</a></li>
+      <li><a href="https://www-infinity.github.io/R2D2/" target="_blank" rel="noopener noreferrer"><span class="emoji">🤖</span> R2D2 Signal</a></li>
+      <li><a href="https://www-infinity.github.io/Future-Now/" target="_blank" rel="noopener noreferrer"><span class="emoji">🔬</span> Future Now</a></li>
+      <li><a href="https://www-infinity.github.io/Aces/" target="_blank" rel="noopener noreferrer"><span class="emoji">♠️</span> Aces</a></li>
+    </ul>
+
+    <h3>On This Page</h3>
+    <ul>
+      <li><a href="#layers"><span class="emoji">🔬</span> Energy Layers</a></li>
+      <li><a href="#diagram"><span class="emoji">🌐</span> 3D Module</a></li>
+      <li><a href="#charts"><span class="emoji">📊</span> Charts</a></li>
+      <li><a href="#scales"><span class="emoji">🔭</span> Multi-Scale</a></li>
+      <li><a href="#applications"><span class="emoji">💡</span> Applications</a></li>
+    </ul>
+  </aside>
+
+  <!-- ── Hero ────────────────────────────────────────────────────── -->
+  <section id="hero" aria-label="Hero section">
+    <canvas id="canvas3d" aria-hidden="true"></canvas>
+
+    <div class="hero-content">
+      <div class="hero-badge">Experimental Concept Architecture</div>
+      <h1 class="hero-title">Flux Capacitor<br/>Energy Module</h1>
+      <p class="hero-sub">
+        A safe multi-layer energy module combining gallium liquid-metal circuits,
+        carbon electrodes, helium acoustic levitation, hydrogen fuel-cell storage,
+        and ceramic thermal channels.
+      </p>
+      <div class="hero-tags">
+        <span class="tag">🔵 Gallium Alloys</span>
+        <span class="tag">⬛ Carbon Electrodes</span>
+        <span class="tag">🟡 Helium</span>
+        <span class="tag">⚗️ Potassium Battery</span>
+        <span class="tag">🏺 Ceramics / Al₂O₃</span>
+        <span class="tag">🔊 Acoustic Levitation</span>
+        <span class="tag">💧 Hydrogen Storage</span>
+        <span class="tag">🟤 Rubber Seals</span>
+      </div>
+      <a href="#layers" class="hero-cta pulse" aria-label="Explore the energy layers">
+        Explore Layers ↓
+      </a>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">↓</div>
+  </section>
+
+  <!-- ── Energy Flow ──────────────────────────────────────────────── -->
+  <section id="flow" aria-label="Energy flow diagram">
+    <div class="container">
+      <div class="section-label">System Architecture</div>
+      <h2 class="section-title">Conceptual Energy Flow</h2>
+      <p class="section-desc">Each layer performs a distinct safe energy or materials transformation function.</p>
+
+      <div class="flow-grid" role="list">
+        <div class="flow-step" role="listitem">
+          <div class="flow-icon">🌡️</div>
+          <h4>Thermal Input</h4>
+          <p>Resistive heater or heat exchanger</p>
+        </div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-icon">🔋</div>
+          <h4>Storage Layer</h4>
+          <p>Hydrogen adsorbent or capacitor bank</p>
+        </div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-icon">⬛</div>
+          <h4>Microcurrent</h4>
+          <p>Carbon mesh + low-voltage inert gas</p>
+        </div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-icon">🔊</div>
+          <h4>Levitation</h4>
+          <p>Helium acoustic chamber</p>
+        </div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-icon">🔵</div>
+          <h4>Transfer Layer</h4>
+          <p>Gallium paths + ceramic isolation</p>
+        </div>
+        <div class="flow-step" role="listitem">
+          <div class="flow-icon">⚡</div>
+          <h4>Energy Output</h4>
+          <p>Thermoelectric / battery store</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Layer Cards ──────────────────────────────────────────────── -->
+  <section id="layers" aria-label="Energy module layers">
+    <div class="container">
+      <div class="section-label">Module Design</div>
+      <h2 class="section-title">5 Safe Energy Layers</h2>
+      <p class="section-desc">
+        Each layer uses non-hazardous, readily available materials. Together they form a
+        safe, multi-scale experimental energy architecture suitable for research and education.
+      </p>
+
+      <div class="layers-grid">
+
+        <article class="layer-card l1" aria-label="Layer 1: Thermal Input Layer">
+          <div class="layer-num">Layer 01</div>
+          <h3>🌡️ Thermal Input Layer</h3>
+          <p>
+            A resistive heater element or external heat exchanger captures thermal energy
+            from any source — waste heat, solar, or electrical. Aluminum oxide (Al₂O₃)
+            ceramics provide structural channels with excellent thermal insulation.
+          </p>
+          <p style="font-family: var(--mono); font-size: 0.8rem; color: var(--accent4);">
+            Q = mcΔT &nbsp;→&nbsp; ceramic channel &nbsp;→&nbsp; heat exchanger
+          </p>
+          <div class="layer-tags">
+            <span class="layer-tag">Resistive Heating</span>
+            <span class="layer-tag">Al₂O₃ Ceramics</span>
+            <span class="layer-tag">Heat Exchanger</span>
+            <span class="layer-tag">Thermoelectrics</span>
+          </div>
+        </article>
+
+        <article class="layer-card l2" aria-label="Layer 2: Storage Layer">
+          <div class="layer-num">Layer 02</div>
+          <h3>🔋 Storage Layer</h3>
+          <p>
+            Hydrogen stored in solid adsorbent materials (metal hydrides or activated carbon)
+            or a capacitor/battery bank. Potassium-based compounds serve as electrolyte
+            in a safe, low-voltage battery-style storage cell.
+          </p>
+          <p style="font-family: var(--mono); font-size: 0.8rem; color: var(--accent4);">
+            2H₂ + O₂ → 2H₂O + energy &nbsp;(fuel cell)
+          </p>
+          <div class="layer-tags">
+            <span class="layer-tag">H₂ Adsorbent</span>
+            <span class="layer-tag">Potassium Electrolyte</span>
+            <span class="layer-tag">Capacitor Bank</span>
+            <span class="layer-tag">Fuel Cell</span>
+          </div>
+        </article>
+
+        <article class="layer-card l3" aria-label="Layer 3: Carbon Microcurrent Layer">
+          <div class="layer-num">Layer 03</div>
+          <h3>⬛ Carbon Microcurrent Layer</h3>
+          <p>
+            A carbon electrode mesh immersed in an inert low-pressure gas (argon or helium)
+            carries micro-ampere currents at low voltage. Carbon's porous structure provides
+            high surface-area contact for charge transfer.
+          </p>
+          <div class="layer-tags">
+            <span class="layer-tag">Carbon Mesh</span>
+            <span class="layer-tag">Inert Gas</span>
+            <span class="layer-tag">Low-Voltage</span>
+            <span class="layer-tag">Porous Electrode</span>
+          </div>
+        </article>
+
+        <article class="layer-card l4" aria-label="Layer 4: Helium Acoustic Levitation Chamber">
+          <div class="layer-num">Layer 04</div>
+          <h3>🔊 Helium Acoustic Levitation</h3>
+          <p>
+            Standing sound waves in a helium-filled chamber suspend micro-components
+            and droplets contact-free. Rubber compound mounts isolate the chamber from
+            external vibration and act as flexible dielectric seals.
+          </p>
+          <div class="layer-tags">
+            <span class="layer-tag">Standing Waves</span>
+            <span class="layer-tag">Contact-Free</span>
+            <span class="layer-tag">Rubber Isolation</span>
+            <span class="layer-tag">Helium Medium</span>
+          </div>
+        </article>
+
+        <article class="layer-card l5" aria-label="Layer 5: Gallium Transfer Layer">
+          <div class="layer-num">Layer 05</div>
+          <h3>🔵 Gallium Transfer Layer</h3>
+          <p>
+            Gallium–indium alloy liquid-metal channels route electrical signals and thermal
+            energy between layers. Aluminum oxide ceramic walls provide electrical isolation,
+            and rubber gaskets seal the reconfigurable circuit paths.
+          </p>
+          <div class="layer-tags">
+            <span class="layer-tag">Ga–In Alloy</span>
+            <span class="layer-tag">Ceramic Walls</span>
+            <span class="layer-tag">Rubber Gaskets</span>
+            <span class="layer-tag">Reconfigurable</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 3D Module Diagram ────────────────────────────────────────── -->
+  <section id="diagram" aria-label="Interactive 3D module visualization">
+    <div class="container">
+      <div class="section-label">3D Visualization</div>
+      <h2 class="section-title">Interactive Energy Module</h2>
+      <p class="section-desc">
+        Drag to rotate. The concentric rings represent each energy layer of the flux capacitor module.
+      </p>
+      <canvas id="module-canvas" aria-label="3D rotating energy module visualization"></canvas>
+    </div>
+  </section>
+
+  <!-- ── Charts ───────────────────────────────────────────────────── -->
+  <section id="charts" aria-label="Data visualization charts">
+    <div class="container">
+      <div class="section-label">Data Visualization</div>
+      <h2 class="section-title">Layer Analysis Charts</h2>
+      <p class="section-desc">Comparative properties and energy profiles across the 5 safe module layers.</p>
+
+      <div class="charts-grid">
+
+        <div class="chart-card">
+          <h3>⚡ Energy Density by Layer</h3>
+          <div class="chart-wrap">
+            <canvas id="barChart" aria-label="Bar chart showing energy density by layer"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>🎯 Layer Property Radar</h3>
+          <div class="chart-wrap">
+            <canvas id="radarChart" aria-label="Radar chart showing layer properties"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>🌊 Operating Temperature Range</h3>
+          <div class="chart-wrap">
+            <canvas id="lineChart" aria-label="Line chart showing temperature ranges"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>📊 Material Conductivity Index</h3>
+          <div class="chart-wrap">
+            <canvas id="doughnutChart" aria-label="Doughnut chart showing material conductivity"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Multi-Scale ──────────────────────────────────────────────── -->
+  <section id="scales" aria-label="Multi-scale architecture">
+    <div class="container">
+      <div class="section-label">System Architecture</div>
+      <h2 class="section-title">Multi-Scale Machine Design</h2>
+      <p class="section-desc">
+        Modern physics systems operate across multiple scales simultaneously,
+        from macro reactors down to quantum electron interactions.
+      </p>
+
+      <div class="scales-grid">
+        <div class="scale-card">
+          <div class="scale-icon">🏭</div>
+          <h3>Macro Layer</h3>
+          <p>Reactor chamber and hydrogen storage vessels operating at engineering scale.</p>
+        </div>
+        <div class="scale-card">
+          <div class="scale-icon">🔬</div>
+          <h3>Mesoscale Layer</h3>
+          <p>Liquid metal channels and acoustic field chamber for intermediate-scale effects.</p>
+        </div>
+        <div class="scale-card">
+          <div class="scale-icon">🧫</div>
+          <h3>Micro Layer</h3>
+          <p>Plasma vapor currents and static discharge electrodes at microscale precision.</p>
+        </div>
+        <div class="scale-card">
+          <div class="scale-icon">⚛️</div>
+          <h3>Quantum Layer</h3>
+          <p>Electron and ion interactions in plasma fields at quantum mechanical scales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Applications ─────────────────────────────────────────────── -->
+  <section id="applications" aria-label="Potential applications">
+    <div class="container">
+      <div class="section-label">Research Directions</div>
+      <h2 class="section-title">Potential Applications</h2>
+      <p class="section-desc">
+        Systems combining plasma, liquid metal, acoustic fields, and gas conduction open
+        pathways to novel experimental physics research.
+      </p>
+
+      <div class="apps-grid">
+        <div class="app-item">
+          <div class="app-icon">🌡️</div>
+          <div>
+            <h4>Waste Heat Recovery</h4>
+            <p>Capture ambient or industrial heat via ceramic-channel heat exchangers and convert with thermoelectric stages.</p>
+          </div>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🔋</div>
+          <div>
+            <h4>Hydrogen Fuel-Cell Storage</h4>
+            <p>Solid-state hydrogen adsorbent with potassium-electrolyte cells for safe, high-density clean energy storage.</p>
+          </div>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">⬛</div>
+          <div>
+            <h4>Carbon Electrode Supercapacitors</h4>
+            <p>Porous carbon mesh electrodes in inert-gas environments enable ultra-fast, low-loss charge and discharge cycles.</p>
+          </div>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🛸</div>
+          <div>
+            <h4>Acoustic Levitation Research</h4>
+            <p>Helium-filled standing-wave chambers allow contact-free manipulation of micro-particles and droplets.</p>
+          </div>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">💻</div>
+          <div>
+            <h4>Flexible Liquid-Metal Electronics</h4>
+            <p>Gallium–indium alloy channels within rubber-sealed ceramic housings enable reconfigurable, stretchable circuits.</p>
+          </div>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🧪</div>
+          <div>
+            <h4>Advanced Material Synthesis</h4>
+            <p>Aluminum oxide ceramics and carbon composites serve as substrates for nano-material deposition and sintering research.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="safety-banner" role="alert" aria-label="Safety information">
+        <span class="icon">✅</span>
+        <p>
+          <strong>Safe Material Stack:</strong> This architecture uses only non-hazardous,
+          commercially available materials — <strong>gallium–indium alloy, carbon electrodes,
+          helium, hydrogen in controlled fuel-cell contexts, potassium electrolyte,
+          aluminum oxide ceramics, and rubber seals</strong>. No radioactive, toxic-vapor,
+          or uncontrolled combustion materials are used. All concepts are suitable for
+          educational lab and research environments with standard safety practices.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ───────────────────────────────────────────────────── -->
+  <footer role="contentinfo">
+    <div class="footer-links" aria-label="Footer navigation">
+      <a href="https://www-infinity.github.io/Time-Machine/" target="_blank" rel="noopener noreferrer">Time Machine</a>
+      <a href="https://www-infinity.github.io/Ion/" target="_blank" rel="noopener noreferrer">Ion World</a>
+      <a href="https://www-infinity.github.io/Hydrogen-Radio/" target="_blank" rel="noopener noreferrer">Hydrogen Radio</a>
+      <a href="https://www-infinity.github.io/3d-world/" target="_blank" rel="noopener noreferrer">3D World</a>
+      <a href="https://www-infinity.github.io/Zero-Inertia/" target="_blank" rel="noopener noreferrer">Zero Inertia</a>
+      <a href="https://www-infinity.github.io/Theater/" target="_blank" rel="noopener noreferrer">Theater</a>
+      <a href="https://www-infinity.github.io/Unifier/" target="_blank" rel="noopener noreferrer">Unifier</a>
+    </div>
+    <p>⚡ Flux Capacitor — Multi-Layer Quantum Energy Module &nbsp;|&nbsp; www-infinity</p>
+  </footer>
+
+  <!-- ── JavaScript ────────────────────────────────────────────────── -->
+  <script>
+    /* ── Hamburger Menu ──────────────────────────────────────── */
+    (function () {
+      const btn = document.getElementById('hamburger');
+      const drawer = document.getElementById('nav-drawer');
+
+      function toggleDrawer(open) {
+        btn.classList.toggle('open', open);
+        drawer.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+      }
+
+      btn.addEventListener('click', function () {
+        toggleDrawer(!drawer.classList.contains('open'));
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function (e) {
+        if (!drawer.contains(e.target) && !btn.contains(e.target)) {
+          toggleDrawer(false);
+        }
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') toggleDrawer(false);
+      });
+
+      // Close on internal link click
+      drawer.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function () { toggleDrawer(false); });
+      });
+    }());
+
+    /* ── Hero Background Three.js ───────────────────────────── */
+    (function () {
+      const canvas = document.getElementById('canvas3d');
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+      camera.position.z = 4;
+
+      // Particle field
+      const geo = new THREE.BufferGeometry();
+      const count = 2000;
+      const positions = new Float32Array(count * 3);
+      for (let i = 0; i < count * 3; i++) {
+        positions[i] = (Math.random() - 0.5) * 14;
+      }
+      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const mat = new THREE.PointsMaterial({ color: 0x00e5ff, size: 0.035, transparent: true, opacity: 0.6 });
+      scene.add(new THREE.Points(geo, mat));
+
+      // Central glowing sphere
+      const sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(0.6, 32, 32),
+        new THREE.MeshBasicMaterial({ color: 0x7b2fff, wireframe: true, opacity: 0.4, transparent: true })
+      );
+      scene.add(sphere);
+
+      // Orbit rings
+      const ringColors = [0x00e5ff, 0x7b2fff, 0xff6b35, 0x39ff14];
+      ringColors.forEach(function (col, i) {
+        const ring = new THREE.Mesh(
+          new THREE.TorusGeometry(1.1 + i * 0.35, 0.008, 8, 80),
+          new THREE.MeshBasicMaterial({ color: col, transparent: true, opacity: 0.35 })
+        );
+        ring.rotation.x = Math.random() * Math.PI;
+        ring.rotation.y = Math.random() * Math.PI;
+        ring.userData.speed = (0.3 + Math.random() * 0.4) * (Math.random() < 0.5 ? 1 : -1);
+        scene.add(ring);
+      });
+
+      function resize() {
+        const hero = document.getElementById('hero');
+        const w = hero.clientWidth;
+        const h = hero.clientHeight;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const clock = new THREE.Clock();
+      (function animate() {
+        requestAnimationFrame(animate);
+        const t = clock.getElapsedTime();
+        sphere.rotation.y = t * 0.4;
+        sphere.rotation.x = t * 0.2;
+        scene.children.forEach(function (obj) {
+          if (obj.userData.speed) obj.rotation.z += obj.userData.speed * 0.006;
+        });
+        renderer.render(scene, camera);
+      }());
+    }());
+
+    /* ── Module Canvas Three.js ─────────────────────────────── */
+    (function () {
+      const canvas = document.getElementById('module-canvas');
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x03060f, 1);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(50, 2, 0.1, 100);
+      camera.position.set(0, 0, 6);
+
+      // Ambient + point lights
+      scene.add(new THREE.AmbientLight(0x1a1a2e, 2));
+      var pt1 = new THREE.PointLight(0x00e5ff, 2, 20);
+      pt1.position.set(4, 4, 4);
+      scene.add(pt1);
+      var pt2 = new THREE.PointLight(0x7b2fff, 1.5, 20);
+      pt2.position.set(-4, -4, 4);
+      scene.add(pt2);
+
+      var group = new THREE.Group();
+      scene.add(group);
+
+      // Layer definitions (5 safe layers + 2 structural rings)
+      var layerDefs = [
+        { radius: 0.35, color: 0xf59e0b, label: 'Thermal Core' },
+        { radius: 0.75, color: 0x3b82f6, label: 'H₂ Storage' },
+        { radius: 1.10, color: 0xa3a3a3, label: 'Carbon μI' },
+        { radius: 1.45, color: 0x06b6d4, label: 'He Acoustic' },
+        { radius: 1.80, color: 0xeab308, label: 'Ga Transfer' },
+        { radius: 2.15, color: 0xf97316, label: 'Al₂O₃ Shell' },
+        { radius: 2.50, color: 0x84cc16, label: 'Outer Rubber' }
+      ];
+
+      layerDefs.forEach(function (def) {
+        // Sphere shell (wireframe)
+        var sphereMesh = new THREE.Mesh(
+          new THREE.SphereGeometry(def.radius, 24, 16),
+          new THREE.MeshBasicMaterial({ color: def.color, wireframe: true, opacity: 0.18, transparent: true })
+        );
+        group.add(sphereMesh);
+
+        // Equatorial ring
+        var ringMesh = new THREE.Mesh(
+          new THREE.TorusGeometry(def.radius, 0.012, 6, 60),
+          new THREE.MeshBasicMaterial({ color: def.color, opacity: 0.7, transparent: true })
+        );
+        group.add(ringMesh);
+      });
+
+      // Central glowing core
+      var coreMesh = new THREE.Mesh(
+        new THREE.SphereGeometry(0.25, 32, 32),
+        new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.9, transparent: true })
+      );
+      group.add(coreMesh);
+
+      // Particle cloud
+      var pGeo = new THREE.BufferGeometry();
+      var pCount = 600;
+      var pPos = new Float32Array(pCount * 3);
+      for (var i = 0; i < pCount * 3; i++) {
+        pPos[i] = (Math.random() - 0.5) * 6;
+      }
+      pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+      group.add(new THREE.Points(pGeo, new THREE.PointsMaterial({ color: 0x00e5ff, size: 0.025, transparent: true, opacity: 0.5 })));
+
+      // Mouse drag interaction
+      var isDragging = false;
+      var prevMouse = { x: 0, y: 0 };
+      var rotVel = { x: 0, y: 0 };
+
+      function onDown(x, y) { isDragging = true; prevMouse = { x: x, y: y }; }
+      function onMove(x, y) {
+        if (!isDragging) return;
+        rotVel.y += (x - prevMouse.x) * 0.01;
+        rotVel.x += (y - prevMouse.y) * 0.01;
+        prevMouse = { x: x, y: y };
+      }
+      function onUp() { isDragging = false; }
+
+      canvas.addEventListener('mousedown', function (e) { onDown(e.clientX, e.clientY); });
+      canvas.addEventListener('mousemove', function (e) { onMove(e.clientX, e.clientY); });
+      canvas.addEventListener('mouseup', onUp);
+      canvas.addEventListener('touchstart', function (e) { if (e.touches[0]) onDown(e.touches[0].clientX, e.touches[0].clientY); });
+      canvas.addEventListener('touchmove', function (e) { if (e.touches[0]) { e.preventDefault(); onMove(e.touches[0].clientX, e.touches[0].clientY); } }, { passive: false });
+      canvas.addEventListener('touchend', onUp);
+
+      function resizeModule() {
+        var w = canvas.clientWidth;
+        var h = canvas.clientHeight || 500;
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+      resizeModule();
+      window.addEventListener('resize', resizeModule);
+
+      var clock = new THREE.Clock();
+      (function animate() {
+        requestAnimationFrame(animate);
+        var t = clock.getElapsedTime();
+
+        if (!isDragging) {
+          rotVel.y += (0.003 - rotVel.y) * 0.05;
+          rotVel.x += (0.001 - rotVel.x) * 0.05;
+        }
+        rotVel.x *= 0.92;
+        rotVel.y *= 0.92;
+
+        group.rotation.y += rotVel.y;
+        group.rotation.x += rotVel.x;
+
+        // Pulse core
+        var pulse = 0.25 + 0.06 * Math.sin(t * 3);
+        coreMesh.scale.setScalar(pulse / 0.25);
+
+        renderer.render(scene, camera);
+      }());
+    }());
+
+    /* ── Chart.js ───────────────────────────────────────────── */
+    (function () {
+      Chart.defaults.color = '#6b7fa3';
+      Chart.defaults.borderColor = '#1a2a4a';
+      Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+
+      var layers = ['Thermal Input', 'H₂ Storage', 'Carbon μI', 'He Acoustic', 'Ga Transfer'];
+      var colors = ['#f59e0b', '#3b82f6', '#6b7280', '#06b6d4', '#f59e0b'];
+      var safeColors = ['#f59e0b', '#3b82f6', '#a3a3a3', '#06b6d4', '#eab308'];
+
+      /* Bar Chart — Energy Density */
+      new Chart(document.getElementById('barChart'), {
+        type: 'bar',
+        data: {
+          labels: layers,
+          datasets: [{
+            label: 'Relative Energy Density',
+            data: [55, 95, 48, 38, 72],
+            backgroundColor: safeColors.map(function (c) { return c + 'bb'; }),
+            borderColor: safeColors,
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { beginAtZero: true, grid: { color: '#1a2a4a' }, ticks: { color: '#6b7fa3' } },
+            x: { grid: { display: false }, ticks: { color: '#6b7fa3', maxRotation: 45 } }
+          }
+        }
+      });
+
+      /* Radar Chart — Properties */
+      new Chart(document.getElementById('radarChart'), {
+        type: 'radar',
+        data: {
+          labels: ['Conductivity', 'Energy', 'Stability', 'Temp Range', 'Scalability', 'Safety'],
+          datasets: [
+            {
+              label: 'Gallium Transfer',
+              data: [88, 62, 72, 40, 85, 92],
+              borderColor: '#eab308',
+              backgroundColor: 'rgba(234,179,8,0.12)',
+              pointBackgroundColor: '#eab308'
+            },
+            {
+              label: 'H₂ Storage',
+              data: [55, 95, 75, 85, 70, 78],
+              borderColor: '#3b82f6',
+              backgroundColor: 'rgba(59,130,246,0.12)',
+              pointBackgroundColor: '#3b82f6'
+            },
+            {
+              label: 'He Acoustic',
+              data: [30, 38, 95, 75, 65, 99],
+              borderColor: '#06b6d4',
+              backgroundColor: 'rgba(6,182,212,0.12)',
+              pointBackgroundColor: '#06b6d4'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#6b7fa3', boxWidth: 12 } } },
+          scales: {
+            r: {
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3', backdropColor: 'transparent', stepSize: 20 },
+              pointLabels: { color: '#e2eaf8', font: { size: 11 } },
+              beginAtZero: true,
+              max: 100
+            }
+          }
+        }
+      });
+
+      /* Line Chart — Operating Temperature */
+      new Chart(document.getElementById('lineChart'), {
+        type: 'line',
+        data: {
+          labels: layers,
+          datasets: [
+            {
+              label: 'Min Operating Temp (°C)',
+              data: [20, -20, 15, -269, 29.8],
+              borderColor: '#00e5ff',
+              backgroundColor: 'rgba(0,229,255,0.08)',
+              tension: 0.4,
+              fill: true,
+              pointRadius: 4,
+              pointBackgroundColor: '#00e5ff'
+            },
+            {
+              label: 'Max Operating Temp (°C)',
+              data: [800, 200, 600, 50, 2403],
+              borderColor: '#f59e0b',
+              backgroundColor: 'rgba(245,158,11,0.08)',
+              tension: 0.4,
+              fill: true,
+              pointRadius: 4,
+              pointBackgroundColor: '#f59e0b'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { color: '#6b7fa3', boxWidth: 12 } } },
+          scales: {
+            y: { grid: { color: '#1a2a4a' }, ticks: { color: '#6b7fa3' } },
+            x: { grid: { display: false }, ticks: { color: '#6b7fa3', maxRotation: 45 } }
+          }
+        }
+      });
+
+      /* Doughnut Chart — Safety / Conductivity Index */
+      new Chart(document.getElementById('doughnutChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Gallium–Indium', 'Carbon Mesh', 'H₂ Fuel Cell', 'Helium Gas', 'Al₂O₃ Ceramic', 'Rubber Seals', 'K⁺ Electrolyte'],
+          datasets: [{
+            data: [88, 70, 75, 42, 30, 20, 60],
+            backgroundColor: ['#eab308cc', '#a3a3a3cc', '#3b82f6cc', '#06b6d4cc', '#f97316cc', '#84cc16cc', '#8b5cf6cc'],
+            borderColor:      ['#eab308',   '#a3a3a3',   '#3b82f6',   '#06b6d4',   '#f97316',   '#84cc16',   '#8b5cf6'],
+            borderWidth: 2,
+            hoverOffset: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '60%',
+          plugins: {
+            legend: {
+              position: 'right',
+              labels: { color: '#6b7fa3', boxWidth: 12, font: { size: 11 } }
+            }
+          }
+        }
+      });
+    }());
+  </script>
+</body>
+</html>
