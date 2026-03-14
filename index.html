@@ -1072,6 +1072,195 @@
 
     .color-note strong { color: var(--accent4); }
 
+    /* ── Quantum States, Entanglement & Fields ─────────────────── */
+    #quantum-states {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    #wavefunction-canvas {
+      display: block;
+      width: 100%;
+      height: 280px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #050a14;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Concept cards used across multiple sub-topics */
+    .qm-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .qm-card {
+      padding: 1.15rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: border-color 0.25s, transform 0.2s;
+    }
+
+    .qm-card:hover { border-color: var(--accent4); transform: translateY(-2px); }
+    .qm-card-icon  { font-size: 1.5rem; margin-bottom: 0.45rem; }
+    .qm-card h4    { font-size: 0.9rem; color: var(--text); margin-bottom: 0.35rem; }
+    .qm-card p     { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    /* Entanglement pair visual */
+    .entangle-pair {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .entangle-node {
+      flex: 0 0 auto;
+      width: 150px;
+      padding: 1.1rem 0.8rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      text-align: center;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .entangle-node .en-icon { font-size: 1.6rem; display: block; margin-bottom: 0.35rem; }
+    .entangle-node h5 { font-size: 0.88rem; color: var(--text); margin-bottom: 0.2rem; }
+
+    .entangle-line {
+      flex: 1;
+      min-width: 40px;
+      max-width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent4), var(--accent2));
+      position: relative;
+    }
+
+    .entangle-line::after {
+      content: 'entangled';
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.68rem;
+      color: var(--accent4);
+      white-space: nowrap;
+      letter-spacing: 0.05em;
+    }
+
+    /* Field metaphor grid */
+    .field-metaphor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .field-card {
+      padding: 1.15rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .field-card-badge {
+      display: inline-block;
+      font-size: 0.67rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+
+    .field-card-badge.analogy  { background: rgba(57,255,20,0.12);   color: var(--accent4); }
+    .field-card-badge.physics  { background: rgba(123,47,255,0.15);  color: var(--accent2); }
+
+    .field-card h4 { font-size: 0.9rem; color: var(--text); margin-bottom: 0.35rem; }
+    .field-card p  { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    /* Where the metaphor breaks — styled list */
+    .metaphor-breaks {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .metaphor-break-item {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      padding: 0.85rem 1rem;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-left: 3px solid #ef4444;
+      font-size: 0.84rem;
+    }
+
+    .metaphor-break-item .mb-icon { flex-shrink: 0; font-size: 1rem; margin-top: 1px; }
+    .metaphor-break-item strong   { color: var(--text); }
+    .metaphor-break-item p        { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.79rem; }
+
+    /* Physics translation block */
+    .physics-translation {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent3);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .physics-translation .pt-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent3);
+      margin-bottom: 0.6rem;
+    }
+
+    .physics-translation blockquote {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text);
+      font-style: italic;
+      line-height: 1.7;
+      border: none;
+      padding: 0;
+    }
+
+    /* Quantum fields teaser */
+    .qf-teaser {
+      background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(99,179,237,0.08));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .qf-teaser-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent4);
+      margin-bottom: 0.55rem;
+    }
+
+    .qf-teaser h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 0.65rem; }
+    .qf-teaser p  { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
+
     /* ── Footer ────────────────────────────────────────────────── */
     footer {
       background: var(--surface);
@@ -1376,6 +1565,7 @@
       <li><a href="#matter-binding"><span class="emoji">🧲</span> Matter &amp; Binding</a></li>
       <li><a href="#cosmic-physics"><span class="emoji">🌍</span> Cosmic Physics</a></li>
       <li><a href="#hydrogen-host"><span class="emoji">📡</span> Hydrogen Host</a></li>
+      <li><a href="#quantum-states"><span class="emoji">⚛️</span> Quantum States</a></li>
     </ul>
   </aside>
 
@@ -2793,6 +2983,329 @@
     </div>
   </section>
 
+  <!-- ── Quantum States, Entanglement & Fields ───────────────────── -->
+  <section id="quantum-states" aria-label="Quantum states, superposition, entanglement and quantum fields">
+    <div class="container">
+
+      <div class="section-label">Quantum Mechanics</div>
+      <h2 class="section-title">Electronic States, Entanglement &amp; Quantum Fields</h2>
+      <p class="section-desc">
+        Kris's "connections through electronic or quantum states" intuition is closer to real
+        physics than it might first sound. Quantum mechanics describes exactly what he
+        was reaching for — here's how current science frames each idea.
+      </p>
+
+      <!-- Wavefunction probability-cloud canvas -->
+      <canvas id="wavefunction-canvas"
+        aria-label="Animated probability cloud showing electron wavefunction distribution around a nucleus"></canvas>
+
+      <!-- Topic 1: Electronic states / wavefunctions / superposition -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">1 — Electronic States &amp; Wavefunctions</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.25rem;">
+        An electron isn't a tiny ball orbiting a nucleus like a planet. It is described by a
+        <strong style="color:var(--accent2);">wavefunction</strong> — a mathematical object that
+        encodes the <em>probability amplitude</em> of finding the electron at any location. The
+        physical square of that amplitude gives you a probability density — a cloud of
+        "where it could be detected."
+      </p>
+
+      <div class="qm-cards" aria-label="Key concepts: wavefunctions and superposition">
+
+        <div class="qm-card">
+          <div class="qm-card-icon">🌊</div>
+          <h4>Wavefunction ψ</h4>
+          <p>
+            A complex-valued function over space and time. Squaring its magnitude (|ψ|²) gives
+            the probability of detecting the electron at each location. It is not a physical wave
+            — it's a description of possibilities.
+          </p>
+        </div>
+
+        <div class="qm-card">
+          <div class="qm-card-icon">🔮</div>
+          <h4>Superposition</h4>
+          <p>
+            A quantum system can exist in multiple states simultaneously until it interacts with
+            something. Kris's phrase "probability of being in many places at one time" is exactly
+            this — a standard feature of quantum mechanics.
+          </p>
+        </div>
+
+        <div class="qm-card">
+          <div class="qm-card-icon">🎯</div>
+          <h4>Measurement &amp; Collapse</h4>
+          <p>
+            When measured, the wavefunction "collapses" to a single outcome. Before measurement,
+            the electron genuinely has no single definite position — the probability cloud
+            is the most complete description nature allows.
+          </p>
+        </div>
+
+        <div class="qm-card">
+          <div class="qm-card-icon">⚡</div>
+          <h4>Energy Levels</h4>
+          <p>
+            Electrons in atoms occupy discrete energy levels — orbitals like 1s, 2p, 3d. Jumping
+            between levels absorbs or emits a photon with energy exactly equal to the gap. This
+            is why each element has a unique spectral "fingerprint."
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Topic 2: Probability distributions / many possible configurations -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">2 — Many Possible Configurations</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.25rem;">
+        A system of particles can exist in many possible quantum states simultaneously until
+        interactions or measurements constrain it. Physics describes these using
+        <strong style="color:var(--accent1);">probability distributions</strong> rather than
+        fixed positions — but the probability cloud is a <em>mathematical description</em>,
+        not a physical object spreading everywhere.
+      </p>
+
+      <div class="qm-cards" aria-label="Concepts: probability distributions and quantum configurations">
+
+        <div class="qm-card">
+          <div class="qm-card-icon">📊</div>
+          <h4>Probability Density</h4>
+          <p>
+            |ψ|² at each point in space gives the probability of detecting a particle there.
+            The particle doesn't exist in multiple places; the description of it is spread
+            across multiple possibilities.
+          </p>
+        </div>
+
+        <div class="qm-card">
+          <div class="qm-card-icon">🌐</div>
+          <h4>Hilbert Space</h4>
+          <p>
+            All possible quantum states of a system form a mathematical space called Hilbert
+            space. A superposition is a linear combination of basis states in this space —
+            well-defined mathematics, not mysticism.
+          </p>
+        </div>
+
+        <div class="qm-card">
+          <div class="qm-card-icon">🔬</div>
+          <h4>Decoherence</h4>
+          <p>
+            In everyday matter, quantum superpositions collapse almost instantly due to
+            interactions with the environment — a process called decoherence. This is why
+            large objects have definite positions.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Topic 3: Entanglement -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">3 — Connections Between Particles: Entanglement</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        Particles can become <strong style="color:var(--accent4);">entangled</strong> — their quantum states are correlated so that a
+        measurement on one instantly determines what you'll find when you measure the other,
+        regardless of the distance between them. That does look like a "connection."
+      </p>
+
+      <div class="entangle-pair" aria-label="Visual of two entangled particles">
+        <div class="entangle-node">
+          <span class="en-icon">⚛️</span>
+          <h5>Particle A</h5>
+          spin state: ↑ or ↓ (undefined until measured)
+        </div>
+        <div class="entangle-line"></div>
+        <div class="entangle-node">
+          <span class="en-icon">⚛️</span>
+          <h5>Particle B</h5>
+          spin state: opposite of A (instantly determined)
+        </div>
+      </div>
+
+      <div class="qm-cards" aria-label="What entanglement is and is not">
+
+        <div class="qm-card">
+          <div class="qm-card-icon">🔗</div>
+          <h4>Shared State Description</h4>
+          <p>
+            Entanglement is a <em>correlation</em> in the joint quantum state of two particles —
+            not a physical rope between them. The wavefunction of the pair cannot be separated
+            into two independent wavefunctions.
+          </p>
+        </div>
+
+        <div class="qm-card">
+          <div class="qm-card-icon">🚫</div>
+          <h4>No Faster-Than-Light Signalling</h4>
+          <p>
+            While correlations appear instantly across any distance, no energy or information
+            can be transmitted faster than light. The measurement results are random — you can't
+            control what your partner sees.
+          </p>
+        </div>
+
+        <div class="qm-card">
+          <div class="qm-card-icon">🌌</div>
+          <h4>Not a Universal Web</h4>
+          <p>
+            Entanglement requires a shared history — two particles must have interacted. It
+            doesn't create a permanent link between all atoms everywhere. Entangled states also
+            decohere quickly in warm, noisy environments.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Topic 4: Why the string metaphor feels natural -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">4 — Why the "String" Metaphor Feels Natural</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        The "fingers branching into more fingers" and "strings connecting everything" image
+        closely matches several genuine ways physicists visualize quantum and classical fields.
+        Modern physics says particles themselves are
+        <strong style="color:var(--accent3);">excitations of underlying fields that fill all of space</strong>.
+      </p>
+
+      <div class="field-metaphor-grid" aria-label="How string and field metaphors map to real physics concepts">
+
+        <div class="field-card">
+          <span class="field-card-badge analogy">intuition</span>
+          <h4>Strings connecting things</h4>
+          <p>Kris imagines invisible threads linking atoms across space, carrying energy between them.</p>
+        </div>
+
+        <div class="field-card">
+          <span class="field-card-badge physics">physics</span>
+          <h4>Electromagnetic field lines</h4>
+          <p>
+            Field lines in electromagnetism literally look like threads radiating from charges.
+            They're a visualization of the direction and strength of the EM field at each point.
+          </p>
+        </div>
+
+        <div class="field-card">
+          <span class="field-card-badge analogy">intuition</span>
+          <h4>Probability spreading through space</h4>
+          <p>The electron wavefunction extends outward, touching many places before measurement.</p>
+        </div>
+
+        <div class="field-card">
+          <span class="field-card-badge physics">physics</span>
+          <h4>Wavefunction spreading through space</h4>
+          <p>
+            The electron's wavefunction is genuinely non-local — it can have amplitude far from
+            the nucleus. Interference of these amplitudes produces observable chemistry.
+          </p>
+        </div>
+
+        <div class="field-card">
+          <span class="field-card-badge analogy">intuition</span>
+          <h4>Everything embedded in a shared medium</h4>
+          <p>All matter is woven through a common fabric that carries energy between particles.</p>
+        </div>
+
+        <div class="field-card">
+          <span class="field-card-badge physics">physics</span>
+          <h4>Quantum fields</h4>
+          <p>
+            In Quantum Field Theory (QFT), every particle type corresponds to an underlying
+            quantum field filling all of space. An electron is a ripple in the electron field;
+            a photon is a ripple in the electromagnetic field.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Topic 5: Where the metaphor breaks -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">5 — Where the Metaphor Breaks</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.1rem;">
+        The string intuition doesn't align with physics when it suggests hidden physical threads
+        linking all atoms, or heat travelling through those threads independently of known
+        energy carriers.
+      </p>
+
+      <ul class="metaphor-breaks" aria-label="Ways the string metaphor diverges from current physics">
+
+        <li class="metaphor-break-item">
+          <span class="mb-icon">❌</span>
+          <div>
+            <strong>All atoms directly linked through hidden strings</strong>
+            <p>Fields permeate space but don't create permanent bilateral threads between every pair of atoms. Interactions are local and mediated by field quanta (photons, gluons, W/Z bosons, gravitons).</p>
+          </div>
+        </li>
+
+        <li class="metaphor-break-item">
+          <span class="mb-icon">❌</span>
+          <div>
+            <strong>Heat travelling through quantum connections independently</strong>
+            <p>Even in quantum theory, energy transfer still requires photons (radiation), phonons (lattice vibrations), or kinetic energy of moving particles. There is no separate "quantum heat channel."</p>
+          </div>
+        </li>
+
+        <li class="metaphor-break-item">
+          <span class="mb-icon">❌</span>
+          <div>
+            <strong>Entanglement as a real-time energy conduit</strong>
+            <p>Entanglement correlates measurement outcomes but cannot be used to send energy or information. No work can be extracted by exploiting entanglement alone.</p>
+          </div>
+        </li>
+
+      </ul>
+
+      <!-- Topic 6: Physics-language translation + quantum fields teaser -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">6 — What You Were Basically Saying</h3>
+
+      <div class="physics-translation" aria-label="Physics-language translation of Kris's intuition">
+        <div class="pt-label">Physics translation of the intuition</div>
+        <blockquote>
+          "Matter consists of particles whose quantum states extend through space, and interactions
+          between those states allow energy to be exchanged when the system's configuration changes."
+        </blockquote>
+      </div>
+
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.5rem;">
+        That statement keeps the core intuition intact — the non-local character of wavefunctions,
+        the coupling between quantum states, the release of energy on configuration change — while
+        remaining consistent with known physics.
+      </p>
+
+      <!-- Charts -->
+      <div class="flame-chart-grid" style="margin-bottom:2.5rem;">
+        <div class="chart-card">
+          <h3>🌊 Electron Energy Levels in Hydrogen (eV)</h3>
+          <div class="chart-wrap">
+            <canvas id="energyLevelsChart" aria-label="Bar chart of electron energy levels in hydrogen atom"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>🔗 Quantum vs Classical Description</h3>
+          <div class="chart-wrap">
+            <canvas id="qmClassicalChart" aria-label="Radar chart comparing quantum and classical descriptions of matter"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quantum fields teaser -->
+      <div class="qf-teaser" aria-label="Quantum fields teaser section">
+        <div class="qf-teaser-label">Going deeper</div>
+        <h3>⚛️ Quantum Fields — The Universe as Vibrating Fields</h3>
+        <p>
+          In Quantum Field Theory — the most precise physical theory ever tested — the universe
+          is not made of particles in empty space. Instead, it is made of
+          <strong style="color:var(--accent4);">quantum fields that fill all of space and time</strong>.
+          Particles are localized vibrations (excitations) in those fields. The electron field,
+          the quark field, the Higgs field, the electromagnetic field — all of them exist
+          everywhere, overlapping, and particles emerge from their interactions.
+        </p>
+        <p style="margin-top:0.85rem;">
+          That idea — everything embedded in a shared, space-filling medium that carries and
+          exchanges energy — is actually very close to the "strings and connections everywhere"
+          intuition Kris described. The difference is that in QFT, the medium is a
+          <em>quantum field</em>, and the interactions obey precise mathematical rules that
+          have been verified to extraordinary precision (quantum electrodynamics matches
+          experiment to 10 significant figures).
+        </p>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── Footer ───────────────────────────────────────────────────── -->
   <footer role="contentinfo">
     <div class="footer-links" aria-label="Footer navigation">
@@ -3950,6 +4463,198 @@
           document.body.removeChild(ta);
           btnCopy.textContent = '✅ Copied!';
           setTimeout(function () { btnCopy.textContent = '📋 Copy Emoji ID'; }, 1800);
+        }
+      });
+    }());
+
+    /* ── Wavefunction Probability-Cloud Canvas ──────────────── */
+    (function () {
+      var canvas = document.getElementById('wavefunction-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H, CX, CY;
+
+      function resize() {
+        W = canvas.width  = canvas.clientWidth;
+        H = canvas.height = canvas.clientHeight;
+        CX = W / 2; CY = H / 2;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      /* Build probability-cloud points for a hydrogen 2p-like orbital */
+      var NPOINTS = 500;
+      var cloud = [];
+      for (var i = 0; i < NPOINTS; i++) {
+        var r   = 20 + Math.pow(Math.random(), 0.5) * 120;
+        var phi = Math.random() * Math.PI * 2;
+        /* 2p-orbital: probability density ∝ r² e^{-r/a₀} cos²θ */
+        /* For a 2D visualisation we use a dumbbell shape */
+        var lobe = Math.random() < 0.5 ? 1 : -1;
+        var spread = 0.35 + Math.random() * 0.3;
+        cloud.push({
+          angle:  phi,
+          r:      r,
+          lobe:   lobe,
+          spread: spread,
+          alpha:  0.3 + Math.random() * 0.5,
+          size:   0.8 + Math.random() * 2
+        });
+      }
+
+      /* Three orbiting "snapshots" showing particle could be anywhere */
+      var NELECTRONS = 3;
+      var electrons  = [];
+      for (var j = 0; j < NELECTRONS; j++) {
+        electrons.push({
+          angle: (j / NELECTRONS) * Math.PI * 2,
+          speed: 0.019 + j * 0.007,
+          r:     55 + j * 22
+        });
+      }
+
+      var t = 0;
+      (function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, W, H);
+        t += 0.016;
+
+        /* Draw probability cloud — two lobes */
+        cloud.forEach(function (pt) {
+          var lx = CX + pt.lobe * Math.cos(pt.angle) * pt.r * pt.spread;
+          var ly = CY + Math.sin(pt.angle) * pt.r * 0.5;
+          /* Pulse the alpha gently */
+          var a = pt.alpha * (0.7 + 0.3 * Math.sin(t * 0.6 + pt.r * 0.04));
+          ctx.fillStyle = 'rgba(147,197,253,' + a + ')';
+          ctx.beginPath();
+          ctx.arc(lx, ly, pt.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        /* Nucleus */
+        var ng = ctx.createRadialGradient(CX, CY, 0, CX, CY, 14);
+        ng.addColorStop(0,   'rgba(251,191,36,1)');
+        ng.addColorStop(0.5, 'rgba(245,158,11,0.6)');
+        ng.addColorStop(1,   'rgba(0,0,0,0)');
+        ctx.fillStyle = ng;
+        ctx.beginPath(); ctx.arc(CX, CY, 14, 0, Math.PI * 2); ctx.fill();
+
+        /* Dashed orbital guide lines */
+        ctx.setLineDash([3, 6]);
+        ctx.lineWidth = 0.6;
+        electrons.forEach(function (e) {
+          ctx.strokeStyle = 'rgba(99,179,237,0.18)';
+          ctx.beginPath();
+          ctx.ellipse(CX, CY, e.r, e.r * 0.45, 0, 0, Math.PI * 2);
+          ctx.stroke();
+        });
+        ctx.setLineDash([]);
+
+        /* Moving electron probability markers */
+        electrons.forEach(function (e) {
+          e.angle += e.speed * 0.016;
+          var ex = CX + Math.cos(e.angle) * e.r;
+          var ey = CY + Math.sin(e.angle) * e.r * 0.45;
+          var eg = ctx.createRadialGradient(ex, ey, 0, ex, ey, 8);
+          eg.addColorStop(0,   'rgba(147,197,253,0.9)');
+          eg.addColorStop(0.5, 'rgba(99,179,237,0.45)');
+          eg.addColorStop(1,   'rgba(0,0,0,0)');
+          ctx.fillStyle = eg;
+          ctx.beginPath(); ctx.arc(ex, ey, 8, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = 'rgba(200,230,255,0.95)';
+          ctx.beginPath(); ctx.arc(ex, ey, 2.5, 0, Math.PI * 2); ctx.fill();
+        });
+
+        /* Labels */
+        ctx.font = '10px Consolas, monospace';
+        ctx.fillStyle = 'rgba(107,127,163,0.65)';
+        ctx.fillText('🌊 |ψ|² probability cloud  •  ⚡ electron orbital paths  •  🎯 nucleus', 10, H - 10);
+      }());
+    }());
+
+    /* ── Quantum Charts ─────────────────────────────────────── */
+    (function () {
+      /* Hydrogen energy levels */
+      new Chart(document.getElementById('energyLevelsChart'), {
+        type: 'bar',
+        data: {
+          labels: ['n=1 (ground)', 'n=2', 'n=3', 'n=4', 'n=5', 'n=∞ (ionised)'],
+          datasets: [{
+            label: 'Energy (eV)',
+            data: [-13.6, -3.4, -1.51, -0.85, -0.54, 0],
+            backgroundColor: [
+              'rgba(251,191,36,0.85)',
+              'rgba(251,146,60,0.8)',
+              'rgba(245,101,101,0.75)',
+              'rgba(99,179,237,0.75)',
+              'rgba(96,165,250,0.75)',
+              'rgba(167,139,250,0.7)'
+            ],
+            borderColor: ['#fbbf24','#fb923c','#f56565','#63b3ed','#60a5fa','#a78bfa'],
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: function(c) { return c.parsed.y + ' eV'; } } }
+          },
+          scales: {
+            y: {
+              title: { display: true, text: 'Energy (eV)', color: '#6b7fa3' },
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3' }
+            },
+            x: { grid: { display: false }, ticks: { color: '#6b7fa3', font: { size: 10 } } }
+          }
+        }
+      });
+
+      /* Radar: QM vs classical description */
+      new Chart(document.getElementById('qmClassicalChart'), {
+        type: 'radar',
+        data: {
+          labels: ['Definite position', 'Wave-like behaviour', 'Superposition', 'Entanglement', 'Discrete energy', 'Determinism'],
+          datasets: [
+            {
+              label: 'Classical Physics',
+              data: [10, 2, 0, 0, 3, 9],
+              backgroundColor: 'rgba(251,191,36,0.15)',
+              borderColor: '#fbbf24',
+              pointBackgroundColor: '#fbbf24',
+              borderWidth: 2
+            },
+            {
+              label: 'Quantum Mechanics',
+              data: [2, 9, 10, 9, 10, 3],
+              backgroundColor: 'rgba(99,179,237,0.15)',
+              borderColor: '#63b3ed',
+              pointBackgroundColor: '#63b3ed',
+              borderWidth: 2
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { color: '#6b7fa3', font: { size: 11 }, padding: 10 }
+            }
+          },
+          scales: {
+            r: {
+              min: 0, max: 10,
+              grid: { color: '#1a2a4a' },
+              angleLines: { color: '#1a2a4a' },
+              pointLabels: { color: '#6b7fa3', font: { size: 10 } },
+              ticks: { display: false }
+            }
+          }
         }
       });
     }());
