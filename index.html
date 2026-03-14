@@ -1455,6 +1455,226 @@
     .plasma-teaser h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 0.65rem; }
     .plasma-teaser p  { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
 
+    /* ── Vine / Node Timeline ───────────────────────────────────── */
+    #vine-node-timeline {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Main vine canvas */
+    #vine-canvas {
+      display: block;
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #050a14;
+      margin-bottom: 2.5rem;
+    }
+
+    /* State chain row */
+    .state-chain {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .state-node {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 1.1rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      min-width: 130px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .state-node:hover { border-color: var(--accent1); transform: translateY(-2px); }
+    .state-node-badge {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .state-node.alpha  .state-node-badge { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .state-node.present .state-node-badge { background: rgba(0,229,255,0.15); color: var(--accent1); }
+    .state-node.gamma  .state-node-badge { background: rgba(123,47,255,0.15); color: var(--accent2); }
+    .state-node-icon { font-size: 1.4rem; margin-bottom: 0.35rem; }
+    .state-node h4 { font-size: 0.84rem; color: var(--text); text-align: center; margin-bottom: 0.25rem; }
+    .state-node p  { font-size: 0.77rem; color: var(--muted); text-align: center; line-height: 1.5; }
+
+    .state-arrow {
+      flex-shrink: 0;
+      font-size: 1.2rem;
+      color: var(--muted);
+      padding: 0 0.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Branch tree diagram */
+    .branch-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    #branch-canvas {
+      width: 320px;
+      height: 220px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #050a14;
+    }
+
+    .branch-facts {
+      flex: 1;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .branch-fact {
+      padding: 0.75rem 1rem;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .branch-fact strong { color: var(--text); display: block; margin-bottom: 0.15rem; }
+
+    /* Time-travel constraints */
+    .constraint-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .constraint-card {
+      padding: 1.1rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-left: 4px solid #ef4444;
+      transition: border-color 0.2s;
+    }
+
+    .constraint-card:hover { border-left-color: var(--accent1); }
+    .constraint-card-icon { font-size: 1.35rem; margin-bottom: 0.4rem; }
+    .constraint-card h4   { font-size: 0.88rem; color: var(--text); margin-bottom: 0.3rem; }
+    .constraint-card p    { font-size: 0.79rem; color: var(--muted); line-height: 1.55; }
+
+    /* Feedback loop flow */
+    .feedback-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 2.5rem;
+    }
+
+    .feedback-step {
+      width: 100%;
+      max-width: 500px;
+      padding: 0.9rem 1.2rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      text-align: center;
+    }
+
+    .feedback-step-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+      font-weight: 700;
+    }
+
+    .feedback-step.fs-past    .feedback-step-label { color: #fbbf24; }
+    .feedback-step.fs-present .feedback-step-label { color: var(--accent1); }
+    .feedback-step.fs-future  .feedback-step-label { color: var(--accent2); }
+    .feedback-step.fs-loop    .feedback-step-label { color: var(--accent4); }
+
+    .feedback-step h4 { font-size: 0.88rem; color: var(--text); margin-bottom: 0.2rem; }
+    .feedback-step p  { font-size: 0.79rem; color: var(--muted); line-height: 1.5; }
+
+    .feedback-arrow-down {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1;
+      padding: 0.2rem 0;
+    }
+
+    /* Expansion analogy block */
+    .expansion-block {
+      background: linear-gradient(135deg, rgba(251,191,36,0.05), rgba(123,47,255,0.07));
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .expansion-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #fbbf24;
+      margin-bottom: 0.5rem;
+    }
+
+    .expansion-block h3 { font-size: 1.05rem; color: var(--text); margin-bottom: 0.65rem; }
+    .expansion-block p  { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
+
+    /* Vine translation summary */
+    .vine-summary {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .vine-summary-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent4);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .vine-translation-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.84rem;
+    }
+
+    .vine-translation-row:last-child { border-bottom: none; }
+    .vtr-kris    { color: #fbbf24; min-width: 150px; flex-shrink: 0; }
+    .vtr-arrow   { color: var(--muted); flex-shrink: 0; }
+    .vtr-physics { color: var(--text); }
+
     /* ── Footer ────────────────────────────────────────────────── */
     footer {
       background: var(--surface);
@@ -1761,6 +1981,7 @@
       <li><a href="#hydrogen-host"><span class="emoji">📡</span> Hydrogen Host</a></li>
       <li><a href="#quantum-states"><span class="emoji">⚛️</span> Quantum States</a></li>
       <li><a href="#plasma-cosmos"><span class="emoji">🌩️</span> Plasma Cosmos</a></li>
+      <li><a href="#vine-node-timeline"><span class="emoji">🌿</span> Vine/Node Timeline</a></li>
     </ul>
   </aside>
 
@@ -3865,6 +4086,291 @@
     </div>
   </section>
 
+  <!-- ── Vine / Node Timeline ─────────────────────────────────────── -->
+  <section id="vine-node-timeline" aria-label="Vine and node timeline physics: connected states, branching futures, and feedback loops">
+    <div class="container">
+
+      <div class="section-label">Timeline Physics &amp; Philosophy</div>
+      <h2 class="section-title">Vine / Node Timeline — Past, Present &amp; Gamma</h2>
+      <p class="section-desc">
+        Kris's vine model — node → segment → node → segment → node — maps naturally onto
+        how physics describes a system moving through states over time. Here we translate
+        that metaphor into its closest real-world equivalents and build the visual model
+        Kris is imagining.
+      </p>
+
+      <!-- Interactive vine/node canvas -->
+      <canvas id="vine-canvas"
+        aria-label="Animated vine-and-node timeline showing alpha past node, present exchange node, and branching gamma future nodes connected by glowing segments"></canvas>
+
+      <!-- Topic 1: Timeline as connected states -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">1 — Timeline as Connected States</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.1rem;">
+        In physics a system is described as moving through <strong style="color:var(--accent1);">states over time</strong>.
+        Each state is determined by the previous one plus the laws of physics — exactly like
+        a vine where each node grows from the segment before it.
+      </p>
+
+      <div class="state-chain" aria-label="Vine node chain from alpha past through present exchange to gamma future">
+
+        <div class="state-node alpha">
+          <div class="state-node-badge">alpha</div>
+          <div class="state-node-icon">🌱</div>
+          <h4>Past State</h4>
+          <p>The origin node. All later states trace back to here.</p>
+        </div>
+
+        <div class="state-arrow">→</div>
+
+        <div class="state-node alpha" style="background:rgba(251,191,36,0.05);">
+          <div class="state-node-badge">state₁</div>
+          <div class="state-node-icon">🔗</div>
+          <h4>Segment</h4>
+          <p>The vine segment — governed by physical laws.</p>
+        </div>
+
+        <div class="state-arrow">→</div>
+
+        <div class="state-node present">
+          <div class="state-node-badge">present</div>
+          <div class="state-node-icon">⚡</div>
+          <h4>Exchange Node</h4>
+          <p>Where past information meets future possibilities.</p>
+        </div>
+
+        <div class="state-arrow">→</div>
+
+        <div class="state-node gamma" style="background:rgba(123,47,255,0.05);">
+          <div class="state-node-badge">state₃</div>
+          <div class="state-node-icon">🔗</div>
+          <h4>Segment</h4>
+          <p>The outgoing vine — determined by decisions now.</p>
+        </div>
+
+        <div class="state-arrow">→</div>
+
+        <div class="state-node gamma">
+          <div class="state-node-badge">gamma</div>
+          <div class="state-node-icon">🌟</div>
+          <h4>Future Node</h4>
+          <p>One of many possible future states — not yet fixed.</p>
+        </div>
+
+      </div>
+
+      <!-- Topic 2: Many possible futures -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">2 — Many Possible Futures</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        Quantum mechanics shows that a system can have
+        <strong style="color:var(--accent2);">multiple possible future outcomes</strong>
+        until an interaction selects one. The vine doesn't grow into a single
+        gamma node — it branches into a fan of possibilities.
+      </p>
+
+      <div class="branch-wrap">
+        <canvas id="branch-canvas"
+          aria-label="Animated branching futures diagram from a single present node into multiple gamma outcomes"></canvas>
+
+        <div class="branch-facts" aria-label="Key facts about quantum branching and possible futures">
+          <div class="branch-fact">
+            <strong>Superposition</strong>
+            Before a measurement or interaction, a quantum system exists in a superposition of all valid future paths simultaneously.
+          </div>
+          <div class="branch-fact">
+            <strong>Wavefunction Collapse</strong>
+            An interaction — observation, collision, environment — selects one branch, collapsing the superposition into a definite outcome.
+          </div>
+          <div class="branch-fact">
+            <strong>No Future Self "Pushing" You</strong>
+            Branching means futures are open possibilities, not entities that exist and push backward in time to influence the present.
+          </div>
+          <div class="branch-fact">
+            <strong>Classical Branching Too</strong>
+            Even without quantum effects, small differences in initial conditions (chaos) cause different classical futures — the vine can split just from uncertainty.
+          </div>
+        </div>
+      </div>
+
+      <!-- Topic 3: Why time travel is hard -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">3 — Why Time Travel Is Hard</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.1rem;">
+        In Kris's vine model, a gamma node could in principle replace or influence an alpha node.
+        In known physics, sending information or matter <em>backward</em> along the vine runs
+        into hard constraints.
+      </p>
+
+      <div class="constraint-grid" aria-label="Physics constraints on backward time travel">
+
+        <div class="constraint-card">
+          <div class="constraint-card-icon">⏱️</div>
+          <h4>Causality</h4>
+          <p>Cause must precede effect. A signal from a gamma node arriving at an alpha node before the cause existed creates a logical paradox (grandfather paradox).</p>
+        </div>
+
+        <div class="constraint-card">
+          <div class="constraint-card-icon">⚡</div>
+          <h4>Energy Conditions</h4>
+          <p>General relativity's energy conditions (null, weak, dominant) prevent exotic matter configurations needed for most time-machine proposals.</p>
+        </div>
+
+        <div class="constraint-card">
+          <div class="constraint-card-icon">🚀</div>
+          <h4>Relativity Limits</h4>
+          <p>Special relativity prevents matter and information from traveling faster than light. Without FTL travel, you can't get "behind" a light cone to reach the past.</p>
+        </div>
+
+        <div class="constraint-card">
+          <div class="constraint-card-icon">🌀</div>
+          <h4>Closed Timelike Curves</h4>
+          <p>CTCs are theoretical solutions in GR (e.g., Gödel metric, Kerr spacetime) that allow world-lines looping back in time — but require conditions not found in ordinary matter.</p>
+        </div>
+
+        <div class="constraint-card">
+          <div class="constraint-card-icon">🔒</div>
+          <h4>Chronology Protection</h4>
+          <p>Hawking's conjecture: quantum effects at the Planck scale would automatically prevent CTCs from forming in any realistic spacetime.</p>
+        </div>
+
+        <div class="constraint-card">
+          <div class="constraint-card-icon">🧩</div>
+          <h4>Information Paradox</h4>
+          <p>If gamma information reaches alpha, which version of history is "real"? Self-consistent loops (Novikov) are mathematically possible but physically untested.</p>
+        </div>
+
+      </div>
+
+      <!-- Topic 4: Feedback from predictions -->
+      <h3 style="font-size:1.05rem; margin-bottom:0.75rem; color:var(--text);">4 — The Useful Part: Feedback From Predictions</h3>
+      <p style="font-size:0.87rem; color:var(--muted); margin-bottom:1.2rem;">
+        Even though gamma can't physically push alpha, there's a powerful practical version
+        of exactly that idea: <strong style="color:var(--accent4);">our model of the future
+        influences what we do now</strong>. This is how planning, AI control systems, and
+        engineering optimization work.
+      </p>
+
+      <div class="feedback-flow" aria-label="Prediction feedback loop: past informs present, prediction of future adjusts behavior">
+
+        <div class="feedback-step fs-past">
+          <div class="feedback-step-label">alpha — past</div>
+          <h4>🌱 Past State (alpha node)</h4>
+          <p>All historical data — what happened, what was learned.</p>
+        </div>
+
+        <div class="feedback-arrow-down">↓</div>
+
+        <div class="feedback-step fs-present">
+          <div class="feedback-step-label">present — exchange node</div>
+          <h4>⚡ Present State</h4>
+          <p>Where information from alpha is processed. Decisions are made here.</p>
+        </div>
+
+        <div class="feedback-arrow-down">↓</div>
+
+        <div class="feedback-step fs-future">
+          <div class="feedback-step-label">gamma — prediction</div>
+          <h4>🌟 Predicted Future (gamma model)</h4>
+          <p>A forward simulation — not the real future, but a model of likely gamma outcomes.</p>
+        </div>
+
+        <div class="feedback-arrow-down">↓</div>
+
+        <div class="feedback-step fs-loop">
+          <div class="feedback-step-label">feedback — vine closes the loop</div>
+          <h4>🔄 Adjust Present Behavior</h4>
+          <p>The gamma prediction feeds back to the present node, changing what action is taken — the vine shapes its own next segment.</p>
+        </div>
+
+      </div>
+
+      <!-- Charts row -->
+      <div class="flame-chart-grid">
+        <div class="chart-card">
+          <h3>🌿 Vine/Node Metaphor vs Physics Equivalent</h3>
+          <div class="chart-wrap">
+            <canvas id="vineMapChart" aria-label="Horizontal bar chart showing correspondence strength between Kris's vine model and physics concepts"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h3>⏱️ Time Scales: From Quantum to Cosmic</h3>
+          <div class="chart-wrap">
+            <canvas id="timeScaleChart" aria-label="Log bar chart of time scales from Planck time to age of universe"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Topic 5: Universe expansion analogy -->
+      <div class="expansion-block" aria-label="Universe expansion analogy for the vine growing outward over time">
+        <div class="expansion-label">Topic 5 — Universe Expansion Analogy</div>
+        <h3>🌌 The Universe's Expanding Vine</h3>
+        <p>
+          Kris's vine growing outward maps nicely onto cosmological expansion —
+          <strong style="color:#fbbf24;">space itself stretching</strong> over time,
+          increasing the distance between all nodes (galaxies) simultaneously.
+          But cosmological expansion isn't caused by future states replacing past ones;
+          it's driven by the energy density of the universe (dark energy + matter content).
+          In the vine analogy: the vine grows because of the energy stored in its nodes
+          and segments, not because a distant gamma node is pulling the root.
+        </p>
+        <p style="margin-top:0.85rem;">
+          The expansion rate is described by the
+          <strong style="color:#fbbf24;">Hubble parameter H(t)</strong>,
+          which changes over time as matter, radiation, and dark energy shift in relative
+          dominance. In the vine model, think of H(t) as the growth rate of each new vine
+          segment — it wasn't constant in the past and is accelerating today.
+        </p>
+      </div>
+
+      <!-- Vine translation summary -->
+      <div class="vine-summary" aria-label="Translation table from Kris's vine metaphor to physics concepts">
+        <div class="vine-summary-title">✅ Vine Model → Physics Translation</div>
+
+        <div class="vine-translation-row">
+          <span class="vtr-kris">alpha node (past self)</span>
+          <span class="vtr-arrow">→</span>
+          <span class="vtr-physics">past system state — all prior conditions determining the present</span>
+        </div>
+
+        <div class="vine-translation-row">
+          <span class="vtr-kris">exchange / middle node</span>
+          <span class="vtr-arrow">→</span>
+          <span class="vtr-physics">present state — where past data meets future prediction</span>
+        </div>
+
+        <div class="vine-translation-row">
+          <span class="vtr-kris">gamma node (future self)</span>
+          <span class="vtr-arrow">→</span>
+          <span class="vtr-physics">branching set of possible future states (not yet collapsed)</span>
+        </div>
+
+        <div class="vine-translation-row">
+          <span class="vtr-kris">vine segment</span>
+          <span class="vtr-arrow">→</span>
+          <span class="vtr-physics">physical law / equation of motion connecting one state to the next</span>
+        </div>
+
+        <div class="vine-translation-row">
+          <span class="vtr-kris">gamma replacing alpha</span>
+          <span class="vtr-arrow">→</span>
+          <span class="vtr-physics">prediction feedback: gamma model informs present action (no backward causation)</span>
+        </div>
+
+        <div class="vine-translation-row">
+          <span class="vtr-kris">vine growing outward</span>
+          <span class="vtr-arrow">→</span>
+          <span class="vtr-physics">universe expansion — space stretching at rate H(t), driven by energy density</span>
+        </div>
+
+        <div class="vine-translation-row">
+          <span class="vtr-kris">node branching</span>
+          <span class="vtr-arrow">→</span>
+          <span class="vtr-physics">quantum superposition / classical chaos — multiple valid next states until one is selected</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
   <!-- ── Footer ───────────────────────────────────────────────────── -->
   <footer role="contentinfo">
     <div class="footer-links" aria-label="Footer navigation">
@@ -5633,6 +6139,388 @@
               ticks: { color: '#6b7fa3' }
             },
             x: { grid: { display: false }, ticks: { color: '#6b7fa3', font: { size: 10 } } }
+          }
+        }
+      });
+    }());
+
+    /* ── Vine / Node Timeline Canvas ───────────────────────────── */
+    (function () {
+      var canvas = document.getElementById('vine-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W, H;
+
+      function resize() {
+        W = canvas.width  = canvas.clientWidth;
+        H = canvas.height = canvas.clientHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      var t = 0;
+
+      /* Node definitions: x-fraction, y-fraction, label, color, role */
+      var NODES = [
+        { xf: 0.12, yf: 0.5,  label: 'α past',    color: '#fbbf24', role: 'alpha'   },
+        { xf: 0.38, yf: 0.5,  label: 'present',   color: '#00e5ff', role: 'present' },
+        { xf: 0.65, yf: 0.26, label: 'γ₁',        color: '#7b2fff', role: 'gamma'   },
+        { xf: 0.65, yf: 0.5,  label: 'γ₂',        color: '#a78bfa', role: 'gamma'   },
+        { xf: 0.65, yf: 0.74, label: 'γ₃',        color: '#818cf8', role: 'gamma'   },
+        { xf: 0.88, yf: 0.26, label: 'Δ₁',        color: '#39ff14', role: 'delta'   },
+        { xf: 0.88, yf: 0.5,  label: 'Δ₂',        color: '#4ade80', role: 'delta'   }
+      ];
+
+      /* Edges: [from-index, to-index] */
+      var EDGES = [
+        [0, 1],
+        [1, 2],
+        [1, 3],
+        [1, 4],
+        [2, 5],
+        [3, 6]
+      ];
+
+      /* Travelling particle state: each edge gets a particle */
+      var particles = EDGES.map(function () { return Math.random(); });
+
+      function nodePos(n) {
+        return { x: n.xf * W, y: n.yf * H };
+      }
+
+      /* Draw a soft curved vine segment between two points */
+      function drawVineSegment(x1, y1, x2, y2, color, alpha) {
+        var cx = (x1 + x2) / 2;
+        /* 0.18: lifts bezier control point above midpoint by 18% of segment width,
+           giving each vine segment its gentle upward arc */
+        var cy = (y1 + y2) / 2 - Math.abs(x2 - x1) * 0.18;
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.strokeStyle = color;
+        ctx.lineWidth   = 1.8;
+        ctx.shadowColor = color;
+        ctx.shadowBlur  = 6;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.quadraticCurveTo(cx, cy, x2, y2);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      /* Get point on quadratic bezier at t */
+      function bezierPoint(x1, y1, x2, y2, bt) {
+        var cx = (x1 + x2) / 2;
+        /* same 0.18 arc ratio as drawVineSegment — keeps particles on the curve */
+        var cy = (y1 + y2) / 2 - Math.abs(x2 - x1) * 0.18;
+        var t1 = 1 - bt;
+        return {
+          x: t1 * t1 * x1 + 2 * t1 * bt * cx + bt * bt * x2,
+          y: t1 * t1 * y1 + 2 * t1 * bt * cy + bt * bt * y2
+        };
+      }
+
+      (function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, W, H);
+        t += 0.012;
+
+        /* Draw edges */
+        EDGES.forEach(function (edge, i) {
+          var n1 = NODES[edge[0]], n2 = NODES[edge[1]];
+          var p1 = nodePos(n1), p2 = nodePos(n2);
+          var segColor = n2.color;
+          drawVineSegment(p1.x, p1.y, p2.x, p2.y, segColor, 0.35);
+        });
+
+        /* Animate travelling particles along edges */
+        EDGES.forEach(function (edge, i) {
+          particles[i] = (particles[i] + 0.006) % 1;
+          var n1 = NODES[edge[0]], n2 = NODES[edge[1]];
+          var p1 = nodePos(n1), p2 = nodePos(n2);
+          var bp = bezierPoint(p1.x, p1.y, p2.x, p2.y, particles[i]);
+          ctx.save();
+          ctx.globalAlpha = 0.9;
+          ctx.fillStyle   = n2.color;
+          ctx.shadowColor = n2.color;
+          ctx.shadowBlur  = 10;
+          ctx.beginPath();
+          ctx.arc(bp.x, bp.y, 3.5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+
+        /* Draw nodes */
+        NODES.forEach(function (n) {
+          var p = nodePos(n);
+          var pulse = 1 + 0.06 * Math.sin(t * 1.5 + n.xf * 5);
+
+          /* Glow ring */
+          ctx.save();
+          ctx.globalAlpha = 0.18 + 0.07 * Math.sin(t + n.xf * 3);
+          ctx.fillStyle   = n.color;
+          ctx.beginPath(); ctx.arc(p.x, p.y, 22 * pulse, 0, Math.PI * 2); ctx.fill();
+          ctx.restore();
+
+          /* Node circle */
+          var r = n.role === 'present' ? 15 : n.role === 'alpha' ? 13 : 10;
+          ctx.save();
+          ctx.globalAlpha = 0.9;
+          ctx.fillStyle   = n.color + '22';
+          ctx.strokeStyle = n.color;
+          ctx.lineWidth   = n.role === 'present' ? 2.5 : 1.8;
+          ctx.shadowColor = n.color;
+          ctx.shadowBlur  = n.role === 'present' ? 16 : 8;
+          ctx.beginPath(); ctx.arc(p.x, p.y, r * pulse, 0, Math.PI * 2);
+          ctx.fill(); ctx.stroke();
+          ctx.restore();
+
+          /* Label */
+          ctx.font      = (n.role === 'present' ? 'bold ' : '') + '10px Consolas, monospace';
+          ctx.fillStyle = n.color;
+          ctx.globalAlpha = 0.9;
+          ctx.textAlign   = 'center';
+          ctx.fillText(n.label, p.x, p.y + r * pulse + 14);
+          ctx.textAlign   = 'left';
+          ctx.globalAlpha = 1;
+        });
+
+        /* Feedback arrow: present back toward alpha */
+        var alpha = NODES[0], present = NODES[1];
+        var pA = nodePos(alpha), pP = nodePos(present);
+        var fbPhase = (t * 0.5) % 1;
+        if (fbPhase < 0.45) {
+          var fbX = pP.x - (pP.x - pA.x) * (fbPhase / 0.45);
+          var fbY = pP.y - (pP.y - pA.y) * (fbPhase / 0.45) - 22;
+          ctx.save();
+          ctx.globalAlpha = 0.45 * (1 - fbPhase / 0.45);
+          ctx.fillStyle   = '#39ff14';
+          ctx.shadowColor = '#39ff14';
+          ctx.shadowBlur  = 8;
+          ctx.beginPath(); ctx.arc(fbX, fbY, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.restore();
+        }
+
+        /* Legend */
+        ctx.font      = '9px Consolas, monospace';
+        ctx.fillStyle = 'rgba(107,127,163,0.65)';
+        ctx.globalAlpha = 1;
+        ctx.fillText('🌱 alpha (past)  ⚡ present (exchange node)  🌟 gamma (future branches)  🔄 feedback particle (green)', 10, H - 10);
+      }());
+    }());
+
+    /* ── Branch Canvas ──────────────────────────────────────────── */
+    (function () {
+      var canvas = document.getElementById('branch-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W = 320, H = 220;
+      canvas.width = W; canvas.height = H;
+
+      var t = 0;
+
+      /* Branch definitions: y-fractions for 5 gamma branches */
+      var BRANCHES = [
+        { yf: 0.12, color: '#7b2fff', label: 'γ₁ (most likely)' },
+        { yf: 0.28, color: '#a78bfa', label: 'γ₂'              },
+        { yf: 0.50, color: '#818cf8', label: 'γ₃'              },
+        { yf: 0.72, color: '#6366f1', label: 'γ₄'              },
+        { yf: 0.88, color: '#4338ca', label: 'γ₅ (rare)'       }
+      ];
+
+      /* Probabilities (for bar width) */
+      var PROBS = [0.45, 0.25, 0.15, 0.10, 0.05];
+
+      /* Particle per branch */
+      var particles = BRANCHES.map(function () { return Math.random(); });
+
+      (function loop() {
+        requestAnimationFrame(loop);
+        ctx.clearRect(0, 0, W, H);
+        t += 0.015;
+
+        var SX = 55, SY = H / 2;
+
+        /* Present node */
+        ctx.save();
+        ctx.globalAlpha = 0.85;
+        ctx.fillStyle   = 'rgba(0,229,255,0.12)';
+        ctx.strokeStyle = '#00e5ff';
+        ctx.lineWidth   = 2;
+        ctx.shadowColor = '#00e5ff'; ctx.shadowBlur = 12;
+        ctx.beginPath(); ctx.arc(SX, SY, 14, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.restore();
+        ctx.font = '8px Consolas, monospace';
+        ctx.fillStyle = '#00e5ff'; ctx.globalAlpha = 0.8;
+        ctx.textAlign = 'center';
+        ctx.fillText('present', SX, SY + 24);
+        ctx.textAlign = 'left'; ctx.globalAlpha = 1;
+
+        /* Branches */
+        BRANCHES.forEach(function (b, i) {
+          var EY = b.yf * H;
+          var EX = W - 18;
+
+          /* Branch line */
+          ctx.save();
+          ctx.globalAlpha = 0.4;
+          ctx.strokeStyle = b.color;
+          ctx.lineWidth   = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(SX + 14, SY);
+          ctx.quadraticCurveTo((SX + EX) / 2, SY, EX, EY);
+          ctx.stroke();
+          ctx.restore();
+
+          /* Probability bar background */
+          ctx.save();
+          ctx.globalAlpha = 0.15;
+          ctx.fillStyle   = b.color;
+          ctx.fillRect(EX - 8, EY - 5, PROBS[i] * 60 * (-1), 10);
+          ctx.restore();
+
+          /* End gamma node */
+          ctx.save();
+          ctx.globalAlpha = 0.7;
+          ctx.fillStyle   = b.color + '25';
+          ctx.strokeStyle = b.color;
+          ctx.lineWidth   = 1.3;
+          ctx.shadowColor = b.color; ctx.shadowBlur = 6;
+          ctx.beginPath(); ctx.arc(EX, EY, 8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+          ctx.restore();
+
+          /* Label */
+          ctx.font      = '8px Consolas, monospace';
+          ctx.fillStyle = b.color;
+          ctx.globalAlpha = 0.75;
+          ctx.fillText(b.label, EX + 11, EY + 3);
+          ctx.globalAlpha = 1;
+
+          /* Travelling particle */
+          particles[i] = (particles[i] + 0.004 + i * 0.001) % 1;
+          var pt = particles[i];
+          var bx = (1-pt)*(1-pt)*(SX+14) + 2*(1-pt)*pt*((SX+EX)/2) + pt*pt*EX;
+          var by = (1-pt)*(1-pt)*SY       + 2*(1-pt)*pt*SY           + pt*pt*EY;
+          ctx.save();
+          ctx.globalAlpha = 0.85;
+          ctx.fillStyle   = b.color;
+          ctx.shadowColor = b.color; ctx.shadowBlur = 8;
+          ctx.beginPath(); ctx.arc(bx, by, 3, 0, Math.PI * 2); ctx.fill();
+          ctx.restore();
+        });
+
+        /* Alpha arrow feeding present */
+        ctx.save();
+        ctx.globalAlpha = 0.5;
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth   = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(8, SY); ctx.lineTo(SX - 14, SY);
+        ctx.moveTo(SX - 14, SY); ctx.lineTo(SX - 20, SY - 5);
+        ctx.moveTo(SX - 14, SY); ctx.lineTo(SX - 20, SY + 5);
+        ctx.stroke();
+        ctx.restore();
+        ctx.font = '8px Consolas, monospace';
+        ctx.fillStyle = '#fbbf24'; ctx.globalAlpha = 0.6;
+        ctx.fillText('α', 10, SY - 5);
+        ctx.globalAlpha = 1;
+      }());
+    }());
+
+    /* ── Vine/Node Charts ───────────────────────────────────────── */
+    (function () {
+      /* Vine metaphor correspondence chart */
+      new Chart(document.getElementById('vineMapChart'), {
+        type: 'bar',
+        indexAxis: 'y',
+        data: {
+          labels: [
+            'Alpha node → past state',
+            'Present node → exchange point',
+            'Gamma node → future branches',
+            'Vine segment → physical law',
+            'Feedback loop → predictive model',
+            'Node branching → QM superposition',
+            'Vine growth → universe expansion'
+          ],
+          datasets: [{
+            label: 'Correspondence strength',
+            data: [95, 92, 85, 90, 88, 72, 68],
+            backgroundColor: [
+              'rgba(251,191,36,0.75)',
+              'rgba(0,229,255,0.75)',
+              'rgba(123,47,255,0.75)',
+              'rgba(0,229,255,0.6)',
+              'rgba(57,255,20,0.75)',
+              'rgba(167,139,250,0.7)',
+              'rgba(251,191,36,0.55)'
+            ],
+            borderColor: ['#fbbf24','#00e5ff','#7b2fff','#00e5ff','#39ff14','#a78bfa','#fbbf24'],
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: function(c) { return c.parsed.x + '% match'; } } }
+          },
+          scales: {
+            x: {
+              min: 0, max: 100,
+              title: { display: true, text: 'Correspondence (%)', color: '#6b7fa3' },
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3' }
+            },
+            y: { grid: { display: false }, ticks: { color: '#6b7fa3', font: { size: 9 } } }
+          }
+        }
+      });
+
+      /* Time scales chart */
+      new Chart(document.getElementById('timeScaleChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Planck time', 'Nuclear reaction', 'Chemical bond', 'Cell division', 'Human lifetime', 'Civilization', 'Age of Earth', 'Age of Universe'],
+          datasets: [{
+            label: 'Duration (seconds)',
+            data: [5.4e-44, 1e-22, 1e-15, 3600, 2.5e9, 3.2e10, 1.4e17, 4.3e17],
+            backgroundColor: [
+              'rgba(167,139,250,0.75)',
+              'rgba(129,140,248,0.75)',
+              'rgba(0,229,255,0.75)',
+              'rgba(57,255,20,0.75)',
+              'rgba(251,191,36,0.75)',
+              'rgba(251,146,60,0.75)',
+              'rgba(123,47,255,0.75)',
+              'rgba(239,68,68,0.7)'
+            ],
+            borderColor: ['#a78bfa','#818cf8','#00e5ff','#39ff14','#fbbf24','#fb923c','#7b2fff','#ef4444'],
+            borderWidth: 1,
+            borderRadius: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: { callbacks: { label: function(c) {
+              var v = c.parsed.y;
+              if (v < 1e-30) return v.toExponential(1) + ' s';
+              if (v < 1e9)   return v.toExponential(1) + ' s';
+              return (v / 3.156e7 / 1e9).toFixed(2) + ' Gyr';
+            }}}
+          },
+          scales: {
+            y: {
+              type: 'logarithmic',
+              title: { display: true, text: 'Duration (seconds, log)', color: '#6b7fa3' },
+              grid: { color: '#1a2a4a' },
+              ticks: { color: '#6b7fa3' }
+            },
+            x: { grid: { display: false }, ticks: { color: '#6b7fa3', font: { size: 9 } } }
           }
         }
       });
